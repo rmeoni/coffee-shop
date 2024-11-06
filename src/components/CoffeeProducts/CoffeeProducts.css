@@ -1,0 +1,162 @@
+.coffee-products {
+  text-align: left;
+  margin-left: 44px;
+  margin-bottom: 216px;
+}
+
+.buttons {
+  margin-bottom: 76px;
+  left: 20px;
+}
+
+.buttons button {
+  background-color: transparent;
+  border: 4px solid #001c35;
+  color: #001c35;
+  padding: 6px 24px;
+  margin: 0 8px;
+  cursor: pointer;
+  border-radius: 32px;
+  transition: background-color 0.3s;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-family: Montserrat;
+  font-size: 24px;
+}
+
+.buttons button.active,
+.buttons button:hover {
+  background-color: #D9D9D9;
+}
+
+.buttons.dark button {
+  background-color: transparent;
+  border: 4px solid #fff;
+  color: #fff;
+  padding: 6px 24px;
+  margin: 0 8px;
+  cursor: pointer;
+  border-radius: 32px;
+  transition: background-color 0.3s;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-family: Montserrat;
+  font-size: 24px;
+}
+
+.buttons.dark button.active {
+  background-color: #414141;
+  color: #fff;
+  transition: none;
+}
+
+.buttons.dark button:hover {
+  background-color: #414141;
+}
+
+.buttons.dark button.active:hover {
+  background-color: #414141;
+}
+
+.products {
+  display: flex;
+  justify-content: left;
+  flex-wrap: no-wrap;
+  overflow-x: auto;
+  /* Enable horizontal scrolling */
+  -webkit-overflow-scrolling: touch;
+  /* Smooth scrolling on iOS */
+  margin-right: -80px !important;
+}
+
+.product {
+  background-color: transparent;
+  text-align: left;
+  width: 452px;
+  position: relative;
+  padding: 0px 20px 0px 0px;
+  margin-right: 80px;
+}
+
+.product span:first-child  {
+  width: 452px;
+  height: 452px;
+}
+
+.product .product-img {
+  width: 452px;
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: -20px;
+}
+
+.price-per-pound {
+  background-color: #E4B66D;
+  padding: 12px;
+  border-radius: 5px;
+  font-weight: bold;
+  margin-bottom: 50px !important;
+  display: inline-block;
+  box-shadow: 0px 4px 12px rgba(39, 44, 47, 0.1);
+}
+
+.price-per-pound.dark {
+  background-color: #000;
+}
+
+
+.product .price {
+  margin-bottom: 76px;
+}
+
+
+.note {
+  font-size: 0.9em;
+  margin-top: 108px;
+  color: #8F8D8D !important;
+  padding: 0px;
+}
+
+.note a {
+  color: #8F8D8D;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* Styles for desktop (skeletons displayed inline) */
+.buttons .skeleton-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  gap: 10px;
+  /* Adds space between skeletons */
+}
+
+
+/* Media Query for screens smaller than 820px */
+@media (max-width: 820px) {
+  .coffee-products {
+    margin-left: 0px;
+  }
+
+  .buttons button {
+    margin-bottom: 12px !important;
+  }
+
+  .product {
+    padding: 24px 0px;
+  }
+
+
+  .product span:first-child {
+    width: 300px;
+    height: 300px;
+  }
+  /* Default styles for mobile (skeletons displayed in column) */
+  .buttons .skeleton-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    /* Adds space between skeletons */
+  }
+}

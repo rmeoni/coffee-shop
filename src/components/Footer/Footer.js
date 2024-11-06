@@ -1,15 +1,20 @@
 import React from 'react';
 import './Footer.css';
-import logo from '../../assets/images/logo.svg'; // Adjust the path to your logo image
+import coffeeLogoLight from '../../assets/images/logo.svg';
+import coffeeLogoDark from '../../assets/images/logo-dark.svg';
+import { useTheme } from '../../context/ThemeContext'; // Import the useTheme hook
 
 const Footer = () => {
+  const { isDarkMode, toggleDarkMode } = useTheme(); // Use context values
+  // Choose the logo based on the dark mode state from context
+  const logo = isDarkMode ? coffeeLogoDark : coffeeLogoLight;
   return (
-    <footer className="footer">
+    <footer className={`footer ${isDarkMode ? 'dark' : ''}`}>
       <div className="footer-container">
         <div className="footer-columns">
           <div className="footer-logo footer-column">
             <img src={logo} alt="Café Don Lucas" />
-          </div>  
+          </div>
           <div className="footer-column">
             <h3>Empresa</h3>
             <ul>

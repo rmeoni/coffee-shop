@@ -1,10 +1,9 @@
 .refer-earn {
-  background-color: #f9f5f1;
-  padding: 50px;
+  padding: 0px 48px 0px 48px;
   border-radius: 20px;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: left;
+  align-items: left;
   flex-direction: column;
   text-align: center;
 }
@@ -12,10 +11,10 @@
 .refer-earn-content {
   display: flex;
   flex-direction: row;
-  align-items: center;
-  max-width: 1100px;
-  width: 100%;
+  justify-content: left;
+  align-items: left;
   gap: 20px;
+  width: 90%;
 }
 
 .refer-earn-photo {
@@ -25,24 +24,19 @@
 .refer-earn-text {
   flex: 1;
   padding: 8px;
-  color:#01172f !important;
   text-align: left;
   margin-top: 0px;
   max-width: 90%;
 }
 
 .refer-earn-text h1 {
-  margin-bottom: 12px;
+  margin-bottom: 40px;
   max-width: 72%;
-  font-size: 2.2em;
-  word-wrap: break-word;
-  word-break: normal;
   text-align: left;
 }
 
 
 .refer-earn-text p {
-  color: #01172f !important;
   margin-top: 0px;
   margin-bottom: 40px;
   max-width: 72%;
@@ -65,19 +59,19 @@
   width: 72%;
 }
 
+.refer-earn.dark .refer-earn-form input {
+  background-color: #000;
+}
+
 .refer-earn-form input:focus {
   border-color: #01172F;
   outline: none;
 }
 
 
-.primary-btn-l:hover {
-  background-color: #00123d;
-}
-
 #refer-button {
-  margin-top: 48px !important;
-  max-width: 40%;
+  margin-top: 58px !important;
+  max-width: 300px;
   margin-bottom: 48px;
 }
 
@@ -87,14 +81,29 @@
 }
 
 @media (max-width: 820px) {
+  .refer-earn {
+    padding: 0px;
+    margin-left: 0px;
+  }
   .refer-earn-content {
     flex-direction: column;
     align-items: flex-start;
+    width: 100%;
   }
 
   .refer-earn-text {
     text-align: center;
     padding: 10px;
+    width: 100%;
+  }
+
+  .refer-earn-text h1 {
+    max-width: 100% !important;
+    font-size: 2.2em;
+  }
+
+  .refer-earn-text p {
+    max-width: 100% !important;
   }
 
   .refer-earn-form input {
@@ -103,6 +112,11 @@
 
   .refer-earn-form {
     width: 100%;
-    padding: 0 10px;
+  }
+
+  #refer-button {
+    margin-top: 48px !important;
+    max-width: 100%;
+    margin-bottom: 48px;
   }
 }

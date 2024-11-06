@@ -1,14 +1,14 @@
 import React from 'react';
 import Header from '../components/Header/Header';
+import CoffeeProducts from '../components/CoffeeProducts/CoffeeProducts';
+import Footer from '../components/Footer/Footer';
 
 const ShopPage = () => {
   return (
     <>
       <Header />
-      <section className="shop">
-        <h1>Tienda</h1>
-        <p>Productos disponibles...</p>
-      </section>
+      <CoffeeProducts />
+      <Footer />
     </>
   );
 };

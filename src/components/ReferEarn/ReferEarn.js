@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import './ReferEarn.css';
+import { useTheme } from '../../context/ThemeContext'; // Import the useTheme hook
 
 const ReferEarn = () => {
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const { isDarkMode } = useTheme(); // Use context value
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -11,7 +13,7 @@ const ReferEarn = () => {
   };
 
   return (
-    <section className="refer-earn">
+    <section className={`refer-earn ${isDarkMode ? 'dark' : ''}`}>
       {formSubmitted ? (
         <div className="success-message">¡Gracias por tu referencia!</div>
       ) : (
@@ -25,7 +27,7 @@ const ReferEarn = () => {
             <input type="text" placeholder="Nombre del referido *" required />
             <input type="text" placeholder="Nombre del negocio del referido *" required />
             <input type="email" placeholder="Correo Electrónico del referido *" required />
-            <button type="submit" className="primary-btn-l" id="refer-button">REFERIR AHORA</button>
+            <button type="submit" className={`primary-btn-l ${isDarkMode ? 'dark' : ''}`} id="refer-button">REFERIR AHORA</button>
           </form>
           </div>
           <div className="refer-earn-photo">

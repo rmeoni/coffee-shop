@@ -1,44 +1,82 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './Feature.css';
-import featureImage1 from '../../assets/images/featureImage1.png';
-import featureImage2 from '../../assets/images/featureImage2.png';
-import featureImage3 from '../../assets/images/featureImage3.png';
+import { useTheme } from '../../context/ThemeContext'; // Import the useTheme hook
+import Skeleton from 'react-loading-skeleton'; // Import Skeleton for loading placeholders
+import 'react-loading-skeleton/dist/skeleton.css'; // Import skeleton styles
 
-const Feature = () => {
+const Feature = ({ features }) => {
+  const { isDarkMode } = useTheme(); // Use context value
+  const [isLoading, setIsLoading] = useState(true); // Loading state
+
+  useEffect(() => {
+    // Simulate loading
+    const timer = setTimeout(() => setIsLoading(false), 2000);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <section className="feature">
-      <div className="feature-item">
-        <div className="feature-image">
-          <img src={featureImage1} alt="Feature 1" />
+      {features.map((feature, index) => (
+        <div className={`feature-item ${index % 2 === 1 ? 'reverse' : ''}`} key={index}>
+          {isLoading ? (
+            <>
+              {index % 2 === 0 ? (
+                <>
+                  <div className="loading-feature-image">
+                    <Skeleton width={360} height={360} style={{ borderRadius: '50%' }} />
+                  </div>
+                  <div className="loading-feature-text">
+                    <Skeleton width="90%" height={160} />
+                    <Skeleton width="90%" height={80} style={{ marginTop: '40px' }} />
+                    <Skeleton width="50%" height={64} style={{ marginTop: '76px', borderRadius: '50px' }} />
+                  </div>
+                </>
+              ) : (
+                <>
+                  <div className="loading-feature-text">
+                    <Skeleton width="90%" height={160} />
+                    <Skeleton width="90%" height={80} style={{ marginTop: '40px' }} />
+                    <Skeleton width="50%" height={64} style={{ marginTop: '76px', borderRadius: '50px' }} />
+                  </div>
+                  <div className="loading-feature-image">
+                    <Skeleton width={360} height={360} style={{ borderRadius: '50%' }} />
+                  </div>
+                </>
+              )}
+            </>
+          ) : index % 2 === 0 ? (
+            <>
+              <div className="feature-image">
+                <img src={feature.imageSrc} alt={`Feature ${index + 1}`} />
+              </div>
+              <div className="feature-text">
+                <h1>{feature.heading}</h1>
+                <p>{feature.description}</p>
+                {feature.buttonLink && (
+                  <a href={feature.buttonLink} className={`primary-btn-l ${isDarkMode ? 'dark' : ''}`}>
+                    {feature.buttonLabel}
+                  </a>
+                )}
+              </div>
+            </>
+          ) : (
+            <>
+              <div className="feature-text">
+                <h1>{feature.heading}</h1>
+                <p>{feature.description}</p>
+                {feature.buttonLink && (
+                  <a href={feature.buttonLink} className={`secondary-btn-l ${isDarkMode ? 'dark' : ''}`}>
+                    {feature.buttonLabel}
+                  </a>
+                )}
+              </div>
+              <div className="feature-image">
+                <img src={feature.imageSrc} alt={`Feature ${index + 1}`} />
+              </div>
+            </>
+          )}
         </div>
-        <div className="feature-text">
-          <h1>Atendemos las necesidades de tu negocio u oficina. Precios especiales para mayoristas.</h1>
-          <p>Contamos con servicios y precios especiales para mayoristas, benefíciate con nuestra tarifa especial de envíos y programa tu punto de re-orden hoy mismo!</p>
-          <a href="/" className="primary-btn-l" id="feature-primary-btn">Conocer Más</a>
-        </div>
-      </div>
-
-      <div className="feature-item">
-        <div className="feature-text">
-          <h1>Ahorra tiempo: inscríbete a nuestra suscripción mensual.</h1>
-          <p>Programa un despertar exitoso cada mañana al suscribirte a nuestro plan mensual. Fresco o Gratis, olvídate de colas y recordatorios de compra. cancela cuando quieras.</p>
-          <a href="/" className="secondary-btn-l" id="feature-secondary-btn">Programar Café</a>
-        </div>
-        <div className="feature-image">
-          <img src={featureImage2} alt="Feature 2" />
-        </div>
-      </div>
-
-      <div className="feature-item">
-        <div className="feature-image">
-          <img src={featureImage3} alt="Feature 3" />
-        </div>
-        <div className="feature-text">
-          <h1>Comprometidos a apoyar la educación en Guatemala.</h1>
-          <p>Cada mes enviamos el 10% de nuestras ganancias a diferentes organizaciones que apoyan la educación en Guatemala. Esfuerzo con el cual esperamos ayudar a brindar acceso a la educación en Guatemala.</p>
-          <a href="/" className="secondary-btn-l" id="feature-secondary-btn">Apoya la Educación</a>
-        </div>
-      </div>
+      ))}
     </section>
   );
 };

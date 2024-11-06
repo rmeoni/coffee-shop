@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import './Newsletter.css';
+import { useTheme } from '../../context/ThemeContext'; // Import the useTheme hook
 
 const Newsletter = () => {
+  const { isDarkMode } = useTheme(); // Use context value
+
   const [formData, setFormData] = useState({
     name: '',
     email: ''
@@ -40,9 +43,9 @@ const Newsletter = () => {
   };
 
   return (
-    <section className="newsletter">
+    <section className={`newsletter ${isDarkMode ? 'dark':''}`}>
       <div className="newsletter-content">
-        <h1>Suscríbete a nuestras noticias y obtén una guía para aumentar la productividad en tu consumo de café.</h1>
+        <h1>Suscríbete a nuestras noticias y obtén una guía para aumentar la productividad en tu consumo de café</h1>
         <form className="newsletter-form" onSubmit={handleSubmit}>
           <input 
             type="text" 
@@ -60,7 +63,7 @@ const Newsletter = () => {
             onChange={handleChange} 
             required 
           />
-          <button type="submit" className="primary-btn-l" id="newsletter-btn">Enviar</button>
+          <button type="submit" className={`primary-btn-l ${isDarkMode ? 'dark' : ''}`} id="newsletter-btn">Enviar</button>
         </form>
         {successMessage && <p className="success-message">{successMessage}</p>}
       </div>

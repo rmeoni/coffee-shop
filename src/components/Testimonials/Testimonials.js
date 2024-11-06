@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './Testimonials.css';
 import leftArrow from '../../assets/images/left-arrow.svg';  
 import rightArrow from '../../assets/images/right-arrow.svg'; 
+import { useTheme } from '../../context/ThemeContext'; // Import the useTheme hook
 
 const testimonialsData = [
   {
@@ -32,6 +33,7 @@ const testimonialsData = [
 
 const Testimonials = () => {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
+  const { isDarkMode, toggleDarkMode } = useTheme(); // Use context values
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -55,7 +57,7 @@ const Testimonials = () => {
   };
 
   return (
-    <section className="testimonials">
+    <section className={`testimonials ${isDarkMode ? 'dark': ''}`}>
       <div className="testimonial-carousel">
         <button className="arrow left" onClick={handlePrevious}>
           <img src={leftArrow} alt="Previous" />
