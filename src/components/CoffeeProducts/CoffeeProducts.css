@@ -147,11 +147,15 @@
     padding: 24px 0px;
   }
 
-
   .product span:first-child {
     width: 300px;
     height: 300px;
   }
+
+  .product .product-img {
+    width: 280px;
+  }
+
   /* Default styles for mobile (skeletons displayed in column) */
   .buttons .skeleton-container {
     display: flex;
