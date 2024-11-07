@@ -5,7 +5,7 @@ import coffeeLogoDark from '../../assets/images/logo-dark.svg';
 import { useTheme } from '../../context/ThemeContext'; // Import the useTheme hook
 
 const Footer = () => {
-  const { isDarkMode, toggleDarkMode } = useTheme(); // Use context values
+  const { isDarkMode } = useTheme(); // Use context values
   // Choose the logo based on the dark mode state from context
   const logo = isDarkMode ? coffeeLogoDark : coffeeLogoLight;
   return (

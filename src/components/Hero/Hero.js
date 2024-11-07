@@ -47,7 +47,7 @@ const Hero = ({ imageSrc, heading, paragraph, buttonLabels, buttonLinks }) => {
             </ul>
           </div>
           <div className="hero-image">
-            <img src={imageSrc} alt="Coffee Bag Image" />
+            <img src={imageSrc} alt="Coffee Bag" />
           </div>
         </>
       )}

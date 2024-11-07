@@ -26,7 +26,7 @@ const ProductDetailPage = () => {
     if (storedCartItems) {
       setCartItems(storedCartItems);
     }
-  }, []);
+  }, [setCartItems]);
 
   // Sync cart items to localStorage whenever cartItems change
   useEffect(() => {
@@ -72,16 +72,6 @@ const ProductDetailPage = () => {
     }
 
     setQuantity(1); // Reset quantity to 1
-  };
-
-  const updateCart = (id, newQuantity) => {
-    if (newQuantity === 0) {
-      setCartItems(cartItems.filter(item => item.id !== id));
-    } else {
-      setCartItems(cartItems.map(item =>
-        item.id === id ? { ...item, quantity: newQuantity } : item
-      ));
-    }
   };
 
   return (

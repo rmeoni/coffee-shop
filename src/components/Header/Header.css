@@ -143,6 +143,11 @@ nav ul li a img {
     list-style: none;
     padding-top: 12px;
   }
+
+  .mobile-menu li a {
+    text-decoration: none;
+    font-weight: bold;
+  }
 }
 
 /* Loading Styles */

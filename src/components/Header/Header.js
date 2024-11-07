@@ -63,9 +63,15 @@ const Header = () => {
                   <li><a href="/tienda">Tienda</a></li>
                   <li><a href="/compra1educa1">Compra1educa1</a></li>
                   <li>
-                    <a href="#" onClick={(e) => { e.preventDefault(); toggleDarkMode(); }}>
-                      <img src={toggleIcon} alt="Toggle Dark Mode" />
-                    </a>
+                    <img
+                      src={toggleIcon}
+                      alt="Toggle Dark Mode"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        toggleDarkMode();
+                      }}
+                      style={{ cursor: 'pointer', height: '36px' }}
+                    />
                   </li>
                 </>
               )}
@@ -106,10 +112,16 @@ const Header = () => {
                 <li><a href="/tienda">Tienda</a></li>
                 <li><a href="/compra1educa1">Compra1educa1</a></li>
                 <li>
-                  <a href="#" onClick={(e) => { e.preventDefault(); toggleDarkMode(); }}>
-                    <img src={toggleIcon} alt="Toggle Dark Mode" />
-                  </a>
-                </li>
+                    <img
+                      src={toggleIcon}
+                      alt="Toggle Dark Mode"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        toggleDarkMode();
+                      }}
+                      style={{ cursor: 'pointer', height: '36px' }}
+                    />
+                  </li>
               </>
             )}
           </ul>

@@ -33,7 +33,7 @@ const testimonialsData = [
 
 const Testimonials = () => {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
-  const { isDarkMode, toggleDarkMode } = useTheme(); // Use context values
+  const { isDarkMode } = useTheme(); // Use context values
 
   useEffect(() => {
     const interval = setInterval(() => {
