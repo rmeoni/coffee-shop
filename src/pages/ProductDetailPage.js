@@ -83,7 +83,7 @@ const ProductDetailPage = () => {
             <div className="hero-loading-text">
               <Skeleton width="70%" height={200} />
               <Skeleton width="70%" height={48} style={{ marginTop: '20px' }} />
-              <Skeleton width="40%" height={64} style={{ marginTop: '76px', borderRadius: '50px' }} />
+              <Skeleton width="200px" height={64} style={{ marginTop: '76px', borderRadius: '50px' }} />
             </div>
             <div className="hero-loading-image">
               <Skeleton circle width={452} height={452} />
