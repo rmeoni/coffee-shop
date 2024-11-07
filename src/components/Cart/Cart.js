@@ -42,6 +42,7 @@ const Cart = () => {
         </div>
         </div >
         <div className="cart-checkout">
+          <h3>Total: ${ total }</h3>
           <button className={`primary-btn-l ${isDarkMode ? 'dark' : ''}`}>Completar Orden</button>
         </div>
       </div>
