@@ -21,3 +21,4 @@ Upcoming features in the next release:
 - Integrate with Zoho or Google Sheets API to send orders
 - Enhance responsiveness for all devices
 - Implement login and signup functionality
+- Integrate a language translator
