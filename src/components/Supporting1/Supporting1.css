@@ -107,8 +107,21 @@ p {
     background-image: none !important;
   }
 
+  .steps-section p {
+    color: #001c35;
+  }
+  
+
   .step {
     margin-bottom: 20px;
+  }
+
+  .step h3 {
+    color: #001c35 !important;
+  }
+
+  .steps-section.dark .step h3 {
+    color: #fff !important;
   }
 
   .supporting-section {
