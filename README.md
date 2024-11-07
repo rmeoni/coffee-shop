@@ -4,6 +4,8 @@ Welcome to the first release of my Coffee Shop app! This project was built using
 
 You can read the full case study [here](https://www.uxrodrigo.com/detail_project_coffee_ux.html).
 
+You can see the Netlify deployment [here](https://uxcoffee.netlify.app/).
+
 ## Current Features
 
 The app currently includes the following features:
