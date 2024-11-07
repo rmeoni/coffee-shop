@@ -145,6 +145,7 @@
 
   .product {
     padding: 24px 0px;
+    width: 246px;
   }
 
   .product span:first-child {
@@ -153,7 +154,7 @@
   }
 
   .product .product-img {
-    width: 280px;
+    width: 246px;
   }
 
   /* Default styles for mobile (skeletons displayed in column) */
