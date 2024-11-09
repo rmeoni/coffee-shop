@@ -9,10 +9,10 @@ import ShopPage from './pages/ShopPage';
 import BlogPage from './pages/BlogPage';
 import CharityPage from './pages/CharityPage';
 import ProductDetailPage from './pages/ProductDetailPage';
-
 import { ThemeProvider, useTheme } from './context/ThemeContext';
 import { CartProvider } from './context/CartContext'; // Import the CartProvider
 import Cart from './components/Cart/Cart'; // Import the Cart component
+import './i18n';
 
 const AppContent = () => {
   const { isDarkMode } = useTheme();

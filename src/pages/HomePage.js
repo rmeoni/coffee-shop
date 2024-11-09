@@ -10,7 +10,6 @@ import ReferEarn from '../components/ReferEarn/ReferEarn';
 import Footer from '../components/Footer/Footer';
 
 
-
 const HomePage = () => {
   // Define the features array
   const featureItems = [
