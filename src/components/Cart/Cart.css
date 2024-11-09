@@ -112,12 +112,12 @@
   .cart {
     flex-direction: column;
     padding: 40px 0px 40px 0px;
-    height: 100vh;
+    max-width: 100vh;
   }
 
   .cart-wrapper {
     padding-left: 24px;
-    width: 95vw;
+    width: 90vw;
   }
 
   .cart-item {
