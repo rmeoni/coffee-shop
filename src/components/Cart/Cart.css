@@ -12,6 +12,8 @@
   flex-direction: row;
   justify-content: space-around;
   z-index: 999;
+  overflow-y: auto; /* Enable vertical scrolling */
+  max-height: 60vh; /* Limit height to 70% of the viewport */
 }
 
 .cart.dark {

@@ -40,7 +40,7 @@ const Hero = ({ imageSrc, heading, paragraph, buttonLabels, buttonLinks }) => {
                 </a>
               </li>
               <li>
-                <a href={buttonLinks[1]} className={`primary-btn-l ${isDarkMode ? 'dark' : ''}`}>
+                <a href={buttonLinks[1]} className={`primary-btn-l ${isDarkMode ? 'dark' : ''}`} id="hero-primary-btn">
                   {buttonLabels[1]}
                 </a>
               </li>
