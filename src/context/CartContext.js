@@ -11,6 +11,12 @@ export const CartProvider = ({ children }) => {
     return storedCartItems ? JSON.parse(storedCartItems) : [];
   });
 
+  // Initialize isCartVisible state from localStorage
+  const [isCartVisible, setIsCartVisible] = useState(() => {
+    const storedIsCartVisible = localStorage.getItem('isCartVisible');
+    return storedIsCartVisible ? JSON.parse(storedIsCartVisible) : false;
+  });
+
   // Sync cart items to localStorage whenever cartItems change
   useEffect(() => {
     if (cartItems.length > 0) {
@@ -20,21 +26,44 @@ export const CartProvider = ({ children }) => {
     }
   }, [cartItems]);
 
+  // Sync isCartVisible to localStorage whenever it changes
+  useEffect(() => {
+    localStorage.setItem('isCartVisible', JSON.stringify(isCartVisible));
+  }, [isCartVisible]);
+
+  // Function to toggle cart visibility
+  const toggleCartVisibility = () => {
+    setIsCartVisible(prev => {
+      const newVisibility = !prev;
+      localStorage.setItem('isCartVisible', JSON.stringify(newVisibility)); // Sync with localStorage immediately
+      return newVisibility;
+    });
+  };
+
   // Function to update the cart (add, update quantity, or remove items)
   const updateCart = (id, newQuantity) => {
-    if (newQuantity === 0) {
-      setCartItems(prevItems => prevItems.filter(item => item.id !== id));
-    } else {
-      setCartItems(prevItems =>
-        prevItems.map(item =>
-          item.id === id ? { ...item, quantity: newQuantity } : item
-        )
-      );
-    }
+    setCartItems(prevItems => {
+      const itemExists = prevItems.some(item => item.id === id);
+
+      // Set cart visibility to true if an item is added
+      if (newQuantity > 0 && !itemExists) {
+        setIsCartVisible(true);
+      }
+
+      if (newQuantity === 0) {
+        return prevItems.filter(item => item.id !== id);
+      } else {
+        return itemExists
+          ? prevItems.map(item =>
+              item.id === id ? { ...item, quantity: newQuantity } : item
+            )
+          : [...prevItems, { id, quantity: newQuantity }];
+      }
+    });
   };
 
   return (
-    <CartContext.Provider value={{ cartItems, setCartItems, updateCart }}>
+    <CartContext.Provider value={{ cartItems, setCartItems, updateCart, isCartVisible, setIsCartVisible, toggleCartVisibility }}>
       {children}
     </CartContext.Provider>
   );

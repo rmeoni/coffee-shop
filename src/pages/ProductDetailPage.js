@@ -1,4 +1,3 @@
-// src/pages/ProductDetailPage.js
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Header from '../components/Header/Header';
@@ -12,7 +11,7 @@ import '../assets/styles/ProductDetailPage.css';
 const ProductDetailPage = () => {
   const { id } = useParams();
   const [quantity, setQuantity] = useState(1);
-  const { cartItems, setCartItems } = useCart();
+  const { cartItems, setCartItems, setIsCartVisible } = useCart();
   const [isLoading, setIsLoading] = useState(true);
   const { isDarkMode } = useTheme();
 
@@ -62,13 +61,17 @@ const ProductDetailPage = () => {
     const existingItem = cartItems.find(item => item.id === product.id);
 
     if (existingItem) {
+      // Update quantity of existing item without toggling cart visibility
       setCartItems(cartItems.map(item =>
         item.id === product.id
           ? { ...item, quantity: item.quantity + quantity }
           : item
       ));
+      setIsCartVisible(true); // Toggle visibility
     } else {
+      // Add new item to cart and show the cart
       setCartItems([...cartItems, { ...product, quantity }]);
+      setIsCartVisible(true); // Toggle visibility
     }
 
     setQuantity(1); // Reset quantity to 1
