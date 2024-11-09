@@ -1,14 +1,20 @@
 {
-    "header": {
-      "home": "Inicio",
-      "origins": "Orígenes",
-      "our_coffee": "Nuestro Café",
-      "shop": "Tienda",
-      "charity": "Compra1educa1",
-      "language": "Idioma",
-      "english": "Inglés",
-      "spanish": "Español",
-      "toggle_dark_mode": "Cambiar Modo Oscuro"
-    }
+  "hero": {
+    "image_alt_text": "Bolsa de Café",
+    "heading": "Despierta tu Productividad",
+    "paragraph": "En todo lo que hacemos, creemos en la productividad y el café de Guatemala. Nuestro café es gourmet porque proviene de un solo origen. Hacemos que sea fácil pedir café para tu casa, negocio u oficina.",
+    "button1": "Conocer Mas",
+    "button2": "Hacer Pedido"
+  },
+  "header": {
+    "home": "Inicio",
+    "origins": "Orígenes",
+    "our_coffee": "Nuestro Café",
+    "shop": "Tienda",
+    "charity": "Caridad",
+    "language": "Idioma",
+    "spanish": "Español",
+    "english": "Inglés",
+    "toggle_dark_mode": "Cambiar a modo oscuro"
   }
-  
+}

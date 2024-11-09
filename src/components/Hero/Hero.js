@@ -3,10 +3,12 @@ import './Hero.css';
 import { useTheme } from '../../context/ThemeContext'; // Import the useTheme hook
 import Skeleton from 'react-loading-skeleton'; // Import Skeleton for loading placeholders
 import 'react-loading-skeleton/dist/skeleton.css'; // Import skeleton styles
+import { useTranslation } from 'react-i18next'; // Import the useTranslation hook
 
 const Hero = ({ imageSrc, heading, paragraph, buttonLabels, buttonLinks }) => {
   const [isLoading, setIsLoading] = useState(true);
   const { isDarkMode } = useTheme(); // Use context value
+  const { t } = useTranslation(); // Initialize translation hook
 
   useEffect(() => {
     // Simulate loading
@@ -31,23 +33,23 @@ const Hero = ({ imageSrc, heading, paragraph, buttonLabels, buttonLinks }) => {
       ) : (
         <>
           <div className="hero-text">
-            <h1>{heading}</h1>
-            <p>{paragraph}</p>
+            <h1>{t(heading)}</h1> {/* Use translation for heading */}
+            <p>{t(paragraph)}</p> {/* Use translation for paragraph */}
             <ul>
               <li>
                 <a href={buttonLinks[0]} className={`secondary-btn-l ${isDarkMode ? 'dark' : ''}`} id="secondary-btn-hero">
-                  {buttonLabels[0]}
+                  {t(buttonLabels[0])} {/* Translate button label */}
                 </a>
               </li>
               <li>
                 <a href={buttonLinks[1]} className={`primary-btn-l ${isDarkMode ? 'dark' : ''}`} id="hero-primary-btn">
-                  {buttonLabels[1]}
+                  {t(buttonLabels[1])} {/* Translate button label */}
                 </a>
               </li>
             </ul>
           </div>
           <div className="hero-image">
-            <img src={imageSrc} alt="Coffee Bag" />
+            <img src={imageSrc} alt={t('hero.image_alt_text')} /> {/* You can add an alt text translation */}
           </div>
         </>
       )}

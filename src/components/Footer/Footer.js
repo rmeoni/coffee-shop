@@ -34,11 +34,11 @@ const Footer = () => {
             </div>
             <div className='footer-column'>
               <Skeleton width={100} height={20} style={{ marginBottom: '16px' }} />
-              <Skeleton count={4} width={160} height={20} style={{ margin: '8px 0' }} />
+              <Skeleton count={2} width={160} height={20} style={{ margin: '8px 0' }} />
             </div>
             <div className='footer-column'>
               <Skeleton width={100} height={20} style={{ marginBottom: '16px' }} />
-              <Skeleton count={4} width={160} height={20} style={{ margin: '8px 0' }} />
+              <Skeleton count={3} width={160} height={20} style={{ margin: '8px 0' }} />
             </div>
           </div>
         ) : (

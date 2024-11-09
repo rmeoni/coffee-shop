@@ -41,9 +41,9 @@ const HomePage = () => {
       <Header />
       <Hero
         imageSrc="/images/product-image-2.png" // Direct path since the image is in the public folder
-        heading="Despierta tu productividad"
-        paragraph="En todo lo que hacemos, creemos en la productividad y el café de Guatemala. Nuestro café es Gourmet porque es de un solo origen. Hacemos que sea fácil pedir café para tu casa, negocio u oficina."
-        buttonLabels={['conocer mas', 'Hacer Pedido']}
+        heading="hero.heading" // Use translation key
+        paragraph="hero.paragraph" // Use translation key
+        buttonLabels={['hero.button1', 'hero.button2']} // Use translation keys
         buttonLinks={['/origenes', '/tienda']} // Add your dynamic links here
       />
       <Supporting1 />

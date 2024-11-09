@@ -1,14 +1,20 @@
 {
-    "header": {
-      "home": "Home",
-      "origins": "Origins",
-      "our_coffee": "Our Coffee",
-      "shop": "Shop",
-      "charity": "Buy1Educate1",
-      "language": "Language",
-      "english": "English",
-      "spanish": "Spanish",
-      "toggle_dark_mode": "Toggle Dark Mode"
-    }
+  "hero": {
+    "image_alt_text": "Coffee Bag",
+    "heading": "Awaken Your Productivity",
+    "paragraph": "In everything we do, we believe in the productivity and coffee of Guatemala. Our coffee is gourmet because it comes from a single origin. We make it easy to order coffee for your home, business, or office.",
+    "button1": "Learn More",
+    "button2": "Order Coffee"
+  },
+  "header": {
+    "home": "Home",
+    "origins": "Origins",
+    "our_coffee": "Our Coffee",
+    "shop": "Shop",
+    "charity": "Charity",
+    "language": "Language",
+    "spanish": "Spanish",
+    "english": "English",
+    "toggle_dark_mode": "Toggle Dark Mode"
   }
-  
+}
