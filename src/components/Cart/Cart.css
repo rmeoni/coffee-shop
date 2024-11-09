@@ -112,7 +112,7 @@
   .cart {
     flex-direction: column;
     padding: 40px 0px 40px 0px;
-    max-width: 100vh;
+    max-height: 100vh;
   }
 
   .cart-wrapper {
