@@ -58,6 +58,14 @@ const GlobalStyle = createGlobalStyle`
     color: #fff;
   }
 
+  body span {
+    color: #01172F;
+  }
+
+  body.dark span {
+    color: #ffffff;
+  }
+
   .secondary-btn-s {
     background: transparent;
     border: 3px solid #01172F;

@@ -43,7 +43,7 @@ const Cart = () => {
       </div>
       <div className="cart-checkout">
         <h3>Total: ${total.toFixed(2)}</h3>
-        <button onClick={toggleCartVisibility} className={`secondary-btn-l ${isDarkMode ? 'dark' : ''}`} style={{marginBottom: '12px'}}>
+        <button onClick={toggleCartVisibility} className={`secondary-btn-l ${isDarkMode ? 'dark' : ''}`} style={{marginBottom: '12px'}} id="cart-secondary-button">
           Cerrar Carrito
         </button>
         <button className={`primary-btn-l ${isDarkMode ? 'dark' : ''}`}>Completar Orden</button>

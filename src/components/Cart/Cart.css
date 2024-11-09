@@ -108,6 +108,10 @@
   padding-bottom: 16px;
 }
 
+#cart-secondary-button {
+  width: 100%;
+}
+
 @media (max-width: 820px) {
   .cart {
     flex-direction: column;
@@ -131,5 +135,6 @@
 
   .cart-checkout {
     margin: auto;
+    padding: 0px;
   }
 }

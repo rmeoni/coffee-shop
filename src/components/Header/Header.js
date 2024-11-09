@@ -10,12 +10,19 @@ import closeIconLight from '../../assets/images/icon-close.svg';
 import closeIconDark from '../../assets/images/icon-close-dark.svg';
 import iconToggleDarkMode from '../../assets/images/icon-toggle-dark-mode.svg';
 import iconToggleLightMode from '../../assets/images/icon-toggle-light-mode.svg';
+import languageIconLight from  '../../assets/images/language.svg';
+import languageIconDark from  '../../assets/images/language-dark.svg';
 import { useTheme } from '../../context/ThemeContext';
+// import { useTranslation } from 'react-i18next';
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const { isDarkMode, toggleDarkMode } = useTheme();
+  const [language, setLanguage] = useState("en"); // default to English
+
+  // useTranslation hook for triggering translations based on language
+  // const { i18n } = useTranslation();
 
   useEffect(() => {
     const timer = setTimeout(() => setIsLoading(false), 2000);
@@ -26,10 +33,17 @@ const Header = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
+  // Function to handle language change
+  const handleLanguageChange = (lang) => {
+    setLanguage(lang);
+    // i18n.changeLanguage(lang);
+  };
+
   const logo = isDarkMode ? coffeeLogoDark : coffeeLogoLight;
   const toggleIcon = isDarkMode ? iconToggleLightMode : iconToggleDarkMode;
   const hamburgerIcon = isDarkMode ? hamburgerIconDark : hamburgerIconLight;
   const closeIcon = isDarkMode ? closeIconDark : closeIconLight;
+  const laguageIcon = isDarkMode ? languageIconDark : languageIconLight;
 
   return (
     <header className={`${isDarkMode ? 'dark' : ''}`}>
@@ -62,6 +76,13 @@ const Header = () => {
                   <li><a href="/nuestro-cafe">Nuestro Café</a></li>
                   <li><a href="/tienda">Tienda</a></li>
                   <li><a href="/compra1educa1">Compra1educa1</a></li>
+                  <li className="language-selector">
+                    <span>Idioma <img src={laguageIcon} style={{width:'30', height:'30'}} id="language-icon" alt="Language Icon"/></span>
+                    <ul className="language-options">
+                      <li onClick={() => handleLanguageChange("es")}>Español</li>
+                      <li onClick={() => handleLanguageChange("en")}>English</li>
+                    </ul>
+                  </li>
                   <li>
                     <img
                       src={toggleIcon}
@@ -111,6 +132,13 @@ const Header = () => {
                 <li><a href="/nuestro-cafe">Nuestro Café</a></li>
                 <li><a href="/tienda">Tienda</a></li>
                 <li><a href="/compra1educa1">Compra1educa1</a></li>
+                <li className="language-selector">
+                    <span>Idioma <img src={laguageIcon} style={{width:'30', height:'30'}} id="language-icon" alt="Language Icon"/></span>
+                    <ul className="language-options">
+                      <li onClick={() => handleLanguageChange("es")}>Español</li>
+                      <li onClick={() => handleLanguageChange("en")}>English</li>
+                    </ul>
+                  </li>
                 <li>
                     <img
                       src={toggleIcon}
@@ -121,7 +149,7 @@ const Header = () => {
                       }}
                       style={{ cursor: 'pointer', height: '36px' }}
                     />
-                  </li>
+                </li>
               </>
             )}
           </ul>
