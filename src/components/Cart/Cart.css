@@ -116,6 +116,7 @@
 
   .cart-wrapper {
     padding-left: 24px;
+    width: 100vw;
   }
 
   .cart-item {
