@@ -33,6 +33,7 @@ const Header = () => {
 
   const handleLanguageChange = (lang) => {
     i18n.changeLanguage(lang);
+    localStorage.setItem('language', lang); // Save the language in localStorage
   };
 
   const logo = isDarkMode ? coffeeLogoDark : coffeeLogoLight;
