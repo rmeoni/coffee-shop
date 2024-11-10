@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';  // Import the useTranslation hook
 import './Footer.css';
 import coffeeLogoLight from '../../assets/images/logo.svg';
 import coffeeLogoDark from '../../assets/images/logo-dark.svg';
@@ -9,6 +10,7 @@ import 'react-loading-skeleton/dist/skeleton.css';
 const Footer = () => {
   const [isLoading, setIsLoading] = useState(true);
   const { isDarkMode } = useTheme();
+  const { t } = useTranslation();  // Initialize useTranslation hook
   const logo = isDarkMode ? coffeeLogoDark : coffeeLogoLight;
 
   useEffect(() => {
@@ -44,39 +46,39 @@ const Footer = () => {
         ) : (
           <div className="footer-columns">
             <div className="footer-logo footer-column">
-              <img src={logo} alt="Café Don Lucas" />
+              <img src={logo} alt={t('footer.logoAlt')} />
             </div>
             <div className="footer-column">
-              <h3>Empresa</h3>
+              <h3>{t('footer.company')}</h3>
               <ul>
-                <li>Política De Garantía</li>
-                <li>Nuestros Orígenes</li>
-                <li>Nuestro Café</li>
-                <li>Tienda</li>
+                <li>{t('footer.policy')}</li>
+                <li>{t('footer.origins')}</li>
+                <li>{t('footer.ourCoffee')}</li>
+                <li>{t('footer.store')}</li>
               </ul>
             </div>
             <div className="footer-column">
-              <h3>Ayuda</h3>
+              <h3>{t('footer.help')}</h3>
               <ul>
-                <li>Preguntas Frecuentes</li>
-                <li>Distribuidores</li>
-                <li>Compra1educa1</li>
-                <li>Medio Ambiente</li>
+                <li>{t('footer.faq')}</li>
+                <li>{t('footer.distributors')}</li>
+                <li>{t('footer.buyEducate')}</li>
+                <li>{t('footer.environment')}</li>
               </ul>
             </div>
             <div className="footer-column">
-              <h3>Redes Sociales</h3>
+              <h3>{t('footer.socialMedia')}</h3>
               <ul>
-                <li>Instagram</li>
-                <li>Facebook</li>
+                <li>{t('footer.instagram')}</li>
+                <li>{t('footer.facebook')}</li>
               </ul>
             </div>
             <div className="footer-column">
-              <h3>Contacto</h3>
+              <h3>{t('footer.contact')}</h3>
               <ul>
-                <li>hola@cafedonlucas.com</li>
-                <li>www.cafedonlucas.com</li>
-                <li>+502 2458-1863</li>
+                <li>{t('footer.email')}</li>
+                <li>{t('footer.website')}</li>
+                <li>{t('footer.phone')}</li>
               </ul>
             </div>
           </div>

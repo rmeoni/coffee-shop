@@ -3,30 +3,31 @@ import './Testimonials.css';
 import leftArrow from '../../assets/images/left-arrow.svg';  
 import rightArrow from '../../assets/images/right-arrow.svg'; 
 import { useTheme } from '../../context/ThemeContext'; // Import the useTheme hook
+import { useTranslation } from 'react-i18next'; // Import the useTranslation hook
 
 const testimonialsData = [
   {
-    text: "Este café es totalmente delicioso. Tiene un aroma exquisito y sabe mmmmmm.... me encanta! 100% recomendado!",
-    author: "Katherine B.",
-    title: "CFO",
+    text: "testimonial.testimonial1_text", // Reference translation key
+    author: "testimonial.testimonial1_author", 
+    title: "testimonial.testimonial1_title",
     image: "/images/testimonial1.svg",  
   },
   {
-    text: "Me encanta el ambiente del lugar, muy acogedor.",
-    author: "Ana Martínez",
-    title: "Marketing Manager",
+    text: "testimonial.testimonial2_text",
+    author: "testimonial.testimonial2_author",
+    title: "testimonial.testimonial2_title",
     image: "/images/testimonial2.svg",
   },
   {
-    text: "El mejor café que he probado en años.",
-    author: "Luis Gómez",
-    title: "Software Engineer",
+    text: "testimonial.testimonial3_text",
+    author: "testimonial.testimonial3_author",
+    title: "testimonial.testimonial3_title",
     image: "/images/testimonial3.svg",
   },
   {
-    text: "Servicio excelente y productos de calidad.",
-    author: "María Rodríguez",
-    title: "Designer",
+    text: "testimonial.testimonial4_text",
+    author: "testimonial.testimonial4_author",
+    title: "testimonial.testimonial4_title",
     image: "/images/testimonial4.svg",
   },
 ];
@@ -34,6 +35,7 @@ const testimonialsData = [
 const Testimonials = () => {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
   const { isDarkMode } = useTheme(); // Use context values
+  const { t } = useTranslation(); // Initialize translation hook
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -57,10 +59,10 @@ const Testimonials = () => {
   };
 
   return (
-    <section className={`testimonials ${isDarkMode ? 'dark': ''}`}>
+    <section className={`testimonials ${isDarkMode ? 'dark' : ''}`}>
       <div className="testimonial-carousel">
         <button className="arrow left" onClick={handlePrevious}>
-          <img src={leftArrow} alt="Previous" />
+          <img src={leftArrow} alt={t('testimonial.previous')} />
         </button>
         {testimonialsData.map((testimonial, index) => (
           <div
@@ -69,16 +71,16 @@ const Testimonials = () => {
             }`}
             key={index}
           >
-            <img src={testimonial.image} alt={testimonial.author} className="testimonial-image" />
+            <img src={testimonial.image} alt={t(testimonial.author)} className="testimonial-image" />
             <div className="testimonial-content">
-              <p className="testimonial-text">"{testimonial.text}"</p>
-              <p className="testimonial-author"><strong>{testimonial.author}</strong></p>
-              <p className="testimonial-title">{testimonial.title}</p>
+              <p className="testimonial-text">"{t(testimonial.text)}"</p>
+              <p className="testimonial-author"><strong>{t(testimonial.author)}</strong></p>
+              <p className="testimonial-title">{t(testimonial.title)}</p>
             </div>
           </div>
         ))}
         <button className="arrow right" onClick={handleNext}>
-          <img src={rightArrow} alt="Next" />
+          <img src={rightArrow} alt={t('testimonial.next')} />
         </button>
       </div>
     </section>

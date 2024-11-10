@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';  // Import the useTranslation hook
 import './ReferEarn.css';
 import { useTheme } from '../../context/ThemeContext'; // Import the useTheme hook
 
 const ReferEarn = () => {
   const [formSubmitted, setFormSubmitted] = useState(false);
   const { isDarkMode } = useTheme(); // Use context value
+  const { t } = useTranslation(); // Initialize useTranslation hook
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -15,23 +17,25 @@ const ReferEarn = () => {
   return (
     <section className={`refer-earn ${isDarkMode ? 'dark' : ''}`}>
       {formSubmitted ? (
-        <div className="success-message">¡Gracias por tu referencia!</div>
+        <div className="success-message">{t('referEarn.thankYouMessage')}</div>
       ) : (
         <div className="refer-earn-content">
           <div className="refer-earn-text">
-            <h1>REFIERE Y GANA Q500</h1>
-            <p>¿Conoces algún negocio u oficina al que le pueda interesar nuestro café? Refiérenos a tu contacto, tu ganaras Q500 y tu referido 50% de descuento en su primer orden.</p>
+            <h1>{t('referEarn.title')}</h1>
+            <p>{t('referEarn.description')}</p>
             <form className="refer-earn-form" onSubmit={handleSubmit}>
-            <input type="text" placeholder="Tu nombre *" required />
-            <input type="email" placeholder="Tu correo electrónico *" required />
-            <input type="text" placeholder="Nombre del referido *" required />
-            <input type="text" placeholder="Nombre del negocio del referido *" required />
-            <input type="email" placeholder="Correo Electrónico del referido *" required />
-            <button type="submit" className={`primary-btn-l ${isDarkMode ? 'dark' : ''}`} id="refer-button">REFERIR AHORA</button>
-          </form>
+              <input type="text" placeholder={t('referEarn.namePlaceholder')} required />
+              <input type="email" placeholder={t('referEarn.emailPlaceholder')} required />
+              <input type="text" placeholder={t('referEarn.referralNamePlaceholder')} required />
+              <input type="text" placeholder={t('referEarn.referralBusinessNamePlaceholder')} required />
+              <input type="email" placeholder={t('referEarn.referralEmailPlaceholder')} required />
+              <button type="submit" className={`primary-btn-l ${isDarkMode ? 'dark' : ''}`} id="refer-button">
+                {t('referEarn.submitButton')}
+              </button>
+            </form>
           </div>
           <div className="refer-earn-photo">
-            <img src="/images/refer-earn.svg" alt="Refer and Earn" />
+            <img src="/images/refer-earn.svg" alt={t('referEarn.imageAlt')} />
           </div>
         </div>
       )}

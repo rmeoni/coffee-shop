@@ -61,5 +61,53 @@
     "emailPlaceholder": "Correo Electrónico *",
     "submitButton": "Enviar",
     "successMessage": "¡Gracias por suscribirte!"
+  },
+  "testimonial": {
+    "previous": "Anterior",
+    "next": "Siguiente",
+    "testimonial1_text": "Este café es totalmente delicioso. Tiene un aroma exquisito y sabe mmmmmm.... ¡Me encanta! ¡100% recomendado!",
+    "testimonial1_author": "Katherine B.",
+    "testimonial1_title": "CFO",
+    "testimonial2_text": "Me encanta el ambiente del lugar, muy acogedor.",
+    "testimonial2_author": "Ana Martínez",
+    "testimonial2_title": "Gerente de Marketing",
+    "testimonial3_text": "El mejor café que he probado en años.",
+    "testimonial3_author": "Luis Gómez",
+    "testimonial3_title": "Ingeniero de Software",
+    "testimonial4_text": "Servicio excelente y productos de calidad.",
+    "testimonial4_author": "María Rodríguez",
+    "testimonial4_title": "Diseñadora"
+  },
+  "referEarn": {
+    "title": "REFIERE Y GANA Q500",
+    "description": "¿Conoces algún negocio u oficina al que le pueda interesar nuestro café? Refiérenos a tu contacto, ganarás Q500 y tu referido obtendrá un 50% de descuento en su primera orden.",
+    "namePlaceholder": "Tu nombre *",
+    "emailPlaceholder": "Tu correo electrónico *",
+    "referralNamePlaceholder": "Nombre del referido *",
+    "referralBusinessNamePlaceholder": "Nombre del negocio del referido *",
+    "referralEmailPlaceholder": "Correo Electrónico del referido *",
+    "submitButton": "REFERIR AHORA",
+    "thankYouMessage": "¡Gracias por tu referencia!",
+    "imageAlt": "Referir y ganar"
+  },
+  "footer": {
+    "logoAlt": "Café Don Lucas",
+    "company": "Empresa",
+    "policy": "Política De Garantía",
+    "origins": "Nuestros Orígenes",
+    "ourCoffee": "Nuestro Café",
+    "store": "Tienda",
+    "help": "Ayuda",
+    "faq": "Preguntas Frecuentes",
+    "distributors": "Distribuidores",
+    "buyEducate": "Compra1educa1",
+    "environment": "Medio Ambiente",
+    "socialMedia": "Redes Sociales",
+    "instagram": "Instagram",
+    "facebook": "Facebook",
+    "contact": "Contacto",
+    "email": "hola@cafedonlucas.com",
+    "website": "www.cafedonlucas.com",
+    "phone": "+502 2458-1863"
   }
 }
