@@ -97,6 +97,7 @@ nav ul li a img {
 
 .mobile-menu li {
   margin-bottom: 20px;
+  padding-top:20px;
 }
 
 .language-selector {
@@ -175,14 +176,13 @@ nav ul li a img {
     width: 82%;
     top: 60px;
     left: 12px;
-    padding: 20px;
+    padding: 44px 20px;
   }
 
   .mobile-menu li {
     margin: auto;
     padding-left: auto;
     list-style: none;
-    padding-top: 12px;
   }
 
   .mobile-menu li a {
