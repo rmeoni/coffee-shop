@@ -9,9 +9,8 @@ import Testimonials from '../components/Testimonials/Testimonials';
 import ReferEarn from '../components/ReferEarn/ReferEarn';
 import Footer from '../components/Footer/Footer';
 
-
 const HomePage = () => {
-  // Define the features array
+  // Define the features array with static text, or you can use translations for headings and descriptions
   const featureItems = [
     {
       imageSrc: "/images/featureImage1.png",
@@ -23,8 +22,8 @@ const HomePage = () => {
     {
       imageSrc: "/images/featureImage2.png",
       heading: "Don Lucas se levantaba todos los días a las 4 de la mañana",
-      description: "Cuentan las historias que Don Lucas y  Doña Mary se levantaban todos los días a las 4 de la mañana a trabajar los campos, y tener un día productivo y exitoso.",
-      buttonLabel: "Nuestros origenes",
+      description: "Cuentan las historias que Don Lucas y Doña Mary se levantaban todos los días a las 4 de la mañana a trabajar los campos, y tener un día productivo y exitoso.",
+      buttonLabel: "Nuestros orígenes",
       buttonLink: "/origenes"
     },
     {
@@ -40,15 +39,15 @@ const HomePage = () => {
     <>
       <Header />
       <Hero
-        imageSrc="/images/product-image-2.png" // Direct path since the image is in the public folder
-        heading="hero.heading" // Use translation key
-        paragraph="hero.paragraph" // Use translation key
-        buttonLabels={['hero.button1', 'hero.button2']} // Use translation keys
-        buttonLinks={['/origenes', '/tienda']} // Add your dynamic links here
+        imageSrc="/images/product-image-2.png"
+        heading="hero.heading"
+        paragraph="hero.paragraph"
+        buttonLabels={['hero.button1', 'hero.button2']}
+        buttonLinks={['/origenes', '/tienda']}
       />
       <Supporting1 />
       <CoffeeProducts />
-      <Feature features={featureItems} /> {/* Pass the featureItems array here */}
+      <Feature features={featureItems} namespace="home" /> {/* Pass the namespace */}
       <Newsletter />
       <Testimonials />
       <ReferEarn />

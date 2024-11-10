@@ -6,10 +6,12 @@ import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 import { useTheme } from '../context/ThemeContext';
 import { useCart } from '../context/CartContext';
+import { useTranslation } from 'react-i18next'; // Import useTranslation
 import '../assets/styles/ProductDetailPage.css';
 
 const ProductDetailPage = () => {
   const { id } = useParams();
+  const { t } = useTranslation(); // Initialize translation hook
   const [quantity, setQuantity] = useState(1);
   const { cartItems, setCartItems, setIsCartVisible } = useCart();
   const [isLoading, setIsLoading] = useState(true);
@@ -37,19 +39,68 @@ const ProductDetailPage = () => {
   }, [cartItems]);
 
   const allProducts = [
-    { id: '1', imgSrc: '/images/product-image.svg', pricePerPound: '$9.96', title: 'Caja 30 Libras de Café Gourmet Molido', category: 'Molido', price: 299.00 },
-    { id: '2', imgSrc: '/images/product-image.svg', pricePerPound: '$9.95', title: 'Caja 20 Libras de Café Gourmet Molido', category: 'Molido', price: 199.00 },
-    { id: '3', imgSrc: '/images/product-image.svg', pricePerPound: '$9.99', title: 'Caja 10 Libras de Café Gourmet Molido', category: 'Molido', price: 99.00 },
-    { id: '4', imgSrc: '/images/product-image.svg', pricePerPound: '$9.96', title: 'Caja 30 Libras de Café Gourmet Grano', category: 'Grano', price: 299.00 },
-    { id: '5', imgSrc: '/images/product-image.svg', pricePerPound: '$9.95', title: 'Caja 20 Libras de Café Gourmet Grano', category: 'Grano', price: 199.00 },
-    { id: '6', imgSrc: '/images/product-image.svg', pricePerPound: '$9.99', title: 'Caja 10 Libras de Café Gourmet Grano', category: 'Grano', price: 99.00 },
-    { id: '7', imgSrc: '/images/product-image-2.svg', pricePerPound: '', title: 'Cuchara + Clip de Madera 2 en 1', category: 'Accesorios', price: 9.99 },
+    { 
+      id: '1', 
+      imgSrc: '/images/product-image.svg', 
+      pricePerPound: '$9.96', 
+      title: t('coffeeProducts.product1_title'), 
+      category: 'Molido', 
+      price: 299.00 
+    },
+    { 
+      id: '2', 
+      imgSrc: '/images/product-image.svg', 
+      pricePerPound: '$9.95', 
+      title: t('coffeeProducts.product2_title'), 
+      category: 'Molido', 
+      price: 199.00 
+    },
+    { 
+      id: '3', 
+      imgSrc: '/images/product-image.svg', 
+      pricePerPound: '$9.99', 
+      title: t('coffeeProducts.product3_title'), 
+      category: 'Molido', 
+      price: 99.00 
+    },
+    { 
+      id: '4', 
+      imgSrc: '/images/product-image.svg', 
+      pricePerPound: '$9.96', 
+      title: t('coffeeProducts.product4_title'), 
+      category: 'Grano', 
+      price: 299.00 
+    },
+    { 
+      id: '5', 
+      imgSrc: '/images/product-image.svg', 
+      pricePerPound: '$9.95', 
+      title: t('coffeeProducts.product5_title'), 
+      category: 'Grano', 
+      price: 199.00 
+    },
+    { 
+      id: '6', 
+      imgSrc: '/images/product-image.svg', 
+      pricePerPound: '$9.99', 
+      title: t('coffeeProducts.product6_title'), 
+      category: 'Grano', 
+      price: 99.00 
+    },
+    { 
+      id: '7', 
+      imgSrc: '/images/product-image-2.svg', 
+      pricePerPound: '', 
+      title: t('coffeeProducts.product7_title'), 
+      category: 'Accesorios', 
+      price: 9.99 
+    },
   ];
 
   const product = allProducts.find(p => p.id === id);
 
   if (!product) {
-    return <h2>Product not found</h2>;
+    return <h2>{t('coffeeProducts.not_found')}</h2>; // Use translation for 'Product not found'
   }
 
   const handleIncrease = () => setQuantity(prevQuantity => prevQuantity + 1);
@@ -110,7 +161,7 @@ const ProductDetailPage = () => {
                 className={`primary-btn-l ${isDarkMode ? 'dark' : ''}`}
                 onClick={handleAddToCart}
               >
-                Add to Cart
+                {t('coffeeProducts.add_to_cart')} {/* Add translation key */}
               </button>
             </div>
             <div className="hero-image" id="product-details-image">

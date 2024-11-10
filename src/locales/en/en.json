@@ -4,7 +4,7 @@
     "heading": "Awaken Your Productivity",
     "paragraph": "In everything we do, we believe in the productivity and coffee of Guatemala. Our coffee is gourmet because it comes from a single origin. We make it easy to order coffee for your home, business, or office.",
     "button1": "Learn More",
-    "button2": "Order Coffee"
+    "button2": "Place Order"
   },
   "header": {
     "home": "Home",
@@ -42,18 +42,9 @@
     "view_details": "View Details",
     "limited_offer": "*LIMITED TIME ONLY: 2-for-1 on your first order + volume discounts + 2 wooden clip spoons",
     "bonus": "*BONUS: Start earning points from your first order with our Loyalty Program",
-    "guarantee": "*GUARANTEE: With our 'Fresh or free' guarantee, if your coffee is not fresh, we will replace it at no extra cost"
-  },
-  "feature": {
-    "heading_1": "We Serve the Needs of Your Business or Office",
-    "description_1": "We offer special services and prices for wholesalers; take advantage of our special shipping rate.",
-    "buttonLabel_1": "Place Order",
-    "heading_2": "Don Lucas Woke Up Every Day at 4 AM",
-    "description_2": "Stories say that Don Lucas and Doña Mary would wake up every day at 4 AM to work the fields, making each day productive and successful.",
-    "buttonLabel_2": "Our Origins",
-    "heading_3": "Committed to Supporting Education in Guatemala",
-    "description_3": "Every month we donate 10% of our profits to organizations that support education in Guatemala, aiming to help provide access to education in the country.",
-    "buttonLabel_3": "Support Education"
+    "guarantee": "*GUARANTEE: With our 'Fresh or free' guarantee, if your coffee is not fresh, we will replace it at no extra cost",
+    "not_found": "Product not found",
+    "add_to_cart": "Add to Cart"
   },
   "newsletter": {
     "heading": "Subscribe to our newsletter and get a guide to boost productivity in your coffee consumption",
@@ -109,6 +100,52 @@
     "email": "hola@cafedonlucas.com",
     "website": "www.cafedonlucas.com",
     "phone": "+502 2458-1863"
+  },
+  "home": {
+    "bio_1_heading": "We meet the needs of your business or office",
+    "bio_1_description": "We offer special services and pricing for wholesalers. Benefit from our special shipping rates.",
+    "bio_1_buttonLabel": "Place Order",
+    "bio_2_heading": "Don Lucas used to wake up every day at 4 a.m.",
+    "bio_2_description": "It is said that Don Lucas and Doña Mary used to wake up every day at 4 a.m. to work the fields and have a productive and successful day.",
+    "bio_2_buttonLabel": "Our Origins",
+    "bio_3_heading": "Committed to supporting education in Guatemala",
+    "bio_3_description": "Every month, we send 10% of our profits to different organizations that support education in Guatemala. This effort aims to help provide access to education in Guatemala.",
+    "bio_3_buttonLabel": "Support Education"
+  },
+  "about": {
+    "heading": "Origins",
+    "paragraph": "Don Lucas was a productive, hardworking, and charitable man who began this coffee tradition from scratch with his wife Doña Mary over 60 years ago.",
+    "our_coffee": "Our Coffee",
+    "place_order": "Place Order",
+    "bio_1_heading": "Born on February 21, 1928",
+    "bio_1_description": "Don Lucas was born in the municipality of San Rafael P.C. San Marcos, Guatemala. He grew up in a low-income family with little education, but he exceeded all expectations.",
+    "bio_2_heading": "How Don Lucas Started",
+    "bio_2_description": "He started by carrying 100-pound sacks on his own back, then saved to buy a horse to carry more sacks. Over time, he had the opportunity to buy his first agricultural truck on credit, thanks to a close friend who owned a nearby farm called Las Cruces.",
+    "bio_3_heading": "Truck with Driving Lessons",
+    "bio_3_description": "The problem was that Don Lucas didn’t know how to drive, so his friend offered to sell him the truck along with driving lessons from his driver."
+  },
+  "coffee": {
+    "heading": "Our Coffee",
+    "paragraph": "Gourmet, single-origin coffee, harvested on the slopes of the Tajumulco volcano. High-grade, first-harvest beans. Packaged in a biodegradable bag. Yields up to 60 cups per pound.",
+    "our_coffee": "Buy1educate1",
+    "place_order": "Place Order",
+    "bio_1_heading": "ROASTED BY MASTERS",
+    "bio_1_description": "We offer special services and prices for wholesalers. Benefit from our special shipping rate and schedule your reorder point today!",
+    "bio_2_heading": "FOR ALL METHODS",
+    "bio_2_description": "We customize our coffee to pair best with your preferred coffee method. Want a specific recommendation for your brewing method? Send us a message.",
+    "bio_3_heading": "CUP PROFILE",
+    "bio_3_description": "Altitude: 1,100/1,200 m a.s.l.\nRegion: San Rafael P.C. San Marcos, Guatemala.\nVariety: Arabica, Caturra.\nProcess: Washed and sun-dried.\nRoast: Custom.\nGrind Type: Custom."
+  },
+  "charity": {
+    "heading": "Compra1educa1",
+    "paragraph": "We are committed to donating 10% of our profits to projects supporting education in Guatemala.",
+    "donate_button": "Donate to Casa",
+    "place_order_button": "Place Order",
+    "bio_1_heading": "Casa Guatemala",
+    "bio_1_description": "Currently, Casa Guatemala provides education, healthcare services, and nutrition to more than 300 children from 30 Mayan villages in the surrounding area, who otherwise would not have the option to educate their children.",
+    "bio_2_heading": "The Mission",
+    "bio_2_description": "Casa Guatemala aims to provide quality education, healthy food, and primary healthcare in a loving and safe environment to vulnerable children in the Rural Eastern Region of Guatemala.",
+    "bio_3_heading": "COMMITTED TO HELPING",
+    "bio_3_description": "Compra1Educa1: We are committed to donating 10% of our profits to projects that support education in Guatemala."
   }
-
 }

@@ -1,10 +1,10 @@
 {
   "hero": {
-    "image_alt_text": "Bolsa de Café",
-    "heading": "Despierta tu Productividad",
-    "paragraph": "En todo lo que hacemos, creemos en la productividad y el café de Guatemala. Nuestro café es gourmet porque proviene de un solo origen. Hacemos que sea fácil pedir café para tu casa, negocio u oficina.",
-    "button1": "Conocer Mas",
-    "button2": "Hacer Pedido"
+    "image_alt_text": "Bolsa de café",
+    "heading": "Despierta Tu Productividad",
+    "paragraph": "En todo lo que hacemos, creemos en la productividad y el café de Guatemala. Nuestro café es gourmet porque proviene de un solo origen. Facilitamos el pedido de café para tu hogar, negocio u oficina.",
+    "button1": "Saber Más",
+    "button2": "Ordenar Café"
   },
   "header": {
     "home": "Inicio",
@@ -15,15 +15,15 @@
     "language": "Idioma",
     "spanish": "Español",
     "english": "Inglés",
-    "toggle_dark_mode": "Cambiar a modo oscuro"
+    "toggle_dark_mode": "Activar Modo Oscuro"
   },
   "supporting1": {
     "choose_coffee": "Elige Tu Café",
     "choose_description": "Elige entre nuestras variedades disponibles.",
     "order_online": "Ordena en Línea",
-    "order_description": "Coloca tus datos y dirección para recibir.",
+    "order_description": "Ingresa tus detalles y dirección para recibirlo.",
     "enjoy": "Disfruta",
-    "enjoy_description": "Recibe entre 3 a 5 días hábiles.",
+    "enjoy_description": "Recíbelo en 3 a 5 días hábiles.",
     "mission_quote": "“Nuestra misión es simple: Ayudar a despertar la productividad de los guatemaltecos con nuestro exclusivo café gourmet.”"
   },
   "coffeeProducts": {
@@ -31,32 +31,23 @@
     "ground": "Molido",
     "bean": "Grano",
     "accessories": "Accesorios",
-    "product1_title": "Caja 30 Libras de Café Gourmet Molido",
-    "product2_title": "Caja 20 Libras de Café Gourmet Molido",
-    "product3_title": "Caja 10 Libras de Café Gourmet Molido",
-    "product4_title": "Caja 30 Libras de Café Gourmet Grano",
-    "product5_title": "Caja 20 Libras de Café Gourmet Grano",
-    "product6_title": "Caja 10 Libras de Café Gourmet Grano",
-    "product7_title": "Cuchara + Clip de Madera 2 en 1",
+    "product1_title": "Caja de 30 Libras de Café Gourmet Molido",
+    "product2_title": "Caja de 20 Libras de Café Gourmet Molido",
+    "product3_title": "Caja de 10 Libras de Café Gourmet Molido",
+    "product4_title": "Caja de 30 Libras de Café Gourmet en Grano",
+    "product5_title": "Caja de 20 Libras de Café Gourmet en Grano",
+    "product6_title": "Caja de 10 Libras de Café Gourmet en Grano",
+    "product7_title": "Cucharón + Clip de Madera 2 en 1",
     "save": "Ahorra 10%",
     "view_details": "Ver Detalles",
-    "limited_offer": "*SOLO POR TIEMPO LIMITADO: 2x1 en tu primer pedido + descuentos por volumen + 2 cuchara clip de madera",
+    "limited_offer": "*OFERTA LIMITADA: 2x1 en tu primer pedido + descuentos por volumen + 2 cucharones de clip de madera",
     "bonus": "*BONO: Comienza a ganar puntos desde tu primer pedido con nuestro Programa de Lealtad",
-    "guarantee": "*GARANTÍA: Con nuestra garantía 'Fresco o Gratís' si tu café no llega fresco, te lo cambiamos sin costo"
-  },
-  "feature": {
-    "heading_1": "Atendemos las necesidades de tu negocio u oficina",
-    "description_1": "Contamos con servicios y precios especiales para mayoristas, benefíciate con nuestra tarifa especial de envíos.",
-    "buttonLabel_1": "Hacer Pedido",
-    "heading_2": "Don Lucas se levantaba todos los días a las 4 de la mañana",
-    "description_2": "Cuentan las historias que Don Lucas y Doña Mary se levantaban todos los días a las 4 de la mañana a trabajar los campos, y tener un día productivo y exitoso.",
-    "buttonLabel_2": "Nuestros orígenes",
-    "heading_3": "Comprometidos a apoyar la educación en Guatemala",
-    "description_3": "Cada mes enviamos el 10% de nuestras ganancias a diferentes organizaciones que apoyan la educación en Guatemala. Esfuerzo con el cual esperamos ayudar a brindar acceso a la educación en Guatemala.",
-    "buttonLabel_3": "Apoya la Educación"
+    "guarantee": "*GARANTÍA: Con nuestra garantía 'Fresco o Gratis', si tu café no es fresco, lo reemplazamos sin costo adicional",
+     "not_found": "Producto no encontrado",
+    "add_to_cart": "Agregar al carrito"
   },
   "newsletter": {
-    "heading": "Suscríbete a nuestras noticias y obtén una guía para aumentar la productividad en tu consumo de café",
+    "heading": "Suscríbete a nuestro boletín y obtén una guía para mejorar tu productividad en el consumo de café",
     "namePlaceholder": "Nombre Completo *",
     "emailPlaceholder": "Correo Electrónico *",
     "submitButton": "Enviar",
@@ -65,42 +56,42 @@
   "testimonial": {
     "previous": "Anterior",
     "next": "Siguiente",
-    "testimonial1_text": "Este café es totalmente delicioso. Tiene un aroma exquisito y sabe mmmmmm.... ¡Me encanta! ¡100% recomendado!",
+    "testimonial1_text": "Este café es absolutamente delicioso. Tiene un aroma exquisito y sabe mmmmmm.... ¡Me encanta! 100% recomendado.",
     "testimonial1_author": "Katherine B.",
     "testimonial1_title": "CFO",
-    "testimonial2_text": "Me encanta el ambiente del lugar, muy acogedor.",
+    "testimonial2_text": "Me encanta la atmósfera del lugar, muy acogedor.",
     "testimonial2_author": "Ana Martínez",
     "testimonial2_title": "Gerente de Marketing",
     "testimonial3_text": "El mejor café que he probado en años.",
     "testimonial3_author": "Luis Gómez",
     "testimonial3_title": "Ingeniero de Software",
-    "testimonial4_text": "Servicio excelente y productos de calidad.",
+    "testimonial4_text": "Excelente servicio y productos de calidad.",
     "testimonial4_author": "María Rodríguez",
     "testimonial4_title": "Diseñadora"
   },
   "referEarn": {
-    "title": "REFIERE Y GANA Q500",
-    "description": "¿Conoces algún negocio u oficina al que le pueda interesar nuestro café? Refiérenos a tu contacto, ganarás Q500 y tu referido obtendrá un 50% de descuento en su primera orden.",
+    "title": "REFIERA Y GANE Q500",
+    "description": "¿Conoces algún negocio u oficina que pueda estar interesado en nuestro café? Refierenos a tu contacto, ganarás Q500 y tu referido recibirá un 50% de descuento en su primer pedido.",
     "namePlaceholder": "Tu nombre *",
-    "emailPlaceholder": "Tu correo electrónico *",
+    "emailPlaceholder": "Tu correo *",
     "referralNamePlaceholder": "Nombre del referido *",
     "referralBusinessNamePlaceholder": "Nombre del negocio del referido *",
-    "referralEmailPlaceholder": "Correo Electrónico del referido *",
+    "referralEmailPlaceholder": "Correo electrónico del referido *",
     "submitButton": "REFERIR AHORA",
-    "thankYouMessage": "¡Gracias por tu referencia!",
-    "imageAlt": "Referir y ganar"
+    "thankYouMessage": "¡Gracias por tu referido!",
+    "imageAlt": "Referir y Ganar"
   },
   "footer": {
     "logoAlt": "Café Don Lucas",
-    "company": "Empresa",
-    "policy": "Política De Garantía",
+    "company": "Compañía",
+    "policy": "Política de Garantía",
     "origins": "Nuestros Orígenes",
     "ourCoffee": "Nuestro Café",
     "store": "Tienda",
     "help": "Ayuda",
     "faq": "Preguntas Frecuentes",
     "distributors": "Distribuidores",
-    "buyEducate": "Compra1educa1",
+    "buyEducate": "Comprar1Educar",
     "environment": "Medio Ambiente",
     "socialMedia": "Redes Sociales",
     "instagram": "Instagram",
@@ -109,5 +100,49 @@
     "email": "hola@cafedonlucas.com",
     "website": "www.cafedonlucas.com",
     "phone": "+502 2458-1863"
+  },
+  "about": {
+    "heading":"Orígenes",
+    "paragraph":"Don Lucas fue un hombre productivo, trabajador y caritativo que empezó con esta tradición cafetalera desde cero junto a su esposa Doña Mary hace más de 60 años.",
+    "our_coffee":"Nuestro Café",
+    "place_order":"Hacer Pedido",
+    "bio_1_heading": "Nació el 21 de febrero de 1928",
+    "bio_1_description": "Don Lucas nació en el municipio de San Rafael P.C. San Marcos, Guatemala. Creció en una familia de bajos recursos y con poca educación, pero superó todas las expectativas.",
+    "bio_2_heading": "Cómo Comenzó Don Lucas",
+    "bio_2_description": "Comenzó cargando sacos de 100 libras en su propia espalda, luego ahorró para comprar un caballo y cargar más sacos. Con el tiempo, tuvo la oportunidad de comprar su primer camión agrícola a crédito, gracias a un gran amigo dueño de una finca cercana llamada Las Cruces.",
+    "bio_3_heading": "Camión con Lecciones de Conducción",
+    "bio_3_description": "El problema era que Don Lucas no sabía conducir, por lo que su amigo le ofreció venderle el camión junto con lecciones de conducción de su chofer."
+  },
+  "home": {
+    "bio_1_heading": "Atendemos las necesidades de tu negocio u oficina",
+    "bio_1_description": "Contamos con servicios y precios especiales para mayoristas...",
+    "bio_2_heading": "Don Lucas se levantaba todos los días a las 4 de la mañana",
+    "bio_2_description": "Cuentan las historias que Don Lucas y Doña Mary se levantaban todos los días a las 4 de la mañana...",
+    "bio_3_heading": "Comprometidos a apoyar la educación en Guatemala",
+    "bio_3_description": "Cada mes enviamos el 10% de nuestras ganancias a diferentes organizaciones..."
+  },
+  "coffee": {
+    "heading": "Nuestro Café",
+    "paragraph": "Café gourmet de origen único, cosechado a las faldas del volcán Tajumulco. Grano duro, de primera cosecha. Empacado en bolsa biodegradable. Rinde hasta 60 tazas por libra.",
+    "our_coffee": "Compra1educa1",
+    "place_order": "Hacer Pedido",
+    "bio_1_heading": "TOSTADO POR MAESTROS",
+    "bio_1_description": "Contamos con servicios y precios especiales para mayoristas, benefíciate con nuestra tarifa especial de envíos y programa tu punto de re-orden hoy mismo!",
+    "bio_2_heading": "PARA TODOS LOS MÉTODOS",
+    "bio_2_description": "Personalizamos nuestro café para que se empareje mejor a tu método de café preferido. Quieres una recomendación específica a tu método de preparación? Envíanos un mensaje.",
+    "bio_3_heading": "PERFIL DE TAZA",
+     "bio_3_description": "Altura: 1,100/1,200 m s. n. m.\nRegión: San Rafael P.C. San Marcos, Guatemala.\nVariedad: Arábica, Caturra.\nProceso: Lavado y secado en patio.\nTueste: A la medida.\nTipo de Molienda: A la medida."
+  },
+  "charity": {
+    "heading": "Compra1educa1",
+    "paragraph": "Estamos comprometidos a donar el 10% de nuestras ganancias a proyectos que apoyan la educación en Guatemala.",
+    "donate_button": "Donar a casa",
+    "place_order_button": "Hacer Pedido",
+    "bio_1_heading": "Casa Guatemala",
+    "bio_1_description": "Actualmente Casa Guatemala brinda educación, servicios de salud y nutrición a más de 300 niños de las 30 aldeas mayas de los alrededores que, sin Casa Guatemala, no tendrían otra opción para brindar educación a sus hijos.",
+    "bio_2_heading": "La misión",
+    "bio_2_description": "Casa Guatemala busca brindar una educación de calidad, alimentación saludable y atención médica primaria en un ambiente amoroso y seguro a los niños vulnerables de la Región Oriental de Guatemala Rural.",
+    "bio_3_heading": "COMPROMETIDOS A AYUDAR",
+    "bio_3_description": "Compra1Educa1: Estamos comprometidos a donar el 10% de nuestras ganancias a proyectos que apoyan la educación en Guatemala."
   }
 }
