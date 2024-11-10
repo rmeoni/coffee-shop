@@ -167,12 +167,12 @@
 
   .hero-loading-text > :nth-child(1) {
     /* Styles for the first child */
-    width: 90% !important;
+    width: 98% !important;
   }
   
   .hero-loading-text > :nth-child(2) {
     /* Styles for the second child */
-    width: 90% !important;
+    width: 98% !important;
   }
 
   .hero-loading-text > :nth-child(3) {
