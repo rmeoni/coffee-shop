@@ -137,8 +137,17 @@
     flex-direction: column;
   }
 
+  .cart-item-header {
+    margin-top: 16px;
+  }
+
   .cart-checkout {
     margin: auto;
     padding: 0px;
   }
+
+  .cart-checkout h3 {
+    padding-top: 16px;
+  }
+
 }
