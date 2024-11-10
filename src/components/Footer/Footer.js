@@ -46,39 +46,39 @@ const Footer = () => {
         ) : (
           <div className="footer-columns">
             <div className="footer-logo footer-column">
-              <img src={logo} alt={t('footer.logoAlt')} />
+              <a href="/"><img src={logo} alt={t('footer.logoAlt')} /></a>
             </div>
             <div className="footer-column">
               <h3>{t('footer.company')}</h3>
               <ul>
+                <li><a href="/origenes">{t('footer.origins')}</a></li>
+                <li><a href="/nuestro-cafe">{t('footer.ourCoffee')}</a></li>
+                <li><a href="/tienda">{t('footer.store')}</a></li>
                 <li>{t('footer.policy')}</li>
-                <li>{t('footer.origins')}</li>
-                <li>{t('footer.ourCoffee')}</li>
-                <li>{t('footer.store')}</li>
               </ul>
             </div>
             <div className="footer-column">
               <h3>{t('footer.help')}</h3>
               <ul>
+                <li><a href="/compra1educa1">{t('footer.buyEducate')}</a></li>
                 <li>{t('footer.faq')}</li>
                 <li>{t('footer.distributors')}</li>
-                <li>{t('footer.buyEducate')}</li>
                 <li>{t('footer.environment')}</li>
               </ul>
             </div>
             <div className="footer-column">
               <h3>{t('footer.socialMedia')}</h3>
               <ul>
-                <li>{t('footer.instagram')}</li>
-                <li>{t('footer.facebook')}</li>
+                <li><a href="https://www.instagram.com/cafedonlucas" target="_blank" rel="noreferrer">{t('footer.instagram')}</a></li>
+                <li><a href="https://www.facebook.com/cafedonlucas" targe="_blank" rel="noreferrer">{t('footer.facebook')}</a></li>
               </ul>
             </div>
             <div className="footer-column">
               <h3>{t('footer.contact')}</h3>
               <ul>
-                <li>{t('footer.email')}</li>
+                <li><a href="mailto:hola@cafedonlucas.com">{t('footer.email')}</a></li>
                 <li>{t('footer.website')}</li>
-                <li>{t('footer.phone')}</li>
+                <li><a href="tel:+50224581863">{t('footer.phone')}</a></li>
               </ul>
             </div>
           </div>

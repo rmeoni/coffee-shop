@@ -12,21 +12,21 @@ const CharityPage = () => {
   const featureItems = [
     {
       imageSrc: "/images/featureImage9.png",
-      heading: t('charity.bio_1_heading'), 
+      heading: t('charity.bio_1_heading'),
       description: t('charity.bio_1_description'),
       buttonLabel: "",
       buttonLink: ""
     },
     {
       imageSrc: "/images/featureImage10.png",
-      heading: t('charity.bio_2_heading'), 
+      heading: t('charity.bio_2_heading'),
       description: t('charity.bio_2_description'),
       buttonLabel: "",
       buttonLink: ""
     },
     {
       imageSrc: "/images/product-image.png",
-      heading: t('charity.bio_3_heading'), 
+      heading: t('charity.bio_3_heading'),
       description: t('charity.bio_3_description'),
       buttonLabel: "",
       buttonLink: ""
@@ -41,7 +41,8 @@ const CharityPage = () => {
         heading={t('charity.heading')}
         paragraph={t('charity.paragraph')}
         buttonLabels={[t('charity.donate_button'), t('charity.place_order_button')]}
-        buttonLinks={['/', '/tienda']} // Add your dynamic links here
+        buttonLinks={['https://casa-guatemala.org/', '/tienda']} // Add your dynamic links here
+        isSecondaryButtonExternal={true} 
       />
       <Feature features={featureItems} namespace="charity" /> {/* Pass the 'charity' namespace */}
       <Footer />

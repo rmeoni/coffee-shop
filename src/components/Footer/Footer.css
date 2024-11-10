@@ -52,6 +52,20 @@
   color: #fff;
 }
 
+.footer-column ul li a{
+  font-size: 14px;
+  margin-bottom: 5px;
+  color: #01172F;
+  text-decoration: none;
+}
+
+.footer.dark .footer-column ul li a{
+  color: #fff;
+}
+
+
+
+
 @media (max-width: 820px) {
   .footer {
     margin-left: 0px;

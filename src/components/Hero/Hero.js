@@ -5,7 +5,7 @@ import Skeleton from 'react-loading-skeleton'; // Import Skeleton for loading pl
 import 'react-loading-skeleton/dist/skeleton.css'; // Import skeleton styles
 import { useTranslation } from 'react-i18next'; // Import the useTranslation hook
 
-const Hero = ({ imageSrc, heading, paragraph, buttonLabels, buttonLinks }) => {
+const Hero = ({ imageSrc, heading, paragraph, buttonLabels, buttonLinks, isSecondaryButtonExternal }) => {
   const [isLoading, setIsLoading] = useState(true);
   const { isDarkMode } = useTheme(); // Use context value
   const { t } = useTranslation(); // Initialize translation hook
@@ -37,7 +37,13 @@ const Hero = ({ imageSrc, heading, paragraph, buttonLabels, buttonLinks }) => {
             <p>{t(paragraph)}</p> {/* Use translation for paragraph */}
             <ul>
               <li>
-                <a href={buttonLinks[0]} className={`secondary-btn-l ${isDarkMode ? 'dark' : ''}`} id="secondary-btn-hero">
+                <a
+                  href={buttonLinks[0]}
+                  className={`secondary-btn-l ${isDarkMode ? 'dark' : ''}`}
+                  id="secondary-btn-hero"
+                  target={isSecondaryButtonExternal ? '_blank' : '_self'} 
+                  rel={isSecondaryButtonExternal ? 'noopener noreferrer' : undefined}
+                >
                   {t(buttonLabels[0])} {/* Translate button label */}
                 </a>
               </li>
