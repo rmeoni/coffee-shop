@@ -14,6 +14,8 @@
   z-index: 999;
   overflow-y: auto; /* Enable vertical scrolling */
   max-height: 60vh; /* Limit height to 70% of the viewport */
+  height: auto;
+  box-sizing: border-box;
 }
 
 .cart.dark {
@@ -25,6 +27,7 @@
   flex-direction: column;
   width: 800px;
   padding-left: 80px;
+  overflow-y: auto; /* Ensure the items inside the wrapper can scroll */
 
 }
 
@@ -116,7 +119,8 @@
   .cart {
     flex-direction: column;
     padding: 40px 0px 40px 0px;
-    max-height: 100vh;
+    max-height: 80vh; /* Adjust to fit mobile screen better */
+    height: auto;
   }
 
   .cart-wrapper {
