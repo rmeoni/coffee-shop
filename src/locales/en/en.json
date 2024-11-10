@@ -147,5 +147,15 @@
     "bio_2_description": "Casa Guatemala aims to provide quality education, healthy food, and primary healthcare in a loving and safe environment to vulnerable children in the Rural Eastern Region of Guatemala.",
     "bio_3_heading": "COMMITTED TO HELPING",
     "bio_3_description": "Compra1Educa1: We are committed to donating 10% of our profits to projects that support education in Guatemala."
+  },
+  "cart": {
+    "title": "Cart",
+    "item": "Item",
+    "qty": "Qty",
+    "price": "Price",
+    "amount": "Amount",
+    "total": "Total",
+    "close_cart": "Close Cart",
+    "complete_order": "Complete Order"
   }
 }

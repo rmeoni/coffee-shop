@@ -3,8 +3,8 @@
     "image_alt_text": "Bolsa de café",
     "heading": "Despierta Tu Productividad",
     "paragraph": "En todo lo que hacemos, creemos en la productividad y el café de Guatemala. Nuestro café es gourmet porque proviene de un solo origen. Facilitamos el pedido de café para tu hogar, negocio u oficina.",
-    "button1": "Saber Más",
-    "button2": "Ordenar Café"
+    "button1": "Conocer Más",
+    "button2": "Hacer Pedido"
   },
   "header": {
     "home": "Inicio",
@@ -115,11 +115,14 @@
   },
   "home": {
     "bio_1_heading": "Atendemos las necesidades de tu negocio u oficina",
-    "bio_1_description": "Contamos con servicios y precios especiales para mayoristas...",
+    "bio_1_description": "Contamos con servicios y precios especiales para mayoristas. Benefíciate de nuestras tarifas de envío especiales.",
+    "bio_1_buttonLabel": "Hacer pedido",
     "bio_2_heading": "Don Lucas se levantaba todos los días a las 4 de la mañana",
-    "bio_2_description": "Cuentan las historias que Don Lucas y Doña Mary se levantaban todos los días a las 4 de la mañana...",
+    "bio_2_description": "Cuentan las historias que Don Lucas y Doña Mary se levantaban todos los días a las 4 de la mañana para trabajar en el campo y tener un día productivo y exitoso.",
+    "bio_2_buttonLabel": "Nuestros Origenes",
     "bio_3_heading": "Comprometidos a apoyar la educación en Guatemala",
-    "bio_3_description": "Cada mes enviamos el 10% de nuestras ganancias a diferentes organizaciones..."
+    "bio_3_description": "Cada mes enviamos el 10% de nuestras ganancias a diferentes organizaciones que apoyan la educación en Guatemala. Esfuerzo con el cual esperamos ayudar a brindar acceso a la educación en Guatemala.",
+    "bio_3_buttonLabel": "Apoya la educación"
   },
   "coffee": {
     "heading": "Nuestro Café",
@@ -144,5 +147,15 @@
     "bio_2_description": "Casa Guatemala busca brindar una educación de calidad, alimentación saludable y atención médica primaria en un ambiente amoroso y seguro a los niños vulnerables de la Región Oriental de Guatemala Rural.",
     "bio_3_heading": "COMPROMETIDOS A AYUDAR",
     "bio_3_description": "Compra1Educa1: Estamos comprometidos a donar el 10% de nuestras ganancias a proyectos que apoyan la educación en Guatemala."
+  },
+  "cart": {
+    "title": "Carrito",
+    "item": "Artículo",
+    "qty": "Cantidad",
+    "price": "Precio",
+    "amount": "Monto",
+    "total": "Total",
+    "close_cart": "Cerrar Carrito",
+    "complete_order": "Completar Orden"
   }
 }
