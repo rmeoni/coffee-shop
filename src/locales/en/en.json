@@ -16,5 +16,50 @@
     "spanish": "Spanish",
     "english": "English",
     "toggle_dark_mode": "Toggle Dark Mode"
+  },
+  "supporting1": {
+    "choose_coffee": "Choose Your Coffee",
+    "choose_description": "Choose from our available varieties.",
+    "order_online": "Order Online",
+    "order_description": "Enter your details and address to receive.",
+    "enjoy": "Enjoy",
+    "enjoy_description": "Receive in 3 to 5 business days.",
+    "mission_quote": "“Our mission is simple: Help awaken the productivity of Guatemalans with our exclusive gourmet coffee.”"
+  },
+  "coffeeProducts": {
+    "shop": "Shop",
+    "ground": "Ground",
+    "bean": "Bean",
+    "accessories": "Accessories",
+    "product1_title": "Box of 30 Pounds of Gourmet Ground Coffee",
+    "product2_title": "Box of 20 Pounds of Gourmet Ground Coffee",
+    "product3_title": "Box of 10 Pounds of Gourmet Ground Coffee",
+    "product4_title": "Box of 30 Pounds of Gourmet Whole Bean Coffee",
+    "product5_title": "Box of 20 Pounds of Gourmet Whole Bean Coffee",
+    "product6_title": "Box of 10 Pounds of Gourmet Whole Bean Coffee",
+    "product7_title": "Spoon + Wooden Clip 2 in 1",
+    "save": "Save 10%",
+    "view_details": "View Details",
+    "limited_offer": "*LIMITED TIME ONLY: 2-for-1 on your first order + volume discounts + 2 wooden clip spoons",
+    "bonus": "*BONUS: Start earning points from your first order with our Loyalty Program",
+    "guarantee": "*GUARANTEE: With our 'Fresh or free' guarantee, if your coffee is not fresh, we will replace it at no extra cost"
+  },
+  "feature": {
+    "heading_1": "We Serve the Needs of Your Business or Office",
+    "description_1": "We offer special services and prices for wholesalers; take advantage of our special shipping rate.",
+    "buttonLabel_1": "Place Order",
+    "heading_2": "Don Lucas Woke Up Every Day at 4 AM",
+    "description_2": "Stories say that Don Lucas and Doña Mary would wake up every day at 4 AM to work the fields, making each day productive and successful.",
+    "buttonLabel_2": "Our Origins",
+    "heading_3": "Committed to Supporting Education in Guatemala",
+    "description_3": "Every month we donate 10% of our profits to organizations that support education in Guatemala, aiming to help provide access to education in the country.",
+    "buttonLabel_3": "Support Education"
+  },
+  "newsletter": {
+    "heading": "Subscribe to our newsletter and get a guide to boost productivity in your coffee consumption",
+    "namePlaceholder": "Full Name *",
+    "emailPlaceholder": "Email Address *",
+    "submitButton": "Submit",
+    "successMessage": "Thank you for subscribing!"
   }
 }

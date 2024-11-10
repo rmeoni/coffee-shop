@@ -16,5 +16,50 @@
     "spanish": "Español",
     "english": "Inglés",
     "toggle_dark_mode": "Cambiar a modo oscuro"
+  },
+  "supporting1": {
+    "choose_coffee": "Elige Tu Café",
+    "choose_description": "Elige entre nuestras variedades disponibles.",
+    "order_online": "Ordena en Línea",
+    "order_description": "Coloca tus datos y dirección para recibir.",
+    "enjoy": "Disfruta",
+    "enjoy_description": "Recibe entre 3 a 5 días hábiles.",
+    "mission_quote": "“Nuestra misión es simple: Ayudar a despertar la productividad de los guatemaltecos con nuestro exclusivo café gourmet.”"
+  },
+  "coffeeProducts": {
+    "shop": "Tienda",
+    "ground": "Molido",
+    "bean": "Grano",
+    "accessories": "Accesorios",
+    "product1_title": "Caja 30 Libras de Café Gourmet Molido",
+    "product2_title": "Caja 20 Libras de Café Gourmet Molido",
+    "product3_title": "Caja 10 Libras de Café Gourmet Molido",
+    "product4_title": "Caja 30 Libras de Café Gourmet Grano",
+    "product5_title": "Caja 20 Libras de Café Gourmet Grano",
+    "product6_title": "Caja 10 Libras de Café Gourmet Grano",
+    "product7_title": "Cuchara + Clip de Madera 2 en 1",
+    "save": "Ahorra 10%",
+    "view_details": "Ver Detalles",
+    "limited_offer": "*SOLO POR TIEMPO LIMITADO: 2x1 en tu primer pedido + descuentos por volumen + 2 cuchara clip de madera",
+    "bonus": "*BONO: Comienza a ganar puntos desde tu primer pedido con nuestro Programa de Lealtad",
+    "guarantee": "*GARANTÍA: Con nuestra garantía 'Fresco o Gratís' si tu café no llega fresco, te lo cambiamos sin costo"
+  },
+  "feature": {
+    "heading_1": "Atendemos las necesidades de tu negocio u oficina",
+    "description_1": "Contamos con servicios y precios especiales para mayoristas, benefíciate con nuestra tarifa especial de envíos.",
+    "buttonLabel_1": "Hacer Pedido",
+    "heading_2": "Don Lucas se levantaba todos los días a las 4 de la mañana",
+    "description_2": "Cuentan las historias que Don Lucas y Doña Mary se levantaban todos los días a las 4 de la mañana a trabajar los campos, y tener un día productivo y exitoso.",
+    "buttonLabel_2": "Nuestros orígenes",
+    "heading_3": "Comprometidos a apoyar la educación en Guatemala",
+    "description_3": "Cada mes enviamos el 10% de nuestras ganancias a diferentes organizaciones que apoyan la educación en Guatemala. Esfuerzo con el cual esperamos ayudar a brindar acceso a la educación en Guatemala.",
+    "buttonLabel_3": "Apoya la Educación"
+  },
+  "newsletter": {
+    "heading": "Suscríbete a nuestras noticias y obtén una guía para aumentar la productividad en tu consumo de café",
+    "namePlaceholder": "Nombre Completo *",
+    "emailPlaceholder": "Correo Electrónico *",
+    "submitButton": "Enviar",
+    "successMessage": "¡Gracias por suscribirte!"
   }
 }

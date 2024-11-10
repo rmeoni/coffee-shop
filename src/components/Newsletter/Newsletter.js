@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import './Newsletter.css';
-import { useTheme } from '../../context/ThemeContext'; // Import the useTheme hook
+import { useTheme } from '../../context/ThemeContext';
+import { useTranslation } from 'react-i18next'; // Import useTranslation hook
 
 const Newsletter = () => {
-  const { isDarkMode } = useTheme(); // Use context value
-
+  const { isDarkMode } = useTheme();
+  const { t } = useTranslation(); // Initialize the translation function
   const [formData, setFormData] = useState({
     name: '',
     email: ''
   });
-
   const [successMessage, setSuccessMessage] = useState('');
 
   const handleChange = (e) => {
@@ -24,11 +24,10 @@ const Newsletter = () => {
     e.preventDefault();
 
     // Placeholder for the API call to send form data to Google Sheets
-    // Replace the console.log statement with actual API call
     console.log('Form data submitted:', formData);
 
-    // Show success message after form submission
-    setSuccessMessage('¡Gracias por suscribirte!');
+    // Show translated success message after form submission
+    setSuccessMessage(t('newsletter.successMessage'));
 
     // Clear the form fields after submission
     setFormData({
@@ -36,21 +35,21 @@ const Newsletter = () => {
       email: ''
     });
 
-    // Hide the success message after a few seconds (optional)
+    // Hide the success message after a few seconds
     setTimeout(() => {
       setSuccessMessage('');
     }, 5000); // 5 seconds
   };
 
   return (
-    <section className={`newsletter ${isDarkMode ? 'dark':''}`}>
+    <section className={`newsletter ${isDarkMode ? 'dark' : ''}`}>
       <div className="newsletter-content">
-        <h1>Suscríbete a nuestras noticias y obtén una guía para aumentar la productividad en tu consumo de café</h1>
+        <h1>{t('newsletter.heading')}</h1>
         <form className="newsletter-form" onSubmit={handleSubmit}>
           <input 
             type="text" 
             name="name" 
-            placeholder="Nombre Completo *" 
+            placeholder={t('newsletter.namePlaceholder')} 
             value={formData.name} 
             onChange={handleChange} 
             required 
@@ -58,12 +57,14 @@ const Newsletter = () => {
           <input 
             type="email" 
             name="email" 
-            placeholder="Correo Electrónico *" 
+            placeholder={t('newsletter.emailPlaceholder')} 
             value={formData.email} 
             onChange={handleChange} 
             required 
           />
-          <button type="submit" className={`primary-btn-l ${isDarkMode ? 'dark' : ''}`} id="newsletter-btn">Enviar</button>
+          <button type="submit" className={`primary-btn-l ${isDarkMode ? 'dark' : ''}`} id="newsletter-btn">
+            {t('newsletter.submitButton')}
+          </button>
         </form>
         {successMessage && <p className="success-message">{successMessage}</p>}
       </div>

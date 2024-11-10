@@ -10,7 +10,7 @@ i18n
       en: { translation: en },
       es: { translation: es },
     },
-    lng: 'es', // default language
+    lng: 'es', // default language Spanish
     fallbackLng: 'en', // fallback language
     interpolation: {
       escapeValue: false, // react already safes from xss

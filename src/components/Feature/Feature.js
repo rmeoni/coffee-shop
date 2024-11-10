@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import './Feature.css';
-import { useTheme } from '../../context/ThemeContext'; // Import the useTheme hook
-import Skeleton from 'react-loading-skeleton'; // Import Skeleton for loading placeholders
-import 'react-loading-skeleton/dist/skeleton.css'; // Import skeleton styles
+import { useTheme } from '../../context/ThemeContext';
+import Skeleton from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
+import { useTranslation } from 'react-i18next'; // Import useTranslation hook
 
 const Feature = ({ features }) => {
-  const { isDarkMode } = useTheme(); // Use context value
-  const [isLoading, setIsLoading] = useState(true); // Loading state
+  const { t } = useTranslation(); // Initialize translation
+  const { isDarkMode } = useTheme();
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Simulate loading
     const timer = setTimeout(() => setIsLoading(false), 2000);
     return () => clearTimeout(timer);
   }, []);
@@ -19,6 +20,7 @@ const Feature = ({ features }) => {
       {features.map((feature, index) => (
         <div className={`feature-item ${index % 2 === 1 ? 'reverse' : ''}`} key={index}>
           {isLoading ? (
+            // Skeleton loaders
             <>
               {index % 2 === 0 ? (
                 <>
@@ -45,16 +47,17 @@ const Feature = ({ features }) => {
               )}
             </>
           ) : index % 2 === 0 ? (
+            // Feature layout when not loading
             <>
               <div className="feature-image">
                 <img src={feature.imageSrc} alt={`Feature ${index + 1}`} />
               </div>
               <div className="feature-text">
-                <h1>{feature.heading}</h1>
-                <p>{feature.description}</p>
+                <h1>{t(`feature.heading_${index + 1}`)}</h1>
+                <p>{t(`feature.description_${index + 1}`)}</p>
                 {feature.buttonLink && (
                   <a href={feature.buttonLink} className={`primary-btn-l ${isDarkMode ? 'dark' : ''}`}>
-                    {feature.buttonLabel}
+                    {t(`feature.buttonLabel_${index + 1}`)}
                   </a>
                 )}
               </div>
@@ -62,11 +65,11 @@ const Feature = ({ features }) => {
           ) : (
             <>
               <div className="feature-text">
-                <h1>{feature.heading}</h1>
-                <p>{feature.description}</p>
+                <h1>{t(`feature.heading_${index + 1}`)}</h1>
+                <p>{t(`feature.description_${index + 1}`)}</p>
                 {feature.buttonLink && (
                   <a href={feature.buttonLink} className={`secondary-btn-l ${isDarkMode ? 'dark' : ''}`}>
-                    {feature.buttonLabel}
+                    {t(`feature.buttonLabel_${index + 1}`)}
                   </a>
                 )}
               </div>

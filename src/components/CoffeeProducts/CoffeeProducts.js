@@ -1,59 +1,53 @@
-// src/components/CoffeeProducts.js
 import React, { useState, useEffect } from 'react';
 import './CoffeeProducts.css';
-import { useTheme } from '../../context/ThemeContext'; // Import the useTheme hook
-import { useNavigate } from 'react-router-dom'; // Import useNavigate for navigation
-import Skeleton from 'react-loading-skeleton'; // Import Skeleton for loading placeholders
-import 'react-loading-skeleton/dist/skeleton.css'; // Import the skeleton styles
+import { useTheme } from '../../context/ThemeContext';
+import { useNavigate } from 'react-router-dom';
+import Skeleton from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
+import { useTranslation } from 'react-i18next';
 
 const CoffeeProducts = () => {
-  const { isDarkMode } = useTheme(); // Use context value
-  const navigate = useNavigate(); // Use navigate for programmatic navigation
-  const [isLoading, setIsLoading] = useState(true); // Set loading state
+  const { isDarkMode } = useTheme();
+  const navigate = useNavigate();
+  const { t } = useTranslation();
+  const [isLoading, setIsLoading] = useState(true);
   const [category, setCategory] = useState('Molido');
 
-  // All product items
   const allProducts = [
-    { id: '1', imgSrc: '/images/product-image.svg', pricePerPound: '$9.96', title: 'Caja 30 Libras de Café Gourmet Molido', category: 'Molido', price: '$299.00' },
-    { id: '2', imgSrc: '/images/product-image.svg', pricePerPound: '$9.95', title: 'Caja 20 Libras de Café Gourmet Molido', category: 'Molido', price: '$199.00', },
-    { id: '3', imgSrc: '/images/product-image.svg', pricePerPound: '$9.99', title: 'Caja 10 Libras de Café Gourmet Molido', category: 'Molido', price: '$99.00', },
-    { id: '4', imgSrc: '/images/product-image.svg', pricePerPound: '$9.96', title: 'Caja 30 Libras de Café Gourmet Grano', category: 'Grano', price: '$299.00', },
-    { id: '5', imgSrc: '/images/product-image.svg', pricePerPound: '$9.95', title: 'Caja 20 Libras de Café Gourmet Grano', category: 'Grano', price: '$199.00', },
-    { id: '6', imgSrc: '/images/product-image.svg', pricePerPound: '$9.99', title: 'Caja 10 Libras de Café Gourmet Grano', category: 'Grano', price: '$99.00', },
-    { id: '7', imgSrc: '/images/product-image-2.svg', pricePerPound: '', title: 'Cuchara + Clip de Madera 2 en 1', category: 'Accesorios', price: '$9.99', },
+    { id: '1', imgSrc: '/images/product-image.svg', pricePerPound: '$9.96', title: t('coffeeProducts.product1_title'), category: 'Molido', price: '$299.00' },
+    { id: '2', imgSrc: '/images/product-image.svg', pricePerPound: '$9.95', title: t('coffeeProducts.product2_title'), category: 'Molido', price: '$199.00' },
+    { id: '3', imgSrc: '/images/product-image.svg', pricePerPound: '$9.99', title: t('coffeeProducts.product3_title'), category: 'Molido', price: '$99.00' },
+    { id: '4', imgSrc: '/images/product-image.svg', pricePerPound: '$9.96', title: t('coffeeProducts.product4_title'), category: 'Grano', price: '$299.00' },
+    { id: '5', imgSrc: '/images/product-image.svg', pricePerPound: '$9.95', title: t('coffeeProducts.product5_title'), category: 'Grano', price: '$199.00' },
+    { id: '6', imgSrc: '/images/product-image.svg', pricePerPound: '$9.99', title: t('coffeeProducts.product6_title'), category: 'Grano', price: '$99.00' },
+    { id: '7', imgSrc: '/images/product-image-2.svg', pricePerPound: '', title: t('coffeeProducts.product7_title'), category: 'Accesorios', price: '$9.99' },
   ];
 
-  // Filter products based on the selected category
   const filteredProducts = allProducts.filter(product => product.category === category);
 
-  // Simulate the loading effect when the component mounts
   useEffect(() => {
-    const timer = setTimeout(() => setIsLoading(false), 2000); // Simulate 2 seconds loading time
+    const timer = setTimeout(() => setIsLoading(false), 2000);
     return () => clearTimeout(timer);
-  }, [category]); // Reload loading state when category changes
+  }, [category]);
 
-  // Handle category button click with simulated loading
   const handleButtonClick = (category) => {
     setCategory(category);
   };
 
-  // Handle product detail view navigation
   const handleViewDetails = (id) => {
-    navigate(`/product/${id}`); // Navigate to the product detail page using product ID
+    navigate(`/product/${id}`);
   };
 
   return (
     <section className={`coffee-products ${isLoading ? 'loading' : ''}`}>
-      {/* Title section */}
       <div style={{ marginTop: '116px', marginBottom: '76px' }}>
         {isLoading ? (
           <Skeleton width={248} height={70} />
         ) : (
-          <h1>Tienda</h1>
+          <h1>{t('coffeeProducts.shop')}</h1>
         )}
       </div>
 
-      {/* Category buttons */}
       <div className={`buttons ${isDarkMode ? 'dark' : ''}`}>
         {isLoading ? (
           <div className="skeleton-container">
@@ -63,17 +57,21 @@ const CoffeeProducts = () => {
           </div>
         ) : (
           <>
-            <button className={category === 'Molido' ? 'active' : ''} onClick={() => handleButtonClick('Molido')}>Molido</button>
-            <button className={category === 'Grano' ? 'active' : ''} onClick={() => handleButtonClick('Grano')}>Grano</button>
-            <button className={category === 'Accesorios' ? 'active' : ''} onClick={() => handleButtonClick('Accesorios')}>Accesorios</button>
+            <button className={category === 'Molido' ? 'active' : ''} onClick={() => handleButtonClick('Molido')}>
+              {t('coffeeProducts.ground')}
+            </button>
+            <button className={category === 'Grano' ? 'active' : ''} onClick={() => handleButtonClick('Grano')}>
+              {t('coffeeProducts.bean')}
+            </button>
+            <button className={category === 'Accesorios' ? 'active' : ''} onClick={() => handleButtonClick('Accesorios')}>
+              {t('coffeeProducts.accessories')}
+            </button>
           </>
         )}
       </div>
 
-      {/* Products grid */}
       <div className="products">
         {isLoading ? (
-          // Show skeletons when loading
           Array.from({ length: 3 }).map((_, index) => (
             <div key={index} className="product">
               <Skeleton circle />
@@ -82,22 +80,27 @@ const CoffeeProducts = () => {
             </div>
           ))
         ) : (
-          // Show actual products when not loading
           filteredProducts.map((product, index) => (
             <div key={index} className="product">
               <img src={product.imgSrc} alt={product.title} className="product-img" />
-              <p className={`price-per-pound ${isDarkMode ? 'dark' : ''}`}>Ahorra 10%</p>
+              <p className={`price-per-pound ${isDarkMode ? 'dark' : ''}`}>{t('coffeeProducts.save')}</p>
               <h2>{product.title}</h2>
               <p className="price">{product.price}</p>
-              <button className={`primary-btn-l ${isDarkMode ? 'dark' : ''}`} onClick={() => handleViewDetails(product.id)} style={{ cursor: 'pointer'}}>Ver Detalles</button>
+              <button className={`primary-btn-l ${isDarkMode ? 'dark' : ''}`} onClick={() => handleViewDetails(product.id)} style={{ cursor: 'pointer'}}>
+                {t('coffeeProducts.view_details')}
+              </button>
             </div>
           ))
         )}
       </div>
 
-      {/* Note */}
-      <p className="note"><strong>*SOLO POR TIEMPO LIMITADO:</strong> 2x1 en tu primer pedido + descuentos por volumen + 2 cuchara clip de madera
-      <br></br><strong>*BONO:</strong> Comienza a ganar puntos desde tu primer pedido con nuestro Programa de Lealtad</p>
+      <p className="note">
+        <strong>{t('coffeeProducts.limited_offer')}</strong>
+        <br></br>
+        <strong>{t('coffeeProducts.bonus')}</strong>
+        <br></br>
+        <strong>{t('coffeeProducts.guarantee')}</strong>
+      </p>
     </section>
   );
 };
