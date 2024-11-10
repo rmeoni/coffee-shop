@@ -144,7 +144,7 @@
   }
 
   .products {
-    margin-right: 0;
+    margin-right: 0px !important;
     padding: 0px;
     overflow-x: scroll;
     width: 100vw; /* Constrain to viewport width */
