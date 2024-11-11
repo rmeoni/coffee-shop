@@ -25,11 +25,11 @@ const Cart = () => {
   return (
     <div className={`cart ${isDarkMode ? 'dark' : ''}`}>
       <div className="cart-wrapper">
-      {orderMessage && (
-        <div className="order-message">
-          <p>{orderMessage}</p>
-        </div>
-      )}
+        {orderMessage && (
+          <div className="order-message">
+            <p>{orderMessage}</p>
+          </div>
+        )}
         <h2>{t('cart.title')}</h2> {/* Translated "Carrito" */}
         <div className="cart-items">
           {cartItems.map(item => (
@@ -58,7 +58,7 @@ const Cart = () => {
       </div>
       <div className="cart-checkout">
         <h3>{t('cart.total')}: ${total.toFixed(2)}</h3> {/* Translated "Total" */}
-        <button onClick={toggleCartVisibility} className={`secondary-btn-l ${isDarkMode ? 'dark' : ''}`} style={{marginBottom: '12px'}} id="cart-secondary-button">
+        <button onClick={toggleCartVisibility} className={`secondary-btn-l ${isDarkMode ? 'dark' : ''}`} style={{ marginBottom: '12px' }} id="cart-secondary-button">
           {t('cart.close_cart')} {/* Translated "Cerrar Carrito" */}
         </button>
         <button onClick={handleCompleteOrder} className={`primary-btn-l ${isDarkMode ? 'dark' : ''}`}>
