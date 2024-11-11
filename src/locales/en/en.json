@@ -156,6 +156,7 @@
     "amount": "Amount",
     "total": "Total",
     "close_cart": "Close Cart",
-    "complete_order": "Complete Order"
+    "complete_order": "Complete Order",
+    "order_under_development": "Sorry, our page is still under development. Your order can't be completed"
   }
 }

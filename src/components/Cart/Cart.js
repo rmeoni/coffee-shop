@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useCart } from '../../context/CartContext';
 import { useTheme } from '../../context/ThemeContext';
 import './Cart.css';
@@ -9,14 +9,27 @@ const Cart = () => {
   const { isDarkMode } = useTheme();
   const { t } = useTranslation(); // Import the t function
 
+  // State to manage the display of the "under development" message
+  const [orderMessage, setOrderMessage] = useState('');
+
   // Don't display the cart if it's empty or if isCartVisible is false
   if (!isCartVisible || cartItems.length === 0) return null;
 
   const total = cartItems.reduce((acc, item) => acc + item.quantity * item.price, 0);
 
+  // Function to handle the Complete Order button click
+  const handleCompleteOrder = () => {
+    setOrderMessage(t('cart.order_under_development')); // Set the message from the translation
+  };
+
   return (
     <div className={`cart ${isDarkMode ? 'dark' : ''}`}>
       <div className="cart-wrapper">
+      {orderMessage && (
+        <div className="order-message">
+          <p>{orderMessage}</p>
+        </div>
+      )}
         <h2>{t('cart.title')}</h2> {/* Translated "Carrito" */}
         <div className="cart-items">
           {cartItems.map(item => (
@@ -48,7 +61,9 @@ const Cart = () => {
         <button onClick={toggleCartVisibility} className={`secondary-btn-l ${isDarkMode ? 'dark' : ''}`} style={{marginBottom: '12px'}} id="cart-secondary-button">
           {t('cart.close_cart')} {/* Translated "Cerrar Carrito" */}
         </button>
-        <button className={`primary-btn-l ${isDarkMode ? 'dark' : ''}`}>{t('cart.complete_order')}</button> {/* Translated "Completar Orden" */}
+        <button onClick={handleCompleteOrder} className={`primary-btn-l ${isDarkMode ? 'dark' : ''}`}>
+          {t('cart.complete_order')}
+        </button> {/* Translated "Completar Orden" */}
       </div>
     </div>
   );
