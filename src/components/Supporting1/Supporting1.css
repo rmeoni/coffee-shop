@@ -1,6 +1,8 @@
 .supporting1 {
   background-color: #EFE5DE;
   margin-left: 12px;
+  max-width: 1200px;
+  margin: auto;
 }
 
 .supporting1.dark {

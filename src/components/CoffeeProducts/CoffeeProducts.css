@@ -1,7 +1,10 @@
 .coffee-products {
   text-align: left;
-  margin-left: 44px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 44px;
   margin-bottom: 216px;
+  max-width: 1200px;
 }
 
 .buttons {
