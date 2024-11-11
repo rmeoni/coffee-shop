@@ -14,6 +14,7 @@ The app currently includes the following features:
 - Dark mode
 - Add and remove products from the cart
 - Signup forms
+- Language translator
 
 ## Next Release
 
@@ -23,4 +24,3 @@ Upcoming features in the next release:
 - Integrate with Zoho or Google Sheets API to send orders
 - Enhance responsiveness for all devices
 - Implement login and signup functionality
-- Integrate a language translator
