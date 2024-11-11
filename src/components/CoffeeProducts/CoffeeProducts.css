@@ -162,6 +162,7 @@
   .product {
     padding: 24px 0px;
     width: 246px;
+    margin-right: 44px;
   }
 
   .product span:first-child {
