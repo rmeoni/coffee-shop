@@ -37,8 +37,8 @@
 
 @media (max-width: 820px) {
     .product-details {
-        margin: auto;
-        padding: auto;
+        margin-left: 0px;
+        padding-left: 0px;
         flex-direction: column;
 
     }
