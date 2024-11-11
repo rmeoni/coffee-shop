@@ -33,6 +33,10 @@
   height: 60px;
 }
 
+.order-message p {
+  color: #ffffff;
+}
+
 
 .cart-wrapper {
   display: flex;
