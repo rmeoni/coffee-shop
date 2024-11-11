@@ -1,4 +1,3 @@
-// src/App.js
 import React, { useEffect } from 'react';
 import GlobalStyle from './assets/styles/globalStyles';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
@@ -12,6 +11,7 @@ import ProductDetailPage from './pages/ProductDetailPage';
 import { ThemeProvider, useTheme } from './context/ThemeContext';
 import { CartProvider } from './context/CartContext'; // Import the CartProvider
 import Cart from './components/Cart/Cart'; // Import the Cart component
+import CartIcon from './components/CartIcon/CartIcon'; // Import the CartIcon component
 import './i18n';
 
 const AppContent = () => {
@@ -28,7 +28,8 @@ const AppContent = () => {
   return (
     <Router>
       <GlobalStyle />
-      <Cart /> {/* Add the Cart component so it appears on all pages */}
+      <Cart /> {/* Cart Component */}
+      <CartIcon /> {/* Cart Icon Component */}
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/origenes" element={<AboutPage />} />
