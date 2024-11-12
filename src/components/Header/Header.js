@@ -35,29 +35,30 @@ const Header = () => {
   const languageIcon = isDarkMode ? languageIconDark : languageIconLight;
 
   useEffect(() => {
-    // Set a timeout to delay the loading effect for at least 2 seconds
+    // Set a 2-second delay before starting to load images
     const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 2000); // Delay for 2 seconds
-  
-    // Check if all images are loaded
-    const images = [logo, toggleIcon, hamburgerIcon, closeIcon, languageIcon];
-    Promise.all(images.map(src => new Promise((resolve) => {
-      const img = new Image();
-      img.src = src;
-      img.onload = resolve;
-      img.onerror = resolve; // Resolving on error to avoid blocking loading
-    }))).then(() => {
-      // Only set isLoading to false after images are loaded and after 2 seconds
-      setIsLoading(false);
-    });
-  
-    // Cleanup timeout if the component unmounts before the timer finishes
-    return () => {
-      clearTimeout(timer);
-    };
+      // Create image elements to preload each image
+      const images = [logo, toggleIcon, hamburgerIcon, closeIcon, languageIcon];
+      Promise.all(
+        images.map(
+          (src) =>
+            new Promise((resolve) => {
+              const img = new Image();
+              img.src = src;
+              img.onload = resolve;
+              img.onerror = resolve; // Resolve on error to avoid indefinite loading
+            })
+        )
+      ).then(() => {
+        // Set isLoading to false after images are loaded
+        setIsLoading(false);
+      });
+    }, 2000);
+
+    // Clear the timeout if the component unmounts
+    return () => clearTimeout(timer);
   }, [logo, toggleIcon, hamburgerIcon, closeIcon, languageIcon]);
-  
+
   return (
     <header className={`${isDarkMode ? 'dark' : ''}`}>
       <nav>
@@ -92,7 +93,7 @@ const Header = () => {
                   <li className="language-selector">
                     <span>
                       {t('header.language')}
-                      <img src={languageIcon} style={{ width: '30', height: '30' }} id="language-icon" alt="Language Icon" />
+                      <img src={languageIcon} style={{ width: '30px', height: '30px' }} id="language-icon" alt="Language Icon" />
                     </span>
                     <ul className="language-options">
                       <li onClick={() => handleLanguageChange("es")}>{t('header.spanish')}</li>
@@ -115,7 +116,6 @@ const Header = () => {
             </ul>
           </section>
         </div>
-
         <div className="mobile-menu-icon" onClick={toggleMobileMenu}>
           {isLoading ? (
             <Skeleton height={28} width={34} />
@@ -151,7 +151,7 @@ const Header = () => {
                 <li className="language-selector">
                   <span>
                     {t('header.language')}
-                    <img src={languageIcon} style={{ width: '30', height: '30' }} id="language-icon" alt="Language Icon" />
+                    <img src={languageIcon} style={{ width: '30px', height: '30px' }} id="language-icon" alt="Language Icon" />
                   </span>
                   <ul className="language-options">
                     <li onClick={() => handleLanguageChange("es")}>{t('header.spanish')}</li>

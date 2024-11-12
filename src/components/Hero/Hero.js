@@ -11,25 +11,20 @@ const Hero = ({ imageSrc, heading, paragraph, buttonLabels, buttonLinks, isSecon
   const { t } = useTranslation(); // Initialize translation hook
 
   useEffect(() => {
-    // Set a timeout to delay the loading effect for at least 2 seconds
+    // Set a 2-second delay before checking if the image has loaded
     const timer = setTimeout(() => {
-      setIsLoading(false);
+      const img = new Image();
+      img.src = imageSrc;
+
+      img.onload = () => {
+        setIsLoading(false); // Stop loading once the image is loaded
+      };
+
+      img.onerror = () => {
+        console.error('Image failed to load:', imageSrc);
+        setIsLoading(false); // Stop loading if image fails to load
+      };
     }, 2000); // Delay for 2 seconds
-
-    // Create a new image instance to preload
-    const img = new Image();
-    img.src = imageSrc;
-
-    // Set loading to false when the image is fully loaded
-    img.onload = () => {
-      setIsLoading(false);
-    };
-
-    // Set up error handling to avoid indefinite loading state
-    img.onerror = () => {
-      console.error('Image failed to load:', imageSrc);
-      setIsLoading(false); // Stop loading if image fails to load
-    };
 
     // Cleanup timeout if the component unmounts before the timer finishes
     return () => {
