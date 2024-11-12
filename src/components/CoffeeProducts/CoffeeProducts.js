@@ -26,12 +26,16 @@ const CoffeeProducts = () => {
   const filteredProducts = allProducts.filter(product => product.category === category);
 
   useEffect(() => {
-    const timer = setTimeout(() => setIsLoading(false), 2000);
-    return () => clearTimeout(timer);
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 2000); // Delay for 2 seconds
+
+    return () => clearTimeout(timer); // Cleanup timer on unmount or when category changes
   }, [category]);
 
   const handleButtonClick = (category) => {
     setCategory(category);
+    setIsLoading(true); // Set loading to true when category changes
   };
 
   const handleViewDetails = (id) => {
@@ -51,7 +55,7 @@ const CoffeeProducts = () => {
       <div className={`buttons ${isDarkMode ? 'dark' : ''}`}>
         {isLoading ? (
           <div className="skeleton-container">
-            <Skeleton width={147} height={64} style={{ borderRadius: '50px' }}/>
+            <Skeleton width={147} height={64} style={{ borderRadius: '50px' }} />
             <Skeleton width={147} height={64} style={{ borderRadius: '50px' }} />
             <Skeleton width={223} height={64} style={{ borderRadius: '50px' }} />
           </div>
@@ -96,9 +100,9 @@ const CoffeeProducts = () => {
 
       <p className="note">
         <strong>{t('coffeeProducts.limited_offer')}</strong>
-        <br></br>
+        <br />
         <strong>{t('coffeeProducts.bonus')}</strong>
-        <br></br>
+        <br />
         <strong>{t('coffeeProducts.guarantee')}</strong>
       </p>
     </section>
