@@ -116,6 +116,10 @@
     text-align: center;
   }
 
+  .testimonial-text {
+    width: 80% !important;
+  }
+
   .testimonial-carousel {
     flex-direction: column;
   }
