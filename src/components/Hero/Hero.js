@@ -53,20 +53,23 @@ const Hero = ({ imageSrc, heading, paragraph, buttonLabels, buttonLinks, isSecon
             <p>{t(paragraph)}</p> {/* Use translation for paragraph */}
             <ul>
               <li>
-                <a
-                  href={buttonLinks[0]}
-                  className={`secondary-btn-l ${isDarkMode ? 'dark' : ''}`}
-                  id="secondary-btn-hero"
-                  target={isSecondaryButtonExternal ? '_blank' : '_self'}
-                  rel={isSecondaryButtonExternal ? 'noopener noreferrer' : undefined}
-                >
-                  {t(buttonLabels[0])} {/* Translate button label */}
-                </a>
+                <button className={`secondary-btn-l ${isDarkMode ? 'dark' : ''}`}>
+                  <a
+                    href={buttonLinks[0]}
+                    id="secondary-btn-hero"
+                    target={isSecondaryButtonExternal ? '_blank' : '_self'}
+                    rel={isSecondaryButtonExternal ? 'noopener noreferrer' : undefined}
+                  >
+                    {t(buttonLabels[0])} {/* Translate button label */}
+                  </a>
+                </button>
               </li>
               <li>
-                <a href={buttonLinks[1]} className={`primary-btn-l ${isDarkMode ? 'dark' : ''}`} id="hero-primary-btn">
-                  {t(buttonLabels[1])} {/* Translate button label */}
-                </a>
+                <button className={`primary-btn-l ${isDarkMode ? 'dark' : ''}`}>
+                  <a href={buttonLinks[1]} id="hero-primary-btn">
+                    {t(buttonLabels[1])} {/* Translate button label */}
+                  </a>
+                </button>
               </li>
             </ul>
           </div>

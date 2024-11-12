@@ -132,10 +132,20 @@ const GlobalStyle = createGlobalStyle`
     letter-spacing: 1.6px;
   }
 
+  .secondary-btn-l a {
+    color: #01172F;
+    text-decoration: none !important;
+  }
+
 
   .secondary-btn-l.dark {
-    color: #fff;
+    color: #fff !important;
     border: 4px solid #fff;
+  }
+
+  .secondary-btn-l.dark a {
+    color: #ffffff;
+    text-decoration: none !important;
   }
 
   .secondary-btn-l.dark:hover {
@@ -157,11 +167,21 @@ const GlobalStyle = createGlobalStyle`
     min-height: 64px !important;
     letter-spacing: 1.6px;
   }
+
+  .primary-btn-l a {
+    color: #EFE5DE;
+    text-decoration: none !important;
+  }
    
   .primary-btn-l.dark {
     background: #fff;
     color: #000;
     border: 4px solid #fff;
+  }
+
+  .primary-btn-l.dark a {
+    color: #000000;
+    text-decoration: none !important;
   }
 
   @media (max-width: 820px) {

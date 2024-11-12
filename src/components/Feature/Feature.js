@@ -72,9 +72,11 @@ const Feature = ({ features, namespace }) => {
                 <h1>{t(`${namespace}.bio_${index + 1}_heading`)}</h1>
                 <p>{t(`${namespace}.bio_${index + 1}_description`)}</p>
                 {feature.buttonLink && (
-                  <a href={feature.buttonLink} className={`primary-btn-l ${isDarkMode ? 'dark' : ''}`}>
-                    {t(`${namespace}.bio_${index + 1}_buttonLabel`)}
-                  </a>
+                  <button className={`primary-btn-l ${isDarkMode ? 'dark' : ''}`}>
+                    <a href={feature.buttonLink}>
+                      {t(`${namespace}.bio_${index + 1}_buttonLabel`)}
+                    </a>
+                  </button>
                 )}
               </div>
             </>
@@ -84,9 +86,11 @@ const Feature = ({ features, namespace }) => {
                 <h1>{t(`${namespace}.bio_${index + 1}_heading`)}</h1>
                 <p>{t(`${namespace}.bio_${index + 1}_description`)}</p>
                 {feature.buttonLink && (
-                  <a href={feature.buttonLink} className={`secondary-btn-l ${isDarkMode ? 'dark' : ''}`}>
-                    {t(`${namespace}.bio_${index + 1}_buttonLabel`)}
-                  </a>
+                  <button className={`secondary-btn-l ${isDarkMode ? 'dark' : ''}`}>
+                    <a href={feature.buttonLink} >
+                      {t(`${namespace}.bio_${index + 1}_buttonLabel`)}
+                    </a>
+                  </button>
                 )}
               </div>
               <div className="feature-image">
