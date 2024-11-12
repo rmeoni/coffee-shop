@@ -80,7 +80,7 @@
 
 #refer-button {
   margin-top: 58px !important;
-  max-width: 300px;
+  max-width: 269px !important;
   margin-bottom: 48px;
 }
 
@@ -129,7 +129,6 @@
 
   #refer-button {
     margin-top: 48px !important;
-    max-width: 269px;
     margin-bottom: 48px;
   }
 }

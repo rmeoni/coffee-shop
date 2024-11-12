@@ -128,7 +128,7 @@ const GlobalStyle = createGlobalStyle`
     white-space: nowrap; /* Prevents text from wrapping to the next line */
     overflow: hidden; /* Ensures content stays within the button bounds */
     cursor:pointer;
-    min-height: 64px;
+    min-height: 64px !important;
     letter-spacing: 1.6px;
   }
 
@@ -154,7 +154,7 @@ const GlobalStyle = createGlobalStyle`
     font-weight: bold;
     font-size: 24px;
     cursor:pointer;
-    min-height: 64px;
+    min-height: 64px !important;
     letter-spacing: 1.6px;
   }
    
