@@ -75,7 +75,7 @@
 .testimonial-text {
   font-style: italic;
   margin: 20px 0;
-  width: 100% !important;
+  width: 80% !important;
   padding-top: 24px;
 }
 
@@ -114,6 +114,10 @@
 
   .testimonial-content {
     text-align: center;
+  }
+
+  .testimonial-text {
+    width: 100% !important;
   }
   
 
