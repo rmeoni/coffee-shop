@@ -19,21 +19,13 @@ const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const { isDarkMode, toggleDarkMode } = useTheme();
-
   const { t, i18n } = useTranslation();
 
-  useEffect(() => {
-    const timer = setTimeout(() => setIsLoading(false), 2000);
-    return () => clearTimeout(timer);
-  }, []);
-
-  const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
-  };
+  const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
 
   const handleLanguageChange = (lang) => {
     i18n.changeLanguage(lang);
-    localStorage.setItem('language', lang); // Save the language in localStorage
+    localStorage.setItem('language', lang);
   };
 
   const logo = isDarkMode ? coffeeLogoDark : coffeeLogoLight;
@@ -41,6 +33,17 @@ const Header = () => {
   const hamburgerIcon = isDarkMode ? hamburgerIconDark : hamburgerIconLight;
   const closeIcon = isDarkMode ? closeIconDark : closeIconLight;
   const languageIcon = isDarkMode ? languageIconDark : languageIconLight;
+
+  useEffect(() => {
+    // Check if all images are loaded
+    const images = [logo, toggleIcon, hamburgerIcon, closeIcon, languageIcon];
+    Promise.all(images.map(src => new Promise((resolve) => {
+      const img = new Image();
+      img.src = src;
+      img.onload = resolve;
+      img.onerror = resolve; // Resolving on error to avoid blocking loading
+    }))).then(() => setIsLoading(false));
+  }, [logo, toggleIcon, hamburgerIcon, closeIcon, languageIcon]);
 
   return (
     <header className={`${isDarkMode ? 'dark' : ''}`}>
@@ -147,14 +150,14 @@ const Header = () => {
                     src={toggleIcon}
                     alt={t('header.toggle_dark_mode')}
                     onClick={(e) => {
-                        e.preventDefault();
-                        toggleDarkMode();
-                      }}
-                      style={{ cursor: 'pointer', height: '36px' }}
-                    />
-                  </li>
-                </>
-              )}
+                      e.preventDefault();
+                      toggleDarkMode();
+                    }}
+                    style={{ cursor: 'pointer', height: '36px' }}
+                  />
+                </li>
+              </>
+            )}
           </ul>
         )}
       </nav>
