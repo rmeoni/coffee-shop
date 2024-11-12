@@ -130,5 +130,6 @@
   #refer-button {
     margin-top: 48px !important;
     margin-bottom: 48px;
+    max-width: 200px !important;
   }
 }
