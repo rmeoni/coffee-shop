@@ -6,21 +6,94 @@ import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 import { useTheme } from '../context/ThemeContext';
 import { useCart } from '../context/CartContext';
-import { useTranslation } from 'react-i18next'; // Import useTranslation
+import { useTranslation } from 'react-i18next';
 import '../assets/styles/ProductDetailPage.css';
 
 const ProductDetailPage = () => {
   const { id } = useParams();
-  const { t } = useTranslation(); // Initialize translation hook
+  const { t } = useTranslation();
   const [quantity, setQuantity] = useState(1);
   const { cartItems, setCartItems, setIsCartVisible } = useCart();
   const [isLoading, setIsLoading] = useState(true);
   const { isDarkMode } = useTheme();
 
+  const allProducts = [
+    {
+      id: '1',
+      imgSrc: '/images/product-image.svg',
+      pricePerPound: '$9.96',
+      title: t('coffeeProducts.product1_title'),
+      category: 'Molido',
+      price: 299.00
+    },
+    {
+      id: '2',
+      imgSrc: '/images/product-image.svg',
+      pricePerPound: '$9.95',
+      title: t('coffeeProducts.product2_title'),
+      category: 'Molido',
+      price: 199.00
+    },
+    {
+      id: '3',
+      imgSrc: '/images/product-image.svg',
+      pricePerPound: '$9.99',
+      title: t('coffeeProducts.product3_title'),
+      category: 'Molido',
+      price: 99.00
+    },
+    {
+      id: '4',
+      imgSrc: '/images/product-image.svg',
+      pricePerPound: '$9.96',
+      title: t('coffeeProducts.product4_title'),
+      category: 'Grano',
+      price: 299.00
+    },
+    {
+      id: '5',
+      imgSrc: '/images/product-image.svg',
+      pricePerPound: '$9.95',
+      title: t('coffeeProducts.product5_title'),
+      category: 'Grano',
+      price: 199.00
+    },
+    {
+      id: '6',
+      imgSrc: '/images/product-image.svg',
+      pricePerPound: '$9.99',
+      title: t('coffeeProducts.product6_title'),
+      category: 'Grano',
+      price: 99.00
+    },
+    {
+      id: '7',
+      imgSrc: '/images/product-image-2.svg',
+      pricePerPound: '',
+      title: t('coffeeProducts.product7_title'),
+      category: 'Accesorios',
+      price: 9.99
+    },
+  ];
+
+  const product = allProducts.find(p => p.id === id);
+
   useEffect(() => {
-    const timer = setTimeout(() => setIsLoading(false), 2000);
-    return () => clearTimeout(timer);
-  }, []);
+    const loadImageWithDelay = () => {
+      setTimeout(() => {
+        if (product) {
+          const img = new Image();
+          img.src = product.imgSrc;
+          img.onload = () => setIsLoading(false);
+          img.onerror = () => setIsLoading(false);
+        } else {
+          setIsLoading(false); // Skip loading if product is not found
+        }
+      }, 2000);
+    };
+
+    loadImageWithDelay();
+  }, [product]);
 
   useEffect(() => {
     const storedCartItems = JSON.parse(localStorage.getItem('cartItems'));
@@ -29,7 +102,6 @@ const ProductDetailPage = () => {
     }
   }, [setCartItems]);
 
-  // Sync cart items to localStorage whenever cartItems change
   useEffect(() => {
     if (cartItems.length > 0) {
       localStorage.setItem('cartItems', JSON.stringify(cartItems));
@@ -37,71 +109,6 @@ const ProductDetailPage = () => {
       localStorage.removeItem('cartItems');
     }
   }, [cartItems]);
-
-  const allProducts = [
-    { 
-      id: '1', 
-      imgSrc: '/images/product-image.svg', 
-      pricePerPound: '$9.96', 
-      title: t('coffeeProducts.product1_title'), 
-      category: 'Molido', 
-      price: 299.00 
-    },
-    { 
-      id: '2', 
-      imgSrc: '/images/product-image.svg', 
-      pricePerPound: '$9.95', 
-      title: t('coffeeProducts.product2_title'), 
-      category: 'Molido', 
-      price: 199.00 
-    },
-    { 
-      id: '3', 
-      imgSrc: '/images/product-image.svg', 
-      pricePerPound: '$9.99', 
-      title: t('coffeeProducts.product3_title'), 
-      category: 'Molido', 
-      price: 99.00 
-    },
-    { 
-      id: '4', 
-      imgSrc: '/images/product-image.svg', 
-      pricePerPound: '$9.96', 
-      title: t('coffeeProducts.product4_title'), 
-      category: 'Grano', 
-      price: 299.00 
-    },
-    { 
-      id: '5', 
-      imgSrc: '/images/product-image.svg', 
-      pricePerPound: '$9.95', 
-      title: t('coffeeProducts.product5_title'), 
-      category: 'Grano', 
-      price: 199.00 
-    },
-    { 
-      id: '6', 
-      imgSrc: '/images/product-image.svg', 
-      pricePerPound: '$9.99', 
-      title: t('coffeeProducts.product6_title'), 
-      category: 'Grano', 
-      price: 99.00 
-    },
-    { 
-      id: '7', 
-      imgSrc: '/images/product-image-2.svg', 
-      pricePerPound: '', 
-      title: t('coffeeProducts.product7_title'), 
-      category: 'Accesorios', 
-      price: 9.99 
-    },
-  ];
-
-  const product = allProducts.find(p => p.id === id);
-
-  if (!product) {
-    return <h2>{t('coffeeProducts.not_found')}</h2>; // Use translation for 'Product not found'
-  }
 
   const handleIncrease = () => setQuantity(prevQuantity => prevQuantity + 1);
   const handleDecrease = () => {
@@ -112,21 +119,23 @@ const ProductDetailPage = () => {
     const existingItem = cartItems.find(item => item.id === product.id);
 
     if (existingItem) {
-      // Update quantity of existing item without toggling cart visibility
       setCartItems(cartItems.map(item =>
         item.id === product.id
           ? { ...item, quantity: item.quantity + quantity }
           : item
       ));
-      setIsCartVisible(true); // Toggle visibility
+      setIsCartVisible(true);
     } else {
-      // Add new item to cart and show the cart
       setCartItems([...cartItems, { ...product, quantity }]);
-      setIsCartVisible(true); // Toggle visibility
+      setIsCartVisible(true);
     }
 
-    setQuantity(1); // Reset quantity to 1
+    setQuantity(1);
   };
+
+  if (!product) {
+    return <h2>{t('coffeeProducts.not_found')}</h2>;
+  }
 
   return (
     <>
@@ -149,19 +158,17 @@ const ProductDetailPage = () => {
               <h1 id="product-details-title">{product.title}</h1>
               <h2>${product.price.toFixed(2)}</h2>
 
-              {/* Counter for selecting quantity */}
               <div className="quantity-selector">
                 <button onClick={handleDecrease} className="quantity-btn">-</button>
                 <h3>{quantity}</h3>
                 <button onClick={handleIncrease} className="quantity-btn">+</button>
               </div>
 
-              {/* Add to Cart button */}
               <button
                 className={`primary-btn-l ${isDarkMode ? 'dark' : ''}`}
                 onClick={handleAddToCart}
               >
-                {t('coffeeProducts.add_to_cart')} {/* Add translation key */}
+                {t('coffeeProducts.add_to_cart')}
               </button>
             </div>
             <div className="hero-image" id="product-details-image">

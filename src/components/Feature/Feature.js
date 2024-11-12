@@ -3,17 +3,33 @@ import './Feature.css';
 import { useTheme } from '../../context/ThemeContext';
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
-import { useTranslation } from 'react-i18next'; // Import useTranslation hook
+import { useTranslation } from 'react-i18next';
 
 const Feature = ({ features, namespace }) => {
-  const { t } = useTranslation(); // Initialize translation
+  const { t } = useTranslation();
   const { isDarkMode } = useTheme();
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const timer = setTimeout(() => setIsLoading(false), 2000); // Set loading duration
-    return () => clearTimeout(timer); // Clean up timer on component unmount
-  }, []);
+    const loadImagesWithDelay = async () => {
+      // Wait for 2 seconds before starting the image loading check
+      await new Promise((resolve) => setTimeout(resolve, 2000));
+
+      const imagePromises = features.map((feature) => {
+        return new Promise((resolve) => {
+          const img = new Image();
+          img.src = feature.imageSrc;
+          img.onload = resolve;
+          img.onerror = resolve; // Resolve on error to avoid indefinite loading
+        });
+      });
+
+      await Promise.all(imagePromises);
+      setIsLoading(false);
+    };
+
+    loadImagesWithDelay();
+  }, [features]);
 
   return (
     <section className="feature">

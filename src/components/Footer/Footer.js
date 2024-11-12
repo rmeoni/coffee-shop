@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useTranslation } from 'react-i18next';  // Import the useTranslation hook
+import { useTranslation } from 'react-i18next';
 import './Footer.css';
 import coffeeLogoLight from '../../assets/images/logo.svg';
 import coffeeLogoDark from '../../assets/images/logo-dark.svg';
@@ -10,13 +10,22 @@ import 'react-loading-skeleton/dist/skeleton.css';
 const Footer = () => {
   const [isLoading, setIsLoading] = useState(true);
   const { isDarkMode } = useTheme();
-  const { t } = useTranslation();  // Initialize useTranslation hook
+  const { t } = useTranslation();
   const logo = isDarkMode ? coffeeLogoDark : coffeeLogoLight;
 
   useEffect(() => {
-    const timer = setTimeout(() => setIsLoading(false), 2000);
-    return () => clearTimeout(timer);
-  }, []);
+    const loadLogoWithDelay = () => {
+      // Wait for 2 seconds before starting the logo loading check
+      setTimeout(() => {
+        const img = new Image();
+        img.src = logo;
+        img.onload = () => setIsLoading(false);
+        img.onerror = () => setIsLoading(false); // In case of error, still stop loading
+      }, 2000);
+    };
+
+    loadLogoWithDelay();
+  }, [logo]);
 
   return (
     <footer className={`footer ${isDarkMode ? 'dark' : ''}`}>
@@ -70,7 +79,7 @@ const Footer = () => {
               <h3>{t('footer.socialMedia')}</h3>
               <ul>
                 <li><a href="https://www.instagram.com/cafedonlucas" target="_blank" rel="noreferrer">{t('footer.instagram')}</a></li>
-                <li><a href="https://www.facebook.com/cafedonlucas" targe="_blank" rel="noreferrer">{t('footer.facebook')}</a></li>
+                <li><a href="https://www.facebook.com/cafedonlucas" target="_blank" rel="noreferrer">{t('footer.facebook')}</a></li>
               </ul>
             </div>
             <div className="footer-column">
