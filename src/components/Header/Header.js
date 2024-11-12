@@ -35,6 +35,11 @@ const Header = () => {
   const languageIcon = isDarkMode ? languageIconDark : languageIconLight;
 
   useEffect(() => {
+    // Set a timeout to delay the loading effect for at least 2 seconds
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 2000); // Delay for 2 seconds
+  
     // Check if all images are loaded
     const images = [logo, toggleIcon, hamburgerIcon, closeIcon, languageIcon];
     Promise.all(images.map(src => new Promise((resolve) => {
@@ -42,9 +47,17 @@ const Header = () => {
       img.src = src;
       img.onload = resolve;
       img.onerror = resolve; // Resolving on error to avoid blocking loading
-    }))).then(() => setIsLoading(false));
+    }))).then(() => {
+      // Only set isLoading to false after images are loaded and after 2 seconds
+      setIsLoading(false);
+    });
+  
+    // Cleanup timeout if the component unmounts before the timer finishes
+    return () => {
+      clearTimeout(timer);
+    };
   }, [logo, toggleIcon, hamburgerIcon, closeIcon, languageIcon]);
-
+  
   return (
     <header className={`${isDarkMode ? 'dark' : ''}`}>
       <nav>
