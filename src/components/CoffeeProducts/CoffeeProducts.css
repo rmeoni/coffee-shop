@@ -182,4 +182,8 @@
     gap: 10px;
     /* Adds space between skeletons */
   }
+    /* Second child of React Loading Skeleton */
+    .product span:nth-of-type(2) > :first-child {
+      width: 246px !important;
+    }
 }
