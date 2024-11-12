@@ -11,10 +11,19 @@ const Hero = ({ imageSrc, heading, paragraph, buttonLabels, buttonLinks, isSecon
   const { t } = useTranslation(); // Initialize translation hook
 
   useEffect(() => {
-    // Simulate loading
-    const timer = setTimeout(() => setIsLoading(false), 2000);
-    return () => clearTimeout(timer);
-  }, []);
+    // Create a new image instance to preload
+    const img = new Image();
+    img.src = imageSrc;
+
+    // Set loading to false when the image is fully loaded
+    img.onload = () => setIsLoading(false);
+
+    // Set up error handling to avoid indefinite loading state
+    img.onerror = () => {
+      console.error('Image failed to load:', imageSrc);
+      setIsLoading(false); // Stop loading if image fails to load
+    };
+  }, [imageSrc]);
 
   return (
     <section className={`hero ${isDarkMode ? 'dark' : ''}`}>
@@ -41,7 +50,7 @@ const Hero = ({ imageSrc, heading, paragraph, buttonLabels, buttonLinks, isSecon
                   href={buttonLinks[0]}
                   className={`secondary-btn-l ${isDarkMode ? 'dark' : ''}`}
                   id="secondary-btn-hero"
-                  target={isSecondaryButtonExternal ? '_blank' : '_self'} 
+                  target={isSecondaryButtonExternal ? '_blank' : '_self'}
                   rel={isSecondaryButtonExternal ? 'noopener noreferrer' : undefined}
                 >
                   {t(buttonLabels[0])} {/* Translate button label */}
@@ -55,7 +64,10 @@ const Hero = ({ imageSrc, heading, paragraph, buttonLabels, buttonLinks, isSecon
             </ul>
           </div>
           <div className="hero-image">
-            <img src={imageSrc} alt={t('hero.image_alt_text')} /> {/* You can add an alt text translation */}
+            <img
+              src={imageSrc}
+              alt={t('hero.image_alt_text')}
+            />
           </div>
         </>
       )}
