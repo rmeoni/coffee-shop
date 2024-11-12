@@ -2,8 +2,7 @@
     position: fixed;
     bottom: 20px;
     /* 20px from the bottom */
-    right: 40px;
-    /* 20px from the right */
+    left: 80%;
     background-color: #F5EFEA;
     border-radius: 50px;
     width: 50px;
