@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import './CoffeeProducts.css';
 import { useTheme } from '../../context/ThemeContext';
 import { useNavigate } from 'react-router-dom';
@@ -13,7 +13,8 @@ const CoffeeProducts = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [category, setCategory] = useState('Molido');
 
-  const allProducts = [
+  // Use useMemo to memoize the products array so it doesn't recreate on each render
+  const allProducts = useMemo(() => [
     { id: '1', imgSrc: '/images/product-image.svg', pricePerPound: '$9.96', title: t('coffeeProducts.product1_title'), category: 'Molido', price: '$299.00' },
     { id: '2', imgSrc: '/images/product-image.svg', pricePerPound: '$9.95', title: t('coffeeProducts.product2_title'), category: 'Molido', price: '$199.00' },
     { id: '3', imgSrc: '/images/product-image.svg', pricePerPound: '$9.99', title: t('coffeeProducts.product3_title'), category: 'Molido', price: '$99.00' },
@@ -21,21 +22,40 @@ const CoffeeProducts = () => {
     { id: '5', imgSrc: '/images/product-image.svg', pricePerPound: '$9.95', title: t('coffeeProducts.product5_title'), category: 'Grano', price: '$199.00' },
     { id: '6', imgSrc: '/images/product-image.svg', pricePerPound: '$9.99', title: t('coffeeProducts.product6_title'), category: 'Grano', price: '$99.00' },
     { id: '7', imgSrc: '/images/product-image-2.svg', pricePerPound: '', title: t('coffeeProducts.product7_title'), category: 'Accesorios', price: '$9.99' },
-  ];
+  ], [t]);
 
-  const filteredProducts = allProducts.filter(product => product.category === category);
+  const filteredProducts = useMemo(() => allProducts.filter(product => product.category === category), [allProducts, category]);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 2000); // Delay for 2 seconds
+    setIsLoading(true); // Start loading on category change
 
-    return () => clearTimeout(timer); // Cleanup timer on unmount or when category changes
-  }, [category]);
+    const timer = setTimeout(() => {
+      if (filteredProducts.length === 0) {
+        setIsLoading(false);
+        return;
+      }
+
+      // Load images for the selected category
+      const loadImagePromises = filteredProducts.map(product => {
+        return new Promise(resolve => {
+          const img = new Image();
+          img.src = product.imgSrc;
+          img.onload = resolve;
+          img.onerror = resolve;
+        });
+      });
+
+      Promise.all(loadImagePromises).then(() => {
+        setIsLoading(false);
+      });
+    }, 2000); // 2-second delay before checking image load status
+
+    // Cleanup timer on unmount or category change
+    return () => clearTimeout(timer);
+  }, [filteredProducts]);
 
   const handleButtonClick = (category) => {
     setCategory(category);
-    setIsLoading(true); // Set loading to true when category changes
   };
 
   const handleViewDetails = (id) => {
