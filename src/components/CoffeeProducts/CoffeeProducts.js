@@ -44,7 +44,7 @@ const CoffeeProducts = () => {
 
   return (
     <section className={`coffee-products ${isLoading ? 'loading' : ''}`}>
-      <div style={{ marginTop: '116px', marginBottom: '76px' }}>
+      <div className="shop-title-loading" style={{ marginTop: '116px', marginBottom: '76px' }}>
         {isLoading ? (
           <Skeleton width={248} height={70} />
         ) : (

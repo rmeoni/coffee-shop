@@ -176,6 +176,11 @@
     width: 246px;
   }
 
+  .coffee-products .shop-title-loading .react-loading-skeleton {
+    width: 160px !important;
+    height: 40px !important;
+  }
+
   /* Default styles for mobile (skeletons displayed in column) */
   .buttons .skeleton-container {
     display: flex;
