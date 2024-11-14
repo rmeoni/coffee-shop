@@ -68,7 +68,7 @@
 
   .feature-item {
       flex-direction: column;
-      align-items: center;
+      align-items: flex-start;
       text-align: left;
   }
 
