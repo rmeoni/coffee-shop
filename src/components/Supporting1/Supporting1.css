@@ -51,9 +51,9 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  padding: 20px;
+  padding: 20px 0px;
   border-radius: 20px;
-  margin: 20px;
+  margin: 20px 0px;
 }
 
 .steps-section h1 {
