@@ -1,4 +1,4 @@
-import React from 'react';
+import { React, useState } from 'react';
 import { useCart } from '../context/CartContext';
 import { useTheme } from '../context/ThemeContext';
 import { useTranslation } from 'react-i18next';
@@ -11,6 +11,39 @@ const CheckoutPage = () => {
     const { isDarkMode } = useTheme();
     const { t } = useTranslation(); // Import the t function
     const total = cartItems.reduce((acc, item) => acc + item.quantity * item.price, 0);
+    const [formData, setFormData] = useState({
+        name: '',
+        email: ''
+    });
+    const [successMessage, setSuccessMessage] = useState('');
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData({
+            ...formData,
+            [name]: value
+        });
+    };
+    const handleCouponSubmit = async (e) => {
+        e.preventDefault();
+
+        // Placeholder for the API call to send form data somewhere
+        console.log('Form data submitted:', formData);
+
+        // Show translated success message after form submission
+        setSuccessMessage(t('newsletter.successMessage'));
+
+        // Clear the form fields after submission
+        setFormData({
+            name: '',
+            email: ''
+        });
+
+        // Hide the success message after a few seconds
+        setTimeout(() => {
+            setSuccessMessage('');
+        }, 5000); // 5 seconds
+    };
 
     return (
         <>
@@ -45,16 +78,35 @@ const CheckoutPage = () => {
                             <h3>{t('cart.total')}: ${total.toFixed(2)}</h3> {/* Translated "Total" */}
                         </div>
                     </div>
-                    <div className='checkout-section'>
+                    <div className='checkout-address'>
                         <h2>{t('checkout.address')}</h2>
                         <button className={`secondary-btn-s ${isDarkMode ? 'dark' : ''}`}>{t('checkout.new_address')}</button>
                     </div>
-                    <div className='checkout-section'>
+                    <div className='checkout-shipping'>
                         <h2>{t('checkout.shipping_method')}</h2>
                     </div>
                 </div>
-                <div className='checkout-section'>
-                    <h2>{t('checkout.coupon')}</h2>
+                <div className='checkout-section' id="checkout-section-right">
+                    <div className='checkout-coupon'>
+                        <h2>{t('checkout.coupon')}</h2>
+                        <form className="newsletter-form" onSubmit={handleCouponSubmit}>
+                            <input
+                                type="text"
+                                name="name"
+                                placeholder={t('newsletter.namePlaceholder')}
+                                value={formData.name}
+                                onChange={handleChange}
+                                required
+                            />
+                            <button type="submit" className={`secondary-btn-s ${isDarkMode ? 'dark' : ''}`} id="coupon-btn">
+                                {t('newsletter.submitButton')}
+                            </button>
+                        </form>
+                        {successMessage && <p className="success-message">{successMessage}</p>}
+                    </div>
+                    <div className='checkout-payment-method'>
+                        <h2>{t('checkout.payment_method')}</h2>
+                    </div>
                 </div>
             </div>
             <Footer />
