@@ -12,12 +12,13 @@ import { ThemeProvider, useTheme } from './context/ThemeContext';
 import { CartProvider } from './context/CartContext'; // Import the CartProvider
 import Cart from './components/Cart/Cart'; // Import the Cart component
 import CartIcon from './components/CartIcon/CartIcon'; // Import the CartIcon component
+import Banner from './components/Banner/Banner';
 import './i18n';
 import CheckoutPage from './pages/CheckoutPage';
 
 const AppContent = () => {
   const { isDarkMode } = useTheme();
-
+  
   useEffect(() => {
     if (isDarkMode) {
       document.body.classList.add('dark');
@@ -29,6 +30,7 @@ const AppContent = () => {
   return (
     <Router>
       <GlobalStyle />
+      <Banner />
       <Cart /> {/* Cart Component */}
       <CartIcon /> {/* Cart Icon Component */}
       <Routes>

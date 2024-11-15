@@ -52,6 +52,8 @@ const GlobalStyle = createGlobalStyle`
     font-size: 20px;
     line-height: 24px;
     color: #01172F;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
   }
   
   body.dark p {

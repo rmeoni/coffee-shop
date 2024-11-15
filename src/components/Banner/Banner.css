@@ -1,0 +1,70 @@
+.banner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    padding: 10px;
+    margin-top: 0px;
+    margin-left: -96px;
+    margin-right: -96px;
+    background-color: #01172F;
+}
+
+.banner-wrapper {
+    max-width: 1200px;
+    display: flex;
+    justify-content: space-between;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.banner-content {
+    width: 76vw;
+}
+
+.banner-close {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.banner-close img {
+    width: 20px;
+    cursor: pointer;
+}
+
+.banner-icon-close {
+    overflow: visible !important;
+}
+
+.banner-content p {
+    text-align: center;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 16px;
+    color: #EFE5DE;
+}
+
+.banner-info {
+    background-color: #01172F;
+}
+
+body.dark .banner-info {
+    background-color: #000;
+}
+
+.banner-success {
+    background-color: #2F7458;
+}
+
+.banner-success p {
+    color: #EFE5DE;
+}
+
+.banner-error {
+    background-color: #C55D6C;
+}
+
+.banner-error p {
+    color: #EFE5DE;
+}
