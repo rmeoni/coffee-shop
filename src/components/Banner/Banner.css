@@ -68,3 +68,10 @@ body.dark .banner-info {
 .banner-error p {
     color: #EFE5DE;
 }
+
+@media (max-width: 820px) {
+    .banner {
+        margin-right: 0px;
+        margin-left: 0px;
+    }
+}
