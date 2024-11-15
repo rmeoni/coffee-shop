@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 const Banner = ({ type = 'info', message, onClose }) => { //Types: 'error', 'success', 'info'
     const { t } = useTranslation();
     const [isVisible, setIsVisible] = useState(true);
-/*
+
     useEffect(() => {
         // Always show the banner when message or type changes
         setIsVisible(true);
@@ -19,7 +19,7 @@ const Banner = ({ type = 'info', message, onClose }) => { //Types: 'error', 'suc
             setIsVisible(true);  // Show it if it wasn't closed
         }
     }, [message, type]); // Runs whenever message or type changes
-*/
+    
     const handleClose = () => {
         setIsVisible(false);
         localStorage.setItem('bannerClosed', 'true');
