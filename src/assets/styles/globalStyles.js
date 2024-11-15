@@ -212,7 +212,11 @@ const GlobalStyle = createGlobalStyle`
 
     body h3 {
       font-size: 16px;
-      line-height: 16px,
+      line-height: 16px;
+    }
+    
+    input {
+      font-size: 16px;
     }
 
     .primary-btn-l {
