@@ -158,5 +158,14 @@
     "close_cart": "Cerrar Carrito",
     "complete_order": "Completar Orden",
     "order_under_development": "Lo siento, nuestra página aún está en desarrollo. No se puede completar su pedido."
+  },
+  "checkout": {
+    "summary": "Resumen",
+    "coupon": "Cupón",
+    "address": "Dirección",
+    "shipping_method": "Método De Envío",
+    "payment_method": "Método De Pago",
+    "complete_order": "Completar Orden",
+    "new_address": "Agregar Dirección"
   }
 }

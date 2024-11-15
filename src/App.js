@@ -13,6 +13,7 @@ import { CartProvider } from './context/CartContext'; // Import the CartProvider
 import Cart from './components/Cart/Cart'; // Import the Cart component
 import CartIcon from './components/CartIcon/CartIcon'; // Import the CartIcon component
 import './i18n';
+import CheckoutPage from './pages/CheckoutPage';
 
 const AppContent = () => {
   const { isDarkMode } = useTheme();
@@ -38,6 +39,7 @@ const AppContent = () => {
         <Route path="/blog" element={<BlogPage />} />
         <Route path="/compra1educa1" element={<CharityPage />} />
         <Route path="/product/:id" element={<ProductDetailPage />} />
+        <Route path="/checkout" element={<CheckoutPage />} />
       </Routes>
     </Router>
   );

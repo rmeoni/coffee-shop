@@ -158,5 +158,14 @@
     "close_cart": "Close Cart",
     "complete_order": "Complete Order",
     "order_under_development": "Sorry, our page is still under development. Your order can't be completed"
+  },
+  "checkout": {
+    "summary": "Summary",
+    "coupon": "Coupon",
+    "address": "Address",
+    "shipping_method": "Shipping Method",
+    "payment_method": "Payment Method",
+    "complete_order": "Complete Order",
+    "new_address": "Add Address"
   }
 }
