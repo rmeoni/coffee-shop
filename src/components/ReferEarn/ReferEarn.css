@@ -100,10 +100,6 @@
     width: 100%;
   }
 
-  .refer-earn-photo img {
-
-  }
-
   .refer-earn-text {
     text-align: center;
     padding: 10px;
@@ -130,6 +126,6 @@
   #refer-button {
     margin-top: 48px !important;
     margin-bottom: 48px;
-    max-width: 200px !important;
+    max-width: 220px !important;
   }
 }

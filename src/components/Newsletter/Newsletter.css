@@ -14,7 +14,6 @@
   }
 
   .newsletter h1 {
-    font-size: 3.75em;
     margin-bottom: 40px;
     color:#01172F;
   }
@@ -60,20 +59,6 @@
     .newsletter {
       padding: 0px;
     }
-
-    .newsletter h1 {
-      font-size: 2.2em;
-      word-wrap: break-word;
-      word-break: normal;
-    }
   
-    .newsletter h2 {
-      font-size: 1.5em;
-    }
-  
-    .newsletter-form input,
-    .primary-btn-l {
-      font-size: 0.9em;
-    }
   }
   
