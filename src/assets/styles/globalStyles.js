@@ -42,6 +42,7 @@ const GlobalStyle = createGlobalStyle`
     line-height: 24px;
     font-weight: bold;
     color: #01172F;
+    text-transform: uppercase;
   }
 
   body.dark h3 {
