@@ -74,6 +74,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   .secondary-btn-s {
+    font-family: "Montserrat", sans-serif;
     background: transparent;
     border: 3px solid #01172F;
     border-radius: 32px;
@@ -82,6 +83,7 @@ const GlobalStyle = createGlobalStyle`
     text-transform: uppercase;
     font-weight: 700;
     transition: background-color 0.3s;
+    cursor: pointer;
   }
 
   .secondary-btn-s.dark {

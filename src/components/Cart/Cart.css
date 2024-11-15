@@ -134,14 +134,14 @@
   .cart {
     flex-direction: column;
     padding: 40px 0px 40px 0px;
-    max-height: 90vh; /* Adjust to fit mobile screen better */
+    max-height: 100vh; /* Adjust to fit mobile screen better */
     height: auto;
   }
 
   .cart-wrapper {
     padding-left: 24px;
     padding-top: 40px;
-    width: 100vw;
+    width: 96vw;
   }
 
   .cart-item {
