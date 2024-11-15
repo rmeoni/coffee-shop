@@ -1,3 +1,4 @@
+
 header {
   padding: 24px 0px 35px 0px;
   margin: auto;
@@ -161,6 +162,7 @@ body.dark .language-options li:hover {
 
   header {
     padding: 24px 0px 35px 0px;
+    position: relative;
   }
   .desktop-menu {
     display: none;
