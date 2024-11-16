@@ -166,7 +166,8 @@
     "shipping_method": "Shipping Method",
     "payment_method": "Payment Method",
     "complete_order": "Complete Order",
-    "new_address": "Add Address"
+    "new_address": "Add Address",
+    "coupon_code": "Coupon Code"
   },
   "banner": {
     "defaultMessage": "This site is just a demo. Your order won’t be delivered."

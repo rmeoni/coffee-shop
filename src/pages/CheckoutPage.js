@@ -92,8 +92,8 @@ const CheckoutPage = () => {
                         <form className="newsletter-form" onSubmit={handleCouponSubmit}>
                             <input
                                 type="text"
-                                name="name"
-                                placeholder={t('newsletter.namePlaceholder')}
+                                name="Coupon Code"
+                                placeholder={t('checkout.coupon_code')}
                                 value={formData.name}
                                 onChange={handleChange}
                                 required

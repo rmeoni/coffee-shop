@@ -4,7 +4,7 @@ import en from './locales/en/en.json';
 import es from './locales/es/es.json';
 
 // Check localStorage for saved language preference
-const savedLanguage = localStorage.getItem('language') || 'es'; // Default to 'es' if no language is saved
+const savedLanguage = localStorage.getItem('language') || 'en'; // Default to 'en' if no language is saved
 
 i18n
   .use(initReactI18next)

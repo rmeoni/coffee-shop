@@ -166,7 +166,8 @@
     "shipping_method": "Método De Envío",
     "payment_method": "Método De Pago",
     "complete_order": "Completar Orden",
-    "new_address": "Agregar Dirección"
+    "new_address": "Agregar Dirección",
+    "coupon_code": "Código del cupón"
   },
   "banner": {
     "defaultMessage": "Esta página solo es una demo. Tu orden no será entregada."
