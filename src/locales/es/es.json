@@ -155,6 +155,7 @@
     "price": "Precio",
     "amount": "Monto",
     "total": "Total",
+    "subtotal": "Subtotal",
     "close_cart": "Cerrar Carrito",
     "complete_order": "Completar Orden",
     "order_under_development": "Lo siento, nuestra página aún está en desarrollo. No se puede completar su pedido."
@@ -163,18 +164,23 @@
     "summary": "Resumen",
     "coupon": "Cupón",
     "address": "Dirección",
-    "shipping_method": "Método De Envío",
     "payment_method": "Método De Pago",
     "complete_order": "Completar Orden",
     "new_address": "Agregar Dirección"
   },
-  "banner": {
-    "defaultMessage": "Esta página solo es una demo. Tu orden no será entregada."
+  "shipping": {
+    "title": "Método De Envío",
+    "standard": "Envío Standard",
+    "standard_time": "3-5 días hábiles",
+    "standard_price": "Q30.00"
   },
   "coupon": {
     "coupon_code": "Código del cupón",
     "coupon_sucess": "Cupón aplicado exitosamente",
     "coupon_failed": "Este cupón no existe",
     "submitButton": "aplicar cupón"
-}
+},
+"banner": {
+    "defaultMessage": "Esta página solo es una demo. Tu orden no será entregada."
+  }
 }

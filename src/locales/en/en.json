@@ -155,6 +155,7 @@
     "price": "Price",
     "amount": "Amount",
     "total": "Total",
+    "subtotal": "Subtotal",
     "close_cart": "Close Cart",
     "complete_order": "Complete Order",
     "order_under_development": "Sorry, our page is still under development. Your order can't be completed"
@@ -168,13 +169,19 @@
     "complete_order": "Complete Order",
     "new_address": "Add Address"
   },
-  "banner": {
-    "defaultMessage": "This site is just a demo. Your order will not be delivered."
+  "shipping": {
+    "title": "Shipping Method",
+    "standard": "Standard Shipping",
+    "standard_time": "3-5 business days",
+    "standard_price": "Q30.00"
   },
   "coupon": {
-      "coupon_code": "Coupon Code",
-      "success": "Coupon applied succesfully",
-      "failed": "Coupon does not exist",
-      "submitButton": "apply coupon"
+    "coupon_code": "Coupon Code",
+    "success": "Coupon applied succesfully",
+    "failed": "Coupon does not exist",
+    "submitButton": "apply coupon"
+  },
+  "banner": {
+    "defaultMessage": "This site is just a demo. Your order will not be delivered."
   }
 }

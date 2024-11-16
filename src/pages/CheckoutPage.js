@@ -74,7 +74,7 @@ const CheckoutPage = () => {
                                     </div>
                                 </div>
                             ))}
-                            <h3>{t('cart.total')}: ${total.toFixed(2)}</h3> {/* Translated "Total" */}
+                            <h3>{t('cart.subtotal')}: ${total.toFixed(2)}</h3> {/* Translated "Subtotal" */}
                         </div>
                     </div>
                     <div className='checkout-address'>
@@ -82,7 +82,12 @@ const CheckoutPage = () => {
                         <button className={`secondary-btn-s ${isDarkMode ? 'dark' : ''}`}>{t('checkout.new_address')}</button>
                     </div>
                     <div className='checkout-shipping'>
-                        <h2>{t('checkout.shipping_method')}</h2>
+                        <h2>{t('shipping.title')}</h2>
+                        <div className='shipping-method'>
+                            <h3>{t('shipping.standard')}</h3>
+                            <p>{t('shipping.standard_time')}</p>
+                            <p>{t('shipping.standard_price')}</p>
+                        </div>
                     </div>
                 </div>
                 <div className='checkout-section' id="checkout-section-right">

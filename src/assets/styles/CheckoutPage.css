@@ -25,9 +25,35 @@
     margin-left: 64px;
 }
 
+.failed-message {
+    margin-top: 16px;
+}
+
+.checkout-shipping {
+    margin-top: 28px;
+}
+
+.shipping-method {
+    background-color: #F9F5F2;
+    max-width: 80%;
+    padding:12px;
+    border-radius: 12px;
+}
+
+body.dark .shipping-method {
+    background-color: #0D0D0D;
+}
+
+.checkout-payment-method {
+    margin-top: 28px;
+}
+
 @media (max-width: 820px) {
     .checkout {
         flex-direction: column;
         padding-left: 0px;
+    }
+    #checkout-section-right {
+        margin-left:0px;
     }
 }
