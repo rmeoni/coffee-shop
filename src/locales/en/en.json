@@ -165,7 +165,6 @@
     "coupon": "Coupon",
     "address": "Address",
     "shipping_method": "Shipping Method",
-    "payment_method": "Payment Method",
     "complete_order": "Complete Order",
     "new_address": "Add Address"
   },
@@ -174,6 +173,11 @@
     "standard": "Standard Shipping",
     "standard_time": "3-5 business days",
     "standard_price": "Q30.00"
+  },
+  "payment": {
+    "title": "Payment Method",
+    "transfer": "Bank Transfer",
+    "transfer_description": "Bank transfer to GYT Checkings Account"
   },
   "coupon": {
     "coupon_code": "Coupon Code",

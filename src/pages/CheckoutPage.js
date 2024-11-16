@@ -108,7 +108,11 @@ const CheckoutPage = () => {
                         {failedMessage && <p className="failed-message">{failedMessage}</p>}
                     </div>
                     <div className='checkout-payment-method'>
-                        <h2>{t('checkout.payment_method')}</h2>
+                        <h2>{t('shipping.title')}</h2>
+                        <div className='payment-method'>
+                            <h3>{t('payment.transfer')}</h3>
+                            <p>{t('payment.transfer_description')}</p>
+                        </div>
                     </div>
                 </div>
             </div>

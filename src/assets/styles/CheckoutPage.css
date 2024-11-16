@@ -44,6 +44,17 @@ body.dark .shipping-method {
     background-color: #0D0D0D;
 }
 
+.payment-method {
+    background-color: #F9F5F2;
+    padding:12px;
+    border-radius: 12px;
+}
+
+body.dark .payment-method {
+    background-color: #0D0D0D;
+}
+
+
 .checkout-payment-method {
     margin-top: 28px;
 }

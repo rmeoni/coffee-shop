@@ -164,7 +164,6 @@
     "summary": "Resumen",
     "coupon": "Cupón",
     "address": "Dirección",
-    "payment_method": "Método De Pago",
     "complete_order": "Completar Orden",
     "new_address": "Agregar Dirección"
   },
@@ -173,6 +172,11 @@
     "standard": "Envío Standard",
     "standard_time": "3-5 días hábiles",
     "standard_price": "Q30.00"
+  },
+  "payment": {
+    "title": "Método De Pago",
+    "transfer": "Transferencia Bancaria",
+    "transfer_description": "Transferencia bancaria a cuenta monetaria GYT"
   },
   "coupon": {
     "coupon_code": "Código del cupón",
