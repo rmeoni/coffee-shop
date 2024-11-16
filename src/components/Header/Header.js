@@ -21,19 +21,25 @@ const Header = () => {
   const [isLoading, setIsLoading] = useState(true);
   const { isDarkMode, toggleDarkMode } = useTheme();
   const { t, i18n } = useTranslation();
-  const mobileMenuRef = useRef(null); // Ref for the mobile menu
+  const mobileMenuRef = useRef(null);
 
-  const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
+  // Functions to toggle the mobile menu
+  const openMobileMenu = () => setIsMobileMenuOpen(true);
+  const closeMobileMenu = () => setIsMobileMenuOpen(false);
 
   const handleLanguageChange = (lang) => {
     i18n.changeLanguage(lang);
     localStorage.setItem('language', lang);
-    setIsLanguageDropdownOpen(false); // Close the dropdown
+    setIsLanguageDropdownOpen(false);
   };
 
   const handleClickOutside = (event) => {
-    if (mobileMenuRef.current && !mobileMenuRef.current.contains(event.target)) {
-      setIsMobileMenuOpen(false); // Close the mobile menu
+    if (
+      mobileMenuRef.current &&
+      !mobileMenuRef.current.contains(event.target) &&
+      !event.target.closest('.mobile-menu-icon') // Ensure close icon clicks aren't blocked
+    ) {
+      setIsMobileMenuOpen(false);
     }
   };
 
@@ -137,7 +143,7 @@ const Header = () => {
             </ul>
           </section>
         </div>
-        <div className="mobile-menu-icon" onClick={toggleMobileMenu}>
+        <div className="mobile-menu-icon" onClick={isMobileMenuOpen ? closeMobileMenu : openMobileMenu}>
           {isLoading ? (
             <Skeleton height={28} width={34} />
           ) : (
