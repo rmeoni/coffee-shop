@@ -123,6 +123,7 @@
 
   .testimonial-carousel {
     flex-direction: column;
+    overflow: visible;
   }
 
  .arrow {
