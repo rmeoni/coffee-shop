@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 import './Header.css';
@@ -17,16 +17,36 @@ import { useTranslation } from 'react-i18next';
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isLanguageDropdownOpen, setIsLanguageDropdownOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const { isDarkMode, toggleDarkMode } = useTheme();
   const { t, i18n } = useTranslation();
+  const mobileMenuRef = useRef(null); // Ref for the mobile menu
 
   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
 
   const handleLanguageChange = (lang) => {
     i18n.changeLanguage(lang);
     localStorage.setItem('language', lang);
+    setIsLanguageDropdownOpen(false); // Close the dropdown
   };
+
+  const handleClickOutside = (event) => {
+    if (mobileMenuRef.current && !mobileMenuRef.current.contains(event.target)) {
+      setIsMobileMenuOpen(false); // Close the mobile menu
+    }
+  };
+
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    } else {
+      document.removeEventListener('mousedown', handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isMobileMenuOpen]);
 
   const logo = isDarkMode ? coffeeLogoDark : coffeeLogoLight;
   const toggleIcon = isDarkMode ? iconToggleLightMode : iconToggleDarkMode;
@@ -35,9 +55,7 @@ const Header = () => {
   const languageIcon = isDarkMode ? languageIconDark : languageIconLight;
 
   useEffect(() => {
-    // Set a 2-second delay before starting to load images
     const timer = setTimeout(() => {
-      // Create image elements to preload each image
       const images = [logo, toggleIcon, hamburgerIcon, closeIcon, languageIcon];
       Promise.all(
         images.map(
@@ -46,16 +64,12 @@ const Header = () => {
               const img = new Image();
               img.src = src;
               img.onload = resolve;
-              img.onerror = resolve; // Resolve on error to avoid indefinite loading
+              img.onerror = resolve;
             })
         )
-      ).then(() => {
-        // Set isLoading to false after images are loaded
-        setIsLoading(false);
-      });
+      ).then(() => setIsLoading(false));
     }, 2000);
 
-    // Clear the timeout if the component unmounts
     return () => clearTimeout(timer);
   }, [logo, toggleIcon, hamburgerIcon, closeIcon, languageIcon]);
 
@@ -90,15 +104,22 @@ const Header = () => {
                   <li><a href="/nuestro-cafe">{t('header.our_coffee')}</a></li>
                   <li><a href="/tienda">{t('header.shop')}</a></li>
                   <li><a href="/compra1educa1">{t('header.charity')}</a></li>
-                  <li className="language-selector">
+                  <li
+                    className="language-selector"
+                    onClick={() => setIsLanguageDropdownOpen(!isLanguageDropdownOpen)}
+                    onMouseEnter={() => setIsLanguageDropdownOpen(true)}
+                    onMouseLeave={() => setIsLanguageDropdownOpen(false)}
+                  >
                     <span>
                       {t('header.language')}
                       <img src={languageIcon} style={{ width: '30px', height: '30px' }} id="language-icon" alt="Language Icon" />
                     </span>
-                    <ul className="language-options">
-                      <li onClick={() => handleLanguageChange("es")}>{t('header.spanish')}</li>
-                      <li onClick={() => handleLanguageChange("en")}>{t('header.english')}</li>
-                    </ul>
+                    {isLanguageDropdownOpen && (
+                      <ul className="language-options">
+                        <li onClick={() => handleLanguageChange('es')}>{t('header.spanish')}</li>
+                        <li onClick={() => handleLanguageChange('en')}>{t('header.english')}</li>
+                      </ul>
+                    )}
                   </li>
                   <li>
                     <img
@@ -131,7 +152,7 @@ const Header = () => {
           )}
         </a>
         {isMobileMenuOpen && (
-          <ul className={`mobile-menu ${isDarkMode ? 'dark' : ''}`}>
+          <ul className={`mobile-menu ${isDarkMode ? 'dark' : ''}`} ref={mobileMenuRef}>
             {isLoading ? (
               <>
                 <li><Skeleton width={80} /></li>
@@ -148,15 +169,17 @@ const Header = () => {
                 <li><a href="/nuestro-cafe">{t('header.our_coffee')}</a></li>
                 <li><a href="/tienda">{t('header.shop')}</a></li>
                 <li><a href="/compra1educa1">{t('header.charity')}</a></li>
-                <li className="language-selector">
+                <li className="language-selector" onClick={() => setIsLanguageDropdownOpen(!isLanguageDropdownOpen)}>
                   <span>
                     {t('header.language')}
                     <img src={languageIcon} style={{ width: '30px', height: '30px' }} id="language-icon" alt="Language Icon" />
                   </span>
-                  <ul className="language-options">
-                    <li onClick={() => handleLanguageChange("es")}>{t('header.spanish')}</li>
-                    <li onClick={() => handleLanguageChange("en")}>{t('header.english')}</li>
-                  </ul>
+                  {isLanguageDropdownOpen && (
+                    <ul className="language-options">
+                      <li onClick={() => handleLanguageChange('es')}>{t('header.spanish')}</li>
+                      <li onClick={() => handleLanguageChange('en')}>{t('header.english')}</li>
+                    </ul>
+                  )}
                 </li>
                 <li>
                   <img
