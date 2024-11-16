@@ -72,6 +72,18 @@ const GlobalStyle = createGlobalStyle`
   input {
     font-family: "Montserrat", sans-serif;
     font-size: 20px;
+    background-color: #fff;
+    padding: 16px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 40px;
+    box-shadow: 0px 4px 12px rgba(39, 44, 47, 0.1);
+  }
+
+  
+
+  body.dark input {
+    background-color: #000;
   }
 
   .secondary-btn-s {

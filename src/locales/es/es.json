@@ -166,10 +166,15 @@
     "shipping_method": "Método De Envío",
     "payment_method": "Método De Pago",
     "complete_order": "Completar Orden",
-    "new_address": "Agregar Dirección",
-    "coupon_code": "Código del cupón"
+    "new_address": "Agregar Dirección"
   },
   "banner": {
     "defaultMessage": "Esta página solo es una demo. Tu orden no será entregada."
-  }
+  },
+  "coupon": {
+    "coupon_code": "Código del cupón",
+    "coupon_sucess": "Cupón aplicado exitosamente",
+    "coupon_failed": "Este cupón no existe",
+    "submitButton": "aplicar cupón"
+}
 }

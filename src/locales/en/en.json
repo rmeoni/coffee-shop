@@ -166,10 +166,15 @@
     "shipping_method": "Shipping Method",
     "payment_method": "Payment Method",
     "complete_order": "Complete Order",
-    "new_address": "Add Address",
-    "coupon_code": "Coupon Code"
+    "new_address": "Add Address"
   },
   "banner": {
-    "defaultMessage": "This site is just a demo. Your order won’t be delivered."
+    "defaultMessage": "This site is just a demo. Your order will not be delivered."
+  },
+  "coupon": {
+      "coupon_code": "Coupon Code",
+      "success": "Coupon applied succesfully",
+      "failed": "Coupon does not exist",
+      "submitButton": "apply coupon"
   }
 }

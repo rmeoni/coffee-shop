@@ -15,13 +15,13 @@ const CheckoutPage = () => {
         name: '',
         email: ''
     });
-    const [successMessage, setSuccessMessage] = useState('');
+    const [failedMessage, setFailedMessage] = useState('')
 
     const handleChange = (e) => {
-        const { name, value } = e.target;
+        const { couponCode, value } = e.target;
         setFormData({
             ...formData,
-            [name]: value
+            [couponCode]: value
         });
     };
     const handleCouponSubmit = async (e) => {
@@ -30,18 +30,17 @@ const CheckoutPage = () => {
         // Placeholder for the API call to send form data somewhere
         console.log('Form data submitted:', formData);
 
-        // Show translated success message after form submission
-        setSuccessMessage(t('newsletter.successMessage'));
+        // Show translated failed message after form submission
+        setFailedMessage(t('coupon.failed'))
 
         // Clear the form fields after submission
         setFormData({
-            name: '',
-            email: ''
+            couponCode: ''
         });
 
         // Hide the success message after a few seconds
         setTimeout(() => {
-            setSuccessMessage('');
+            setFailedMessage('');
         }, 5000); // 5 seconds
     };
 
@@ -89,20 +88,19 @@ const CheckoutPage = () => {
                 <div className='checkout-section' id="checkout-section-right">
                     <div className='checkout-coupon'>
                         <h2>{t('checkout.coupon')}</h2>
-                        <form className="newsletter-form" onSubmit={handleCouponSubmit}>
+                        <form className="coupon-form" onSubmit={handleCouponSubmit}>
                             <input
                                 type="text"
                                 name="Coupon Code"
-                                placeholder={t('checkout.coupon_code')}
-                                value={formData.name}
+                                placeholder={t('coupon.coupon_code')}
+                                value={formData.couponCode}
                                 onChange={handleChange}
-                                required
                             />
                             <button type="submit" className={`secondary-btn-s ${isDarkMode ? 'dark' : ''}`} id="coupon-btn">
-                                {t('newsletter.submitButton')}
+                                {t('coupon.submitButton')}
                             </button>
                         </form>
-                        {successMessage && <p className="success-message">{successMessage}</p>}
+                        {failedMessage && <p className="failed-message">{failedMessage}</p>}
                     </div>
                     <div className='checkout-payment-method'>
                         <h2>{t('checkout.payment_method')}</h2>
