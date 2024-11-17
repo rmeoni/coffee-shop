@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom'; // Import useNavigate
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 import { useTheme } from '../context/ThemeContext';
@@ -16,6 +16,7 @@ const ProductDetailPage = () => {
   const { cartItems, setCartItems } = useCart();
   const [isLoading, setIsLoading] = useState(true);
   const { isDarkMode } = useTheme();
+  const navigate = useNavigate(); // Initialize navigate
 
   const allProducts = [
     {
@@ -129,6 +130,7 @@ const ProductDetailPage = () => {
     }
 
     setQuantity(1);
+    navigate('/carrito'); // Navigate to the cart page after adding the item
   };
 
   if (!product) {
