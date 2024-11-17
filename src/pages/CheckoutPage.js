@@ -130,7 +130,7 @@ const CheckoutPage = () => {
                         <p><strong>Total ${total + shipping.standard.cost.toFixed(2)}</strong></p>
                     </div>
                     <div className="checkout-submit">
-                        <Link to="/tienda">
+                        <Link to="/carrito">
                             <button className={`secondary-btn-l ${isDarkMode ? 'dark' : ''}`} style={{ marginBottom: '12px' }} id="cart-secondary-btn">
                                 {t('checkout.keep_shopping')}
                             </button>

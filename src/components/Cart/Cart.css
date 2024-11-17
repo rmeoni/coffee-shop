@@ -1,25 +1,12 @@
 /* src/components/Cart.css */
 
 .cart {
-  position: fixed;
-  bottom: 0;
-  left: 0;
   width: 100%;
-  background-color: #f6f0e8;
-  padding: 80px 0px 80px 0px;
   margin: 0px;
   display: flex;
   flex-direction: row;
   justify-content: center;
-  z-index: 999;
-  overflow-y: auto; /* Enable vertical scrolling */
-  max-height: 60vh; /* Limit height to 70% of the viewport */
-  height: auto;
   box-sizing: border-box;
-}
-
-.cart.dark {
-  background-color: #000;
 }
 
 .order-message {
@@ -42,7 +29,6 @@
   flex-direction: column;
   width: 800px;
   padding-left: 0px;
-  overflow-y: auto; /* Ensure the items inside the wrapper can scroll */
 
 }
 
@@ -142,13 +128,10 @@ body.dark .cart-item {
   .cart {
     flex-direction: column;
     padding: 40px 0px 40px 0px;
-    max-height: 90vh; /* Adjust to fit mobile screen better */
-    height: auto;
   }
 
   .cart-wrapper {
-    padding-left: 24px;
-    padding-top: 40px;
+    padding-left: 0px;
     width: 90vw;
   }
 
@@ -167,6 +150,7 @@ body.dark .cart-item {
   .cart-checkout {
     margin: auto;
     padding: 0px;
+    align-items:flex-start;
   }
 
   .cart-checkout h3 {

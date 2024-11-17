@@ -1,12 +1,12 @@
-import React, { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import React from 'react';
+import { useNavigate, Link } from 'react-router-dom'; // Import useNavigate
 import { useCart } from '../../context/CartContext';
 import { useTheme } from '../../context/ThemeContext';
 import './Cart.css';
 import { useTranslation } from 'react-i18next';
 
 const Cart = () => {
-  const { cartItems, updateCart, isCartVisible, toggleCartVisibility } = useCart();
+  const { cartItems, updateCart } = useCart();
   const navigate = useNavigate(); // Initialize navigate function
   const { isDarkMode } = useTheme();
   const { t } = useTranslation(); // Import the t function
@@ -15,35 +15,7 @@ const Cart = () => {
   // Function to handle the Complete Order button click
   const handleCompleteOrder = () => {
     navigate('/checkout'); // Navigate to the checkout page
-    toggleCartVisibility();
   };
-
-  // Disable scroll when cart is open on mobile
-  useEffect(() => {
-    const handleScrollLock = () => {
-      if (isCartVisible && window.innerWidth <= 820) {
-        document.body.style.overflow = 'hidden'; // Disable body scroll
-      } else {
-        document.body.style.overflow = 'auto'; // Re-enable body scroll when cart is closed
-      }
-    };
-
-    handleScrollLock(); // Run the scroll lock logic on mount
-
-    // Add resize listener to handle screen width change
-    window.addEventListener('resize', handleScrollLock);
-
-    // Clean up the event listener on component unmount or visibility change
-    return () => {
-      window.removeEventListener('resize', handleScrollLock);
-      document.body.style.overflow = 'auto'; // Ensure scroll is re-enabled if cart is closed
-    };
-  }, [isCartVisible]); // Only re-run when isCartVisible changes
-
-  // Only render the cart if it is visible and not empty
-  if (!isCartVisible || cartItems.length === 0) {
-    return null;
-  }
 
   return (
     <div className={`cart ${isDarkMode ? 'dark' : ''}`}>
@@ -76,9 +48,11 @@ const Cart = () => {
       </div>
       <div className="cart-checkout">
         <h3>{t('cart.subtotal')}: ${total.toFixed(2)}</h3>
-        <button onClick={toggleCartVisibility} className={`secondary-btn-l ${isDarkMode ? 'dark' : ''}`} style={{ marginBottom: '12px' }} id="cart-secondary-btn">
-          {t('cart.close_cart')}
-        </button>
+        <Link to="/tienda">
+          <button className={`secondary-btn-l ${isDarkMode ? 'dark' : ''}`} style={{ marginBottom: '12px' }} id="cart-secondary-btn">
+            {t('cart.close_cart')}
+          </button>
+        </Link>
         <button onClick={handleCompleteOrder} className={`primary-btn-l ${isDarkMode ? 'dark' : ''}`} id="cart-primary-btn">
           {t('cart.complete_order')}
         </button>

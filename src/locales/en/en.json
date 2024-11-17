@@ -157,7 +157,7 @@
     "total": "Total",
     "subtotal": "Subtotal",
     "close_cart": "Close Cart",
-    "complete_order": "Complete Order",
+    "complete_order": "Checkout",
     "order_under_development": "Sorry, our page is still under development. Your order can't be completed",
     "shipping_notice": "Shipping will be calculated at checkout"
   },
@@ -190,6 +190,7 @@
     "submitButton": "apply coupon"
   },
   "banner": {
-    "defaultMessage": "This site is just a demo. Your order will not be delivered."
+    "defaultMessage": "This site is just a demo. Your order will not be delivered.",
+    "addedToCart'": "Item added to cart succesfully"
   }
 }

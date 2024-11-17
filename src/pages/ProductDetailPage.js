@@ -1,19 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import Header from '../components/Header/Header';
-import Footer from '../components/Footer/Footer';
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 import { useTheme } from '../context/ThemeContext';
 import { useCart } from '../context/CartContext';
 import { useTranslation } from 'react-i18next';
+import Header from '../components/Header/Header';
+import Footer from '../components/Footer/Footer';
 import '../assets/styles/ProductDetailPage.css';
 
 const ProductDetailPage = () => {
   const { id } = useParams();
   const { t } = useTranslation();
   const [quantity, setQuantity] = useState(1);
-  const { cartItems, setCartItems, setIsCartVisible } = useCart();
+  const { cartItems, setCartItems } = useCart();
   const [isLoading, setIsLoading] = useState(true);
   const { isDarkMode } = useTheme();
 
@@ -124,10 +124,8 @@ const ProductDetailPage = () => {
           ? { ...item, quantity: item.quantity + quantity }
           : item
       ));
-      setIsCartVisible(true);
     } else {
       setCartItems([...cartItems, { ...product, quantity }]);
-      setIsCartVisible(true);
     }
 
     setQuantity(1);

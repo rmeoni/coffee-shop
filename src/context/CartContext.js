@@ -5,17 +5,12 @@ const CartContext = createContext();
 
 // Cart Provider component to wrap the app
 export const CartProvider = ({ children }) => {
-  // Initialize cartItems state with data from localStorage or an empty array if none exists
   const [cartItems, setCartItems] = useState(() => {
     const storedCartItems = localStorage.getItem('cartItems');
     return storedCartItems ? JSON.parse(storedCartItems) : [];
   });
 
-  // Initialize isCartVisible state from localStorage
-  const [isCartVisible, setIsCartVisible] = useState(() => {
-    const storedIsCartVisible = localStorage.getItem('isCartVisible');
-    return storedIsCartVisible ? JSON.parse(storedIsCartVisible) : false;
-  });
+  const [banner, setBanner] = useState({ message: null, type: 'info' });
 
   // Sync cart items to localStorage whenever cartItems change
   useEffect(() => {
@@ -26,44 +21,48 @@ export const CartProvider = ({ children }) => {
     }
   }, [cartItems]);
 
-  // Sync isCartVisible to localStorage whenever it changes
-  useEffect(() => {
-    localStorage.setItem('isCartVisible', JSON.stringify(isCartVisible));
-  }, [isCartVisible]);
-
-  // Function to toggle cart visibility
-  const toggleCartVisibility = () => {
-    setIsCartVisible(prev => {
-      const newVisibility = !prev;
-      localStorage.setItem('isCartVisible', JSON.stringify(newVisibility)); // Sync with localStorage immediately
-      return newVisibility;
-    });
-  };
-
   // Function to update the cart (add, update quantity, or remove items)
-  const updateCart = (id, newQuantity) => {
+  const updateCart = (id, newQuantity, productTitle = null) => {
     setCartItems(prevItems => {
       const itemExists = prevItems.some(item => item.id === id);
 
-      // Set cart visibility to true if an item is added
-      if (newQuantity > 0 && !itemExists) {
-        setIsCartVisible(true);
-      }
-
       if (newQuantity === 0) {
+        if (itemExists) {
+          setBanner({
+            message: `${productTitle || 'Item'} was removed from your cart.`,
+            type: 'info',
+          });
+        }
         return prevItems.filter(item => item.id !== id);
       } else {
-        return itemExists
+        const updatedItems = itemExists
           ? prevItems.map(item =>
               item.id === id ? { ...item, quantity: newQuantity } : item
             )
           : [...prevItems, { id, quantity: newQuantity }];
+
+        setBanner({
+          message: `${productTitle || 'Item'} has been added to your cart.`,
+          type: 'success',
+        });
+
+        return updatedItems;
       }
     });
   };
 
+  const clearBannerMessage = () => setBanner({ message: null, type: 'info' });
+
   return (
-    <CartContext.Provider value={{ cartItems, setCartItems, updateCart, isCartVisible, setIsCartVisible, toggleCartVisibility }}>
+    <CartContext.Provider
+      value={{
+        cartItems,
+        setCartItems,
+        updateCart,
+        banner,
+        clearBannerMessage,
+      }}
+    >
       {children}
     </CartContext.Provider>
   );
