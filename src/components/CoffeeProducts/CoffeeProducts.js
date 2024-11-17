@@ -97,7 +97,7 @@ const CoffeeProducts = () => {
               <img src={product.imgSrc} alt={t(`coffeeProducts.product${index + 1}_title`)} className="product-img" />
               <p className={`price-per-pound ${isDarkMode ? 'dark' : ''}`}>{t('coffeeProducts.save')}</p>
               <h2>{t(`coffeeProducts.product${index + 1}_title`)}</h2>
-              <p className="price">{product.price}</p>
+              <p className="price">${product.price}</p>
               <button className={`primary-btn-l ${isDarkMode ? 'dark' : ''}`} onClick={() => handleViewDetails(product.id)} style={{ cursor: 'pointer'}}>
                 {t('coffeeProducts.view_details')}
               </button>

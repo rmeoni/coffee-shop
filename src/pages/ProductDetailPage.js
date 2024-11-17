@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom'; // Import useNavigate
+import { useParams, useNavigate } from 'react-router-dom';
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 import { useTheme } from '../context/ThemeContext';
 import { useCart } from '../context/CartContext';
 import { useTranslation } from 'react-i18next';
+import { useProductContext } from '../context/ProductContext';
 import Header from '../components/Header/Header';
 import Footer from '../components/Footer/Footer';
 import '../assets/styles/ProductDetailPage.css';
@@ -12,72 +13,14 @@ import '../assets/styles/ProductDetailPage.css';
 const ProductDetailPage = () => {
   const { id } = useParams();
   const { t } = useTranslation();
-  const [quantity, setQuantity] = useState(1);
-  const { cartItems, setCartItems } = useCart();
-  const [isLoading, setIsLoading] = useState(true);
   const { isDarkMode } = useTheme();
-  const navigate = useNavigate(); // Initialize navigate
+  const navigate = useNavigate();
+  const { cartItems, setCartItems } = useCart();
+  const { allProducts } = useProductContext(); // Access all products from the context
+  const [quantity, setQuantity] = useState(1);
+  const [isLoading, setIsLoading] = useState(true);
 
-  const allProducts = [
-    {
-      id: '1',
-      imgSrc: '/images/product-image.png',
-      pricePerPound: '$9.96',
-      title: t('coffeeProducts.product1_title'),
-      category: 'Molido',
-      price: 299.00
-    },
-    {
-      id: '2',
-      imgSrc: '/images/product-image.png',
-      pricePerPound: '$9.95',
-      title: t('coffeeProducts.product2_title'),
-      category: 'Molido',
-      price: 199.00
-    },
-    {
-      id: '3',
-      imgSrc: '/images/product-image.png',
-      pricePerPound: '$9.99',
-      title: t('coffeeProducts.product3_title'),
-      category: 'Molido',
-      price: 99.00
-    },
-    {
-      id: '4',
-      imgSrc: '/images/product-image.png',
-      pricePerPound: '$9.96',
-      title: t('coffeeProducts.product4_title'),
-      category: 'Grano',
-      price: 299.00
-    },
-    {
-      id: '5',
-      imgSrc: '/images/product-image.png',
-      pricePerPound: '$9.95',
-      title: t('coffeeProducts.product5_title'),
-      category: 'Grano',
-      price: 199.00
-    },
-    {
-      id: '6',
-      imgSrc: '/images/product-image.png',
-      pricePerPound: '$9.99',
-      title: t('coffeeProducts.product6_title'),
-      category: 'Grano',
-      price: 99.00
-    },
-    {
-      id: '7',
-      imgSrc: '/images/product-image-2.png',
-      pricePerPound: '',
-      title: t('coffeeProducts.product7_title'),
-      category: 'Accesorios',
-      price: 9.99
-    },
-  ];
-
-  const product = allProducts.find(p => p.id === id);
+  const product = allProducts.find(p => p.id === id); // Find the product from the context
 
   useEffect(() => {
     const loadImageWithDelay = () => {
