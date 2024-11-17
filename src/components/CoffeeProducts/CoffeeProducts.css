@@ -184,7 +184,7 @@
   /* Default styles for mobile (skeletons displayed in column) */
   .buttons .skeleton-container {
     display: flex;
-    flex-direction:row;
+    flex-direction:column;
     gap: 10px;
     /* Adds space between skeletons */
   }
