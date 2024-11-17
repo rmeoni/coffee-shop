@@ -127,7 +127,7 @@ const CheckoutPage = () => {
                         <p>Subtotal ({cartItems.length} {t('checkout.items')}) ${total.toFixed(2)}</p>
                         <p>{t('shipping.standard')} ${shipping.standard.cost.toFixed(2)} </p>
                         <br />
-                        <p><strong>Total ${total + shipping.standard.cost.toFixed(2)}</strong></p>
+                        <p><strong>Total ${total + shipping.standard.cost}</strong></p>
                     </div>
                     <div className="checkout-submit">
                         <Link to="/carrito">
