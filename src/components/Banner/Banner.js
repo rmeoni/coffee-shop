@@ -1,47 +1,44 @@
 import React, { useState, useEffect } from 'react';
 import closeIconDark from '../../assets/images/icon-close-dark.svg';
-import './Banner.css'; // CSS file to style the banner
-import { useTranslation } from 'react-i18next';
+import './Banner.css';
+import { useCart } from '../../context/CartContext';
 
-const Banner = ({ type = 'info', message, onClose }) => { //Types: 'error', 'success', 'info'
-    const { t } = useTranslation();
-    const [isVisible, setIsVisible] = useState(true);
+const Banner = () => {
+  const { banner, clearBannerMessage } = useCart();
+  const [isVisible, setIsVisible] = useState(false);
 
-    useEffect(() => {
-        // Always show the banner when message or type changes
-        setIsVisible(true);
+  // Update visibility when banner message changes
+  useEffect(() => {
+    if (banner.message) {
+      setIsVisible(true);
+      console.log("Banner visible with message:", banner.message);
+    }
+  }, [banner]);
 
-        // Check if the banner was previously closed and stored in localStorage
-        const storedBannerState = localStorage.getItem('bannerClosed');
-        if (storedBannerState === 'true') {
-            setIsVisible(false);  // Keep the banner hidden if the user has closed it before
-        } else {
-            setIsVisible(true);  // Show it if it wasn't closed
-        }
-    }, [message, type]); // Runs whenever message or type changes
-    
-    const handleClose = () => {
-        setIsVisible(false);
-        localStorage.setItem('bannerClosed', 'true');
-        if (onClose) {
-            onClose();
-        }
-    };
+  const handleClose = () => {
+    setIsVisible(false);
+    clearBannerMessage();
+  };
 
-    if (!isVisible) return null;
+  if (!isVisible || !banner.message) return null;
 
-    return (
-        <div className={`banner banner-${type}`}>
-            <div className="banner-wrapper">
-                <section className="banner-content">
-                    <p>{message || t('banner.defaultMessage')}</p>
-                </section>
-                <section className="banner-close">
-                    <img className="banner-icon-close" src={closeIconDark} alt="Close Icon" onClick={handleClose} />
-                </section>
-            </div>
-        </div>
-    );
+  return (
+    <div className={`banner banner-${banner.type}`}>
+      <div className="banner-wrapper">
+        <section className="banner-content">
+          <p>{banner.message}</p>
+        </section>
+        <section className="banner-close">
+          <img
+            className="banner-icon-close"
+            src={closeIconDark}
+            alt="Close Icon"
+            onClick={handleClose}
+          />
+        </section>
+      </div>
+    </div>
+  );
 };
 
 export default Banner;

@@ -15,12 +15,12 @@ const ProductDetailPage = () => {
   const { t } = useTranslation();
   const { isDarkMode } = useTheme();
   const navigate = useNavigate();
-  const { cartItems, setCartItems } = useCart();
+  const { cartItems, updateCart } = useCart(); // Use updateCart
   const { allProducts } = useProductContext(); // Access all products from the context
   const [quantity, setQuantity] = useState(1);
   const [isLoading, setIsLoading] = useState(true);
 
-  const product = allProducts.find(p => p.id === id); // Find the product from the context
+  const product = allProducts.find((p) => p.id === id);
 
   useEffect(() => {
     const loadImageWithDelay = () => {
@@ -31,7 +31,7 @@ const ProductDetailPage = () => {
           img.onload = () => setIsLoading(false);
           img.onerror = () => setIsLoading(false);
         } else {
-          setIsLoading(false); // Skip loading if product is not found
+          setIsLoading(false);
         }
       }, 2000);
     };
@@ -39,40 +39,23 @@ const ProductDetailPage = () => {
     loadImageWithDelay();
   }, [product]);
 
-  useEffect(() => {
-    const storedCartItems = JSON.parse(localStorage.getItem('cartItems'));
-    if (storedCartItems) {
-      setCartItems(storedCartItems);
-    }
-  }, [setCartItems]);
-
-  useEffect(() => {
-    if (cartItems.length > 0) {
-      localStorage.setItem('cartItems', JSON.stringify(cartItems));
-    } else {
-      localStorage.removeItem('cartItems');
-    }
-  }, [cartItems]);
-
-  const handleIncrease = () => setQuantity(prevQuantity => prevQuantity + 1);
+  const handleIncrease = () => setQuantity((prevQuantity) => prevQuantity + 1);
   const handleDecrease = () => {
-    if (quantity > 1) setQuantity(prevQuantity => prevQuantity - 1);
+    if (quantity > 1) setQuantity((prevQuantity) => prevQuantity - 1);
   };
 
   const handleAddToCart = () => {
-    const existingItem = cartItems.find(item => item.id === product.id);
+    const existingItem = cartItems.find((item) => item.id === product.id);
 
     if (existingItem) {
-      setCartItems(cartItems.map(item =>
-        item.id === product.id
-          ? { ...item, quantity: item.quantity + quantity }
-          : item
-      ));
+      // Update quantity of existing item
+      updateCart(product.id, existingItem.quantity + quantity, product.price, product.title);
     } else {
-      setCartItems([...cartItems, { ...product, quantity }]);
+      // Add new item to the cart
+      updateCart(product.id, quantity, product.price, product.title);
     }
 
-    setQuantity(1);
+    setQuantity(1); // Reset the quantity selector
     navigate('/carrito'); // Navigate to the cart page after adding the item
   };
 
@@ -102,9 +85,13 @@ const ProductDetailPage = () => {
               <h2>${product.price.toFixed(2)}</h2>
 
               <div className="quantity-selector">
-                <button onClick={handleDecrease} className="quantity-btn">-</button>
+                <button onClick={handleDecrease} className="quantity-btn">
+                  -
+                </button>
                 <h3>{quantity}</h3>
-                <button onClick={handleIncrease} className="quantity-btn">+</button>
+                <button onClick={handleIncrease} className="quantity-btn">
+                  +
+                </button>
               </div>
 
               <button

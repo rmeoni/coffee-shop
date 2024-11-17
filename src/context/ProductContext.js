@@ -14,7 +14,7 @@ export const ProductProvider = ({ children }) => {
     { id: '4', imgSrc: '/images/product-image.png', pricePerPound: '$9.96', title: 'Box of 30 Pounds of Gourmet Whole Bean Coffee', category: 'Grano', price: 299 },
     { id: '5', imgSrc: '/images/product-image.png', pricePerPound: '$9.95', title: 'Box of 20 Pounds of Gourmet Whole Bean Coffee', category: 'Grano', price: 199 },
     { id: '6', imgSrc: '/images/product-image.png', pricePerPound: '$9.99', title: 'Box of 10 Pounds of Gourmet Whole Bean Coffee', category: 'Grano', price: 99 },
-    { id: '7', imgSrc: '/images/product-image-2.png', pricePerPound: '', title: 'Accessories 1', category: 'Accesorios', price: '$9.99' },
+    { id: '7', imgSrc: '/images/product-image-2.png', pricePerPound: '', title: 'Spoon + Wooden Clip 2 in 1', category: 'Accesorios', price: 9.99 },
   ], []);
 
   const filteredProducts = useMemo(() => allProducts.filter(product => product.category === category), [allProducts, category]);

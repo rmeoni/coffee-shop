@@ -190,7 +190,9 @@
     "submitButton": "apply coupon"
   },
   "banner": {
-    "defaultMessage": "This site is just a demo. Your order will not be delivered.",
-    "addedToCart'": "Item added to cart succesfully"
+    "default_message": "This site is just a demo. Your order will not be delivered.",
+    "item_added": "Item added to the cart",
+    "item_removed": "Item wass removed from the cart",
+    "item_updated": "Cart has been updated"
   }
 }

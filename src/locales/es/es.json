@@ -189,7 +189,9 @@
     "submitButton": "aplicar cupón"
 },
 "banner": {
-    "defaultMessage": "Esta página solo es una demo. Tu orden no será entregada.",
-    "addedToCart'": "Artículo agregado al carrito"
+    "default_message": "Esta página solo es una demo. Tu orden no será entregada.",
+    "item_added": "Artículo agregado al carrito",
+    "item_removed": "Artículo removido del carrito",
+    "item_updated": "Carrito actualizado"
   }
 }

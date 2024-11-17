@@ -20,7 +20,7 @@ const Cart = () => {
   const handleClose = () => {
     navigate('/tienda');
   }
-
+  console.log('Cart Items:', cartItems);
   return (
     <div className={`cart ${isDarkMode ? 'dark' : ''}`}>
       <div className="cart-wrapper">
