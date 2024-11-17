@@ -1,4 +1,5 @@
 import { React, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import { useTheme } from '../context/ThemeContext';
 import { useTranslation } from 'react-i18next';
@@ -129,9 +130,11 @@ const CheckoutPage = () => {
                         <p><strong>Total ${total + shipping.standard.cost.toFixed(2)}</strong></p>
                     </div>
                     <div className="checkout-submit">
-                        <button className={`secondary-btn-l ${isDarkMode ? 'dark' : ''}`} style={{ marginBottom: '12px' }} id="cart-secondary-btn">
-                            {t('checkout.keep_shopping')}
-                        </button>
+                        <Link to="/tienda">
+                            <button className={`secondary-btn-l ${isDarkMode ? 'dark' : ''}`} style={{ marginBottom: '12px' }} id="cart-secondary-btn">
+                                {t('checkout.keep_shopping')}
+                            </button>
+                        </Link>
                         <button onClick={handleCompleteOrder} className={`primary-btn-l ${isDarkMode ? 'dark' : ''}`} id="cart-primary-btn">
                             {t('checkout.complete_order')}
                         </button>
