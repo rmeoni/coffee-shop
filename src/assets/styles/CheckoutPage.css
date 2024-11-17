@@ -73,6 +73,10 @@ body.dark .payment-method {
     margin-top: 28px;
 }
 
+.checkout-submit {
+    margin-top: 76px;
+}
+
 @media (max-width: 820px) {
     .checkout {
         flex-direction: column;

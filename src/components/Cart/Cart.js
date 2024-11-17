@@ -76,10 +76,10 @@ const Cart = () => {
       </div>
       <div className="cart-checkout">
         <h3>{t('cart.subtotal')}: ${total.toFixed(2)}</h3>
-        <button onClick={toggleCartVisibility} className={`secondary-btn-l ${isDarkMode ? 'dark' : ''}`} style={{ marginBottom: '12px' }} id="cart-secondary-button">
+        <button onClick={toggleCartVisibility} className={`secondary-btn-l ${isDarkMode ? 'dark' : ''}`} style={{ marginBottom: '12px' }} id="cart-secondary-btn">
           {t('cart.close_cart')}
         </button>
-        <button onClick={handleCompleteOrder} className={`primary-btn-l ${isDarkMode ? 'dark' : ''}`}>
+        <button onClick={handleCompleteOrder} className={`primary-btn-l ${isDarkMode ? 'dark' : ''}`} id="cart-primary-btn">
           {t('cart.complete_order')}
         </button>
       </div>

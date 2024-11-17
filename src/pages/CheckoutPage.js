@@ -48,6 +48,10 @@ const CheckoutPage = () => {
         }, 5000); // 5 seconds
     };
 
+    const handleCompleteOrder = () => {
+        console.log('order completed')
+    }
+
     return (
         <>
             <Header />
@@ -118,11 +122,19 @@ const CheckoutPage = () => {
                         </div>
                     </div>
                     <div className='checkout-order-summary'>
-                        <h3>{t('checkout.order_summary')}</h3>
+                        <h2>{t('checkout.order_summary')}</h2>
                         <p>Subtotal ({cartItems.length} {t('checkout.items')}) ${total.toFixed(2)}</p>
                         <p>{t('shipping.standard')} ${shipping.standard.cost.toFixed(2)} </p>
-                        <br/>
+                        <br />
                         <p><strong>Total ${total + shipping.standard.cost.toFixed(2)}</strong></p>
+                    </div>
+                    <div className="checkout-submit">
+                        <button className={`secondary-btn-l ${isDarkMode ? 'dark' : ''}`} style={{ marginBottom: '12px' }} id="cart-secondary-btn">
+                            {t('checkout.keep_shopping')}
+                        </button>
+                        <button onClick={handleCompleteOrder} className={`primary-btn-l ${isDarkMode ? 'dark' : ''}`} id="cart-primary-btn">
+                            {t('checkout.complete_order')}
+                        </button>
                     </div>
                 </div>
             </div>

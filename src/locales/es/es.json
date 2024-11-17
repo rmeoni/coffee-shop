@@ -165,14 +165,15 @@
     "summary": "Resumen",
     "coupon": "Cupón",
     "address": "Dirección",
-    "complete_order": "Completar Orden",
+    "complete_order": "Finalizar Orden",
     "new_address": "Agregar Dirección",
     "order_summary": "Resumen del pedido",
-    "items": "artículos"
+    "items": "artículos",
+    "keep_shopping": "Regresar"
   },
   "shipping": {
     "title": "Método De Envío",
-    "standard": "Envío Standard",
+    "standard": "Envío Estandar",
     "standard_time": "3-5 días hábiles",
     "standard_price": "$5.00"
   },

@@ -169,7 +169,8 @@
     "complete_order": "Complete Order",
     "new_address": "Add Address",
     "order_summary": "Order summary",
-    "items": "items"
+    "items": "items",
+    "keep_shopping": "Back to shop"
   },
   "shipping": {
     "title": "Shipping Method",

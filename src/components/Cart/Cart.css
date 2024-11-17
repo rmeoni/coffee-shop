@@ -130,7 +130,11 @@ body.dark .cart-item {
   padding-bottom: 16px;
 }
 
-#cart-secondary-button {
+#cart-secondary-btn {
+  width: 100%;
+}
+
+#cart-primary-btn {
   width: 100%;
 }
 
