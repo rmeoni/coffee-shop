@@ -1,5 +1,4 @@
 /* src/components/Cart.css */
-
 .cart {
   width: 100%;
   margin: 0px;
@@ -148,7 +147,7 @@ body.dark .cart-item {
   }
 
   .cart-checkout {
-    margin: auto;
+    margin-left: 0px;
     padding: 0px;
     align-items:flex-start;
   }

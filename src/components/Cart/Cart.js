@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigate, Link } from 'react-router-dom'; // Import useNavigate
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import { useCart } from '../../context/CartContext';
 import { useTheme } from '../../context/ThemeContext';
 import './Cart.css';
@@ -16,6 +16,10 @@ const Cart = () => {
   const handleCompleteOrder = () => {
     navigate('/checkout'); // Navigate to the checkout page
   };
+  //Function to close the cart
+  const handleClose = () => {
+    navigate('/tienda');
+  }
 
   return (
     <div className={`cart ${isDarkMode ? 'dark' : ''}`}>
@@ -48,11 +52,9 @@ const Cart = () => {
       </div>
       <div className="cart-checkout">
         <h3>{t('cart.subtotal')}: ${total.toFixed(2)}</h3>
-        <Link to="/tienda">
-          <button className={`secondary-btn-l ${isDarkMode ? 'dark' : ''}`} style={{ marginBottom: '12px' }} id="cart-secondary-btn">
+          <button onClick={handleClose} className={`secondary-btn-l ${isDarkMode ? 'dark' : ''}`} style={{ marginBottom: '12px' }} id="cart-secondary-btn">
             {t('cart.close_cart')}
           </button>
-        </Link>
         <button onClick={handleCompleteOrder} className={`primary-btn-l ${isDarkMode ? 'dark' : ''}`} id="cart-primary-btn">
           {t('cart.complete_order')}
         </button>
