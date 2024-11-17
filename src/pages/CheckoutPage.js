@@ -78,7 +78,6 @@ const CheckoutPage = () => {
                                     </div>
                                 </div>
                             ))}
-                            <h3>{t('cart.subtotal')}: ${total.toFixed(2)}</h3> {/* Translated "Subtotal" */}
                         </div>
                     </div>
                     <div className='checkout-address'>
@@ -122,6 +121,8 @@ const CheckoutPage = () => {
                         <h3>{t('checkout.order_summary')}</h3>
                         <p>Subtotal ({cartItems.length} {t('checkout.items')}) ${total.toFixed(2)}</p>
                         <p>{t('shipping.standard')} ${shipping.standard.cost.toFixed(2)} </p>
+                        <br/>
+                        <p><strong>Total ${total + shipping.standard.cost.toFixed(2)}</strong></p>
                     </div>
                 </div>
             </div>
