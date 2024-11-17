@@ -21,7 +21,7 @@ const ProductDetailPage = () => {
   const allProducts = [
     {
       id: '1',
-      imgSrc: '/images/product-image.svg',
+      imgSrc: '/images/product-image.png',
       pricePerPound: '$9.96',
       title: t('coffeeProducts.product1_title'),
       category: 'Molido',
@@ -29,7 +29,7 @@ const ProductDetailPage = () => {
     },
     {
       id: '2',
-      imgSrc: '/images/product-image.svg',
+      imgSrc: '/images/product-image.png',
       pricePerPound: '$9.95',
       title: t('coffeeProducts.product2_title'),
       category: 'Molido',
@@ -37,7 +37,7 @@ const ProductDetailPage = () => {
     },
     {
       id: '3',
-      imgSrc: '/images/product-image.svg',
+      imgSrc: '/images/product-image.png',
       pricePerPound: '$9.99',
       title: t('coffeeProducts.product3_title'),
       category: 'Molido',
@@ -45,7 +45,7 @@ const ProductDetailPage = () => {
     },
     {
       id: '4',
-      imgSrc: '/images/product-image.svg',
+      imgSrc: '/images/product-image.png',
       pricePerPound: '$9.96',
       title: t('coffeeProducts.product4_title'),
       category: 'Grano',
@@ -53,7 +53,7 @@ const ProductDetailPage = () => {
     },
     {
       id: '5',
-      imgSrc: '/images/product-image.svg',
+      imgSrc: '/images/product-image.png',
       pricePerPound: '$9.95',
       title: t('coffeeProducts.product5_title'),
       category: 'Grano',
@@ -61,7 +61,7 @@ const ProductDetailPage = () => {
     },
     {
       id: '6',
-      imgSrc: '/images/product-image.svg',
+      imgSrc: '/images/product-image.png',
       pricePerPound: '$9.99',
       title: t('coffeeProducts.product6_title'),
       category: 'Grano',
@@ -69,7 +69,7 @@ const ProductDetailPage = () => {
     },
     {
       id: '7',
-      imgSrc: '/images/product-image-2.svg',
+      imgSrc: '/images/product-image-2.png',
       pricePerPound: '',
       title: t('coffeeProducts.product7_title'),
       category: 'Accesorios',

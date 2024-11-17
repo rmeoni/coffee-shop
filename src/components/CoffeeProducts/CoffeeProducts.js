@@ -1,30 +1,18 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect } from 'react';
 import './CoffeeProducts.css';
 import { useTheme } from '../../context/ThemeContext';
 import { useNavigate } from 'react-router-dom';
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 import { useTranslation } from 'react-i18next';
+import { useProductContext } from '../../context/ProductContext';
 
 const CoffeeProducts = () => {
   const { isDarkMode } = useTheme();
   const navigate = useNavigate();
   const { t } = useTranslation();
+  const { category, setCategory, filteredProducts } = useProductContext(); // Removed allProducts and useMemo
   const [isLoading, setIsLoading] = useState(true);
-  const [category, setCategory] = useState('Molido');
-
-  // Use useMemo to memoize the products array so it doesn't recreate on each render
-  const allProducts = useMemo(() => [
-    { id: '1', imgSrc: '/images/product-image.svg', pricePerPound: '$9.96', title: t('coffeeProducts.product1_title'), category: 'Molido', price: '$299.00' },
-    { id: '2', imgSrc: '/images/product-image.svg', pricePerPound: '$9.95', title: t('coffeeProducts.product2_title'), category: 'Molido', price: '$199.00' },
-    { id: '3', imgSrc: '/images/product-image.svg', pricePerPound: '$9.99', title: t('coffeeProducts.product3_title'), category: 'Molido', price: '$99.00' },
-    { id: '4', imgSrc: '/images/product-image.svg', pricePerPound: '$9.96', title: t('coffeeProducts.product4_title'), category: 'Grano', price: '$299.00' },
-    { id: '5', imgSrc: '/images/product-image.svg', pricePerPound: '$9.95', title: t('coffeeProducts.product5_title'), category: 'Grano', price: '$199.00' },
-    { id: '6', imgSrc: '/images/product-image.svg', pricePerPound: '$9.99', title: t('coffeeProducts.product6_title'), category: 'Grano', price: '$99.00' },
-    { id: '7', imgSrc: '/images/product-image-2.svg', pricePerPound: '', title: t('coffeeProducts.product7_title'), category: 'Accesorios', price: '$9.99' },
-  ], [t]);
-
-  const filteredProducts = useMemo(() => allProducts.filter(product => product.category === category), [allProducts, category]);
 
   useEffect(() => {
     setIsLoading(true); // Start loading on category change
@@ -106,9 +94,9 @@ const CoffeeProducts = () => {
         ) : (
           filteredProducts.map((product, index) => (
             <div key={index} className="product">
-              <img src={product.imgSrc} alt={product.title} className="product-img" />
+              <img src={product.imgSrc} alt={t(`coffeeProducts.product${index + 1}_title`)} className="product-img" />
               <p className={`price-per-pound ${isDarkMode ? 'dark' : ''}`}>{t('coffeeProducts.save')}</p>
-              <h2>{product.title}</h2>
+              <h2>{t(`coffeeProducts.product${index + 1}_title`)}</h2>
               <p className="price">{product.price}</p>
               <button className={`primary-btn-l ${isDarkMode ? 'dark' : ''}`} onClick={() => handleViewDetails(product.id)} style={{ cursor: 'pointer'}}>
                 {t('coffeeProducts.view_details')}

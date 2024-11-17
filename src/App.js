@@ -12,6 +12,7 @@ import CheckoutPage from './pages/CheckoutPage';
 import CartPage from './pages/CartPage';
 import { ThemeProvider, useTheme } from './context/ThemeContext';
 import { CartProvider } from './context/CartContext'; // Import the CartProvider
+import { ProductProvider } from './context/ProductContext'; // Import the ProductProvider
 import CartIcon from './components/CartIcon/CartIcon'; // Import the CartIcon component
 import Banner from './components/Banner/Banner';
 import ScrollToTop from './components/ScrollToTop/ScrollToTop';
@@ -52,8 +53,10 @@ const AppContent = () => {
 const App = () => {
   return (
     <ThemeProvider>
-      <CartProvider> 
-        <AppContent />
+      <CartProvider>
+        <ProductProvider> 
+          <AppContent />
+        </ProductProvider>
       </CartProvider>
     </ThemeProvider>
   );
