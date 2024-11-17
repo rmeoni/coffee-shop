@@ -13,7 +13,7 @@ export const CartProvider = ({ children }) => {
   const [banner, setBanner] = useState({ message: null, type: null });
 
   useEffect(() => {
-    // Get the timestamp of when the banner was last shown
+    // Get the timestamp of when the "This site is a demo" banner was last shown
     const lastShown = localStorage.getItem('bannerLastShown');
     const bannerClosed = localStorage.getItem('bannerClosed');
     const now = new Date().getTime();
