@@ -10,28 +10,15 @@ export const CartProvider = ({ children }) => {
     return storedCartItems ? JSON.parse(storedCartItems) : [];
   });
 
-  const [banner, setBanner] = useState({ message: null, type: null });
+  const [banner, setBanner] = useState({ message: t('banner.default_message'), type: 'info' });
 
   useEffect(() => {
-    // Get the timestamp of when the "This site is a demo" banner was last shown
-    const lastShown = localStorage.getItem('bannerLastShown');
-    const bannerClosed = localStorage.getItem('bannerClosed');
-    const now = new Date().getTime();
-
-    // Check if 24 hours have passed and the banner hasn't been closed
-    if ((!lastShown || now - lastShown > 24 * 60 * 60 * 1000) && !bannerClosed) {
-      setBanner({ message: t('banner.default_message'), type: 'info' });
-      // Store the current timestamp in localStorage to track when the banner was last shown
-      localStorage.setItem('bannerLastShown', now.toString());
-    }
-
-    // Handle cart persistence in localStorage
     if (cartItems.length > 0) {
       localStorage.setItem('cartItems', JSON.stringify(cartItems));
     } else {
       localStorage.removeItem('cartItems');
     }
-  }, [cartItems, t]);
+  }, [cartItems]);
 
   const updateCart = (id, newQuantity, price, title) => {
     setCartItems((prevItems) => {
@@ -62,8 +49,6 @@ export const CartProvider = ({ children }) => {
 
   const clearBannerMessage = () => {
     setBanner({ message: null, type: null });
-    // Mark the banner as closed in localStorage
-    localStorage.setItem('bannerClosed', 'true');
   };
 
   return (
