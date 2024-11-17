@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import { useCart } from '../../context/CartContext';
 import { useTheme } from '../../context/ThemeContext';
 import './Cart.css';
@@ -6,17 +7,15 @@ import { useTranslation } from 'react-i18next';
 
 const Cart = () => {
   const { cartItems, updateCart, isCartVisible, toggleCartVisibility } = useCart();
+  const navigate = useNavigate(); // Initialize navigate function
   const { isDarkMode } = useTheme();
   const { t } = useTranslation(); // Import the t function
-
-  // State to manage the display of the "under development" message
-  const [orderMessage, setOrderMessage] = useState('');
-
   const total = cartItems.reduce((acc, item) => acc + item.quantity * item.price, 0);
 
   // Function to handle the Complete Order button click
   const handleCompleteOrder = () => {
-    setOrderMessage(t('cart.order_under_development')); // Set the message from the translation
+    navigate('/checkout'); // Navigate to the checkout page
+    toggleCartVisibility();
   };
 
   // Disable scroll when cart is open on mobile
@@ -49,11 +48,6 @@ const Cart = () => {
   return (
     <div className={`cart ${isDarkMode ? 'dark' : ''}`}>
       <div className="cart-wrapper">
-        {orderMessage && (
-          <div className="order-message">
-            <p>{orderMessage}</p>
-          </div>
-        )}
         <h2>{t('cart.title')}</h2>
         <div className="cart-items">
           {cartItems.map(item => (

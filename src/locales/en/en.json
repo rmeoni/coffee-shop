@@ -158,7 +158,8 @@
     "subtotal": "Subtotal",
     "close_cart": "Close Cart",
     "complete_order": "Complete Order",
-    "order_under_development": "Sorry, our page is still under development. Your order can't be completed"
+    "order_under_development": "Sorry, our page is still under development. Your order can't be completed",
+    "shipping_notice": "Shipping will be calculated at checkout"
   },
   "checkout": {
     "summary": "Summary",
@@ -166,13 +167,15 @@
     "address": "Address",
     "shipping_method": "Shipping Method",
     "complete_order": "Complete Order",
-    "new_address": "Add Address"
+    "new_address": "Add Address",
+    "order_summary": "Order summary",
+    "items": "items"
   },
   "shipping": {
     "title": "Shipping Method",
     "standard": "Standard Shipping",
     "standard_time": "3-5 business days",
-    "standard_price": "Q30.00"
+    "standard_price": "$5.00"
   },
   "payment": {
     "title": "Payment Method",

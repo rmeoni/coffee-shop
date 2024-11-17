@@ -59,6 +59,10 @@ body.dark .payment-method {
     margin-top: 28px;
 }
 
+.checkout-order-summary {
+    margin-top: 28px;
+}
+
 @media (max-width: 820px) {
     .checkout {
         flex-direction: column;

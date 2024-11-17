@@ -16,6 +16,10 @@ const CheckoutPage = () => {
         email: ''
     });
     const [failedMessage, setFailedMessage] = useState('')
+    const shipping = {
+        standard: { cost: 5, deliveryTime: "3-5 days" },
+        free: { cost: 0, deliveryTime: "5-7 days" }
+    };
 
     const handleChange = (e) => {
         const { couponCode, value } = e.target;
@@ -108,11 +112,16 @@ const CheckoutPage = () => {
                         {failedMessage && <p className="failed-message">{failedMessage}</p>}
                     </div>
                     <div className='checkout-payment-method'>
-                        <h2>{t('shipping.title')}</h2>
+                        <h2>{t('payment.title')}</h2>
                         <div className='payment-method'>
                             <h3>{t('payment.transfer')}</h3>
                             <p>{t('payment.transfer_description')}</p>
                         </div>
+                    </div>
+                    <div className='checkout-order-summary'>
+                        <h3>{t('checkout.order_summary')}</h3>
+                        <p>Subtotal ({cartItems.length} {t('checkout.items')}) ${total.toFixed(2)}</p>
+                        <p>{t('shipping.standard')} ${shipping.standard.cost.toFixed(2)} </p>
                     </div>
                 </div>
             </div>
