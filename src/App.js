@@ -14,6 +14,7 @@ import { ThemeProvider, useTheme } from './context/ThemeContext';
 import { CartProvider } from './context/CartContext'; // Import the CartProvider
 import CartIcon from './components/CartIcon/CartIcon'; // Import the CartIcon component
 import Banner from './components/Banner/Banner';
+import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 import './i18n';
 
 const AppContent = () => {
@@ -30,8 +31,9 @@ const AppContent = () => {
   return (
     <Router>
       <GlobalStyle />
+      <ScrollToTop />
       <Banner />
-      <CartIcon /> {/* Cart Icon Component */}
+      <CartIcon /> 
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/origenes" element={<AboutPage />} />
