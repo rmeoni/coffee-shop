@@ -54,6 +54,10 @@ body.dark .banner-info {
     background-color: #000;
 }
 
+.banner-info .banner-close {
+    display: none;
+}
+
 .banner-success {
     background-color: #2F7458;
 }
@@ -74,5 +78,8 @@ body.dark .banner-info {
     .banner {
         margin-right: -24px;
         margin-left: -24px;
+    }
+    .banner-close {
+        padding-left: 4px;
     }
 }

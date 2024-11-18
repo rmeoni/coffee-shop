@@ -81,7 +81,7 @@ const ProductDetailPage = () => {
         ) : (
           <>
             <div className="hero-text">
-              <h1 id="product-details-title">{product.title}</h1>
+              <h1 id="product-details-title">{t(`coffeeProducts.product${product.id}_title`)}</h1>
               <h2>${product.price.toFixed(2)}</h2>
 
               <div className="quantity-selector">
@@ -102,7 +102,7 @@ const ProductDetailPage = () => {
               </button>
             </div>
             <div className="hero-image" id="product-details-image">
-              <img src={product.imgSrc} alt={product.title} />
+              <img src={product.imgSrc} alt={t(`coffeeProducts.product${product.id}_title`)} />
             </div>
           </>
         )}
