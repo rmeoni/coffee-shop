@@ -43,7 +43,7 @@ const Hero = ({ imageSrc, heading, paragraph, buttonLabels, buttonLinks, isSecon
             <Skeleton width="300px" height={64} style={{ marginTop: '12px', borderRadius: '50px' }} />
           </div>
           <div className="hero-loading-image">
-            <Skeleton style={{ width: '452px', height: '452px', borderRadius: '50%' }} />
+            <Skeleton style={{ width: '452px', height: '452px', borderRadius: '50%' }}/>
           </div>
         </div>
       ) : (

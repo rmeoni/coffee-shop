@@ -40,31 +40,36 @@ const Cart = () => {
   return (
     <div className={`cart ${isDarkMode ? 'dark' : ''}`}>
       {isLoading ? (
-        <div class="cart-wrapper">
-          <div className="cart-loading">
-            <h2><Skeleton width={120} /></h2>
-            <div className="cart-items">
-              {[...Array(cartItems.length)].map((_, index) => (
-                <div key={index} className="cart-item">
-                  <div className="cart-item-product">
-                    <p className="cart-item-header"><Skeleton width={80} /></p>
-                    <p><Skeleton width={150} /></p>
+        <div className='cart-loading-wrapper'>
+          <div class="cart-wrapper">
+            <div className="cart-loading">
+              <h2><Skeleton width={120} /></h2>
+              <div className="cart-items">
+                {[...Array(cartItems.length)].map((_, index) => (
+                  <div key={index} className="cart-item">
+                    <div className="cart-item-product">
+                      <p className="cart-item-header"><Skeleton width={80} /></p>
+                      <p><Skeleton width={150} /></p>
+                    </div>
+                    <div className="cart-item-quantity-selector">
+                      <p className="cart-item-header"><Skeleton width={80} /></p>
+                      <Skeleton width={80} height={32} style={{ marginRight: '10px' }} />
+                    </div>
+                    <div>
+                      <p className="cart-item-header"><Skeleton width={80} /></p>
+                      <span><Skeleton width={50} /></span>
+                    </div>
+                    <div>
+                      <p className="cart-item-header"><Skeleton width={80} /></p>
+                      <span><Skeleton width={50} /></span>
+                    </div>
                   </div>
-                  <div className="cart-item-quantity-selector">
-                    <p className="cart-item-header"><Skeleton width={80} /></p>
-                    <Skeleton width={80} height={32} style={{ marginRight: '10px' }} />
-                  </div>
-                  <div>
-                    <p className="cart-item-header"><Skeleton width={80} /></p>
-                    <span><Skeleton width={50} /></span>
-                  </div>
-                  <div>
-                    <p className="cart-item-header"><Skeleton width={80} /></p>
-                    <span><Skeleton width={50} /></span>
-                  </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
+          </div>
+          <div className='cart-checkout'>
+            <Skeleton count={2} width={200} height={64}/>
           </div>
         </div>
       ) : (
