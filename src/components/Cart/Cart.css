@@ -123,6 +123,10 @@ body.dark .cart-item {
   width: 100%;
 }
 
+.cart-loading .cart-item-quantity-selector span {
+  margin: 0px;
+}
+
 @media (max-width: 820px) {
   .cart {
     flex-direction: column;
