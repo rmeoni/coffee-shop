@@ -10,7 +10,11 @@ const GlobalStyle = createGlobalStyle`
   }
   body.dark {
     background-color: #121212;
-  }    
+  }
+  body.dark .react-loading-skeleton {
+    --base-color:#000000;
+    --highlight-color: #121212;
+  }
   body h1 {
     font-size: 60px;
     line-height: 60px;
