@@ -116,11 +116,11 @@ body.dark .cart-item {
 }
 
 #cart-secondary-btn {
-  width: 100%;
+  width: 100% !important;
 }
 
 #cart-primary-btn {
-  width: 100%;
+  width: 100% !important;
 }
 .cart-loading-wrapper {
   display: flex;
@@ -133,6 +133,7 @@ body.dark .cart-item {
 .cart-loading-wrapper .cart-checkout .react-loading-skeleton {
   border-radius: 48px !important;
   margin-bottom: 16px;
+  width: 100vw;
 }
 
 @media (max-width: 820px) {
