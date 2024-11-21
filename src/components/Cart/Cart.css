@@ -174,7 +174,7 @@ body.dark .cart-item {
   }
 
   .cart-loading-wrapper .cart-checkout .react-loading-skeleton {
-    width: 100vw !important;
+    width: 90vw !important;
   }
 
 }
