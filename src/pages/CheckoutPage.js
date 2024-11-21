@@ -83,9 +83,9 @@ const CheckoutPage = () => {
                                         <div key={index} className="cart-item">
                                             <div className="cart-item-product">
                                                 <p className="cart-item-header"><Skeleton width={80} /></p>
-                                                <p><Skeleton width={150} /></p>
+                                                <p><Skeleton width={300} /></p>
                                             </div>
-                                            <div className="cart-item-quantity-selector">
+                                            <div className="loading-cart-item-quantity-selector">
                                                 <p className="cart-item-header"><Skeleton width={80} /></p>
                                                 <Skeleton width={80} height={32} style={{ marginRight: '10px' }} />
                                             </div>

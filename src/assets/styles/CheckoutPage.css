@@ -82,6 +82,10 @@ body.dark .payment-method {
     width: 100%;
 }
 
+.cart-item-quantity-selector .cart-item-header span.react-loading-skeleton {
+    margin: 0px !important;
+}
+
 @media (max-width: 820px) {
     .checkout {
         flex-direction: column;
