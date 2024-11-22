@@ -12,74 +12,54 @@ import 'react-loading-skeleton/dist/skeleton.css';
 const CheckoutPage = () => {
     const { cartItems, updateCart } = useCart();
     const { isDarkMode } = useTheme();
-    const { t } = useTranslation(); // Import the t function
+    const { t } = useTranslation();
     const total = cartItems.reduce((acc, item) => acc + item.quantity * item.price, 0);
-    const [formData, setFormData] = useState({
-        name: '',
-        email: ''
-    });
+    const [formData, setFormData] = useState({ name: '', email: '' });
     const [failedMessage, setFailedMessage] = useState('');
     const shipping = {
         standard: { cost: 5, deliveryTime: "3-5 days" },
-        free: { cost: 0, deliveryTime: "5-7 days" }
+        free: { cost: 0, deliveryTime: "5-7 days" },
     };
-
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        // Simulate loading effect
         const timer = setTimeout(() => {
-            setIsLoading(false); // Stop loading after 2 seconds
+            setIsLoading(false);
         }, 2000);
 
-        return () => {
-            clearTimeout(timer);
-        };
+        return () => clearTimeout(timer);
     }, []);
 
     const handleChange = (e) => {
         const { couponCode, value } = e.target;
         setFormData({
             ...formData,
-            [couponCode]: value
+            [couponCode]: value,
         });
     };
 
-    const handleCouponSubmit = async (e) => {
+    const handleCouponSubmit = (e) => {
         e.preventDefault();
-
-        // Placeholder for the API call to send form data somewhere
-        console.log('Form data submitted:', formData);
-
-        // Show translated failed message after form submission
-        setFailedMessage(t('coupon.failed'))
-
-        // Clear the form fields after submission
-        setFormData({
-            couponCode: ''
-        });
-
-        // Hide the success message after a few seconds
-        setTimeout(() => {
-            setFailedMessage('');
-        }, 5000); // 5 seconds
+        setFailedMessage(t('coupon.failed'));
+        setFormData({ couponCode: '' });
+        setTimeout(() => setFailedMessage(''), 5000);
     };
 
-    const handleCompleteOrder = () => {
-        console.log('order completed')
-    }
+    const handleCompleteOrder = () => console.log('order completed');
 
     return (
         <>
             <Header />
-            <div className='checkout'>
-                <div className='checkout-section'>
-                    <h2>{t('checkout.summary')}</h2>
-                    <div className="cart-wrapper" id="checkout-summary">
-                        <div className="cart-items">
-                            {isLoading ? (
-                                <div>
-                                    {[...Array(cartItems.length)].map((_, index) => (
+            <div className="checkout">
+                <div className="checkout-section">
+                    <div className="checkout-summary">
+                        {isLoading ? <Skeleton width={200} height={36} style={{
+                            marginBottom: '28px'
+                        }} /> : <h2>{t('checkout.summary')}</h2>}
+                        <div className="cart-wrapper" id="checkout-summary">
+                            <div className="cart-items">
+                                {isLoading ? (
+                                    [...Array(cartItems.length)].map((_, index) => (
                                         <div key={index} className="cart-item">
                                             <div className="cart-item-product">
                                                 <p className="cart-item-header"><Skeleton width={80} /></p>
@@ -98,45 +78,47 @@ const CheckoutPage = () => {
                                                 <span><Skeleton width={50} /></span>
                                             </div>
                                         </div>
-                                    ))}
-                                </div>
-                            ) : (
-                                cartItems.map(item => (
-                                    <div key={item.id} className="cart-item">
-                                        <div className="cart-item-product">
-                                            <p className="cart-item-header">{t('cart.item')}</p>
-                                            <p>{item.title}</p>
+                                    ))
+                                ) : (
+                                    cartItems.map(item => (
+                                        <div key={item.id} className="cart-item">
+                                            <div className="cart-item-product">
+                                                <p className="cart-item-header">{t('cart.item')}</p>
+                                                <p>{item.title}</p>
+                                            </div>
+                                            <div className="cart-item-quantity-selector">
+                                                <p className="cart-item-header">{t('cart.qty')}</p>
+                                                <button onClick={() => updateCart(item.id, Math.max(item.quantity - 1, 0))}>-</button>
+                                                <span>{item.quantity}</span>
+                                                <button onClick={() => updateCart(item.id, item.quantity + 1)}>+</button>
+                                            </div>
+                                            <div>
+                                                <p className="cart-item-header">{t('cart.price')}</p>
+                                                <span>${item.price.toFixed(2)}</span>
+                                            </div>
+                                            <div>
+                                                <p className="cart-item-header">{t('cart.amount')}</p>
+                                                <span>${(item.quantity * item.price).toFixed(2)}</span>
+                                            </div>
                                         </div>
-                                        <div className="cart-item-quantity-selector">
-                                            <p className="cart-item-header">{t('cart.qty')}</p>
-                                            <button onClick={() => updateCart(item.id, Math.max(item.quantity - 1, 0))}>-</button>
-                                            <span>{item.quantity}</span>
-                                            <button onClick={() => updateCart(item.id, item.quantity + 1)}>+</button>
-                                        </div>
-                                        <div>
-                                            <p className="cart-item-header">{t('cart.price')}</p>
-                                            <span>${item.price.toFixed(2)}</span>
-                                        </div>
-                                        <div>
-                                            <p className="cart-item-header">{t('cart.amount')}</p>
-                                            <span>${(item.quantity * item.price).toFixed(2)}</span>
-                                        </div>
-                                    </div>
-                                ))
-                            )}
+                                    ))
+                                )}
+                            </div>
                         </div>
                     </div>
-                    <div className='checkout-address'>
-                        <h2>{t('checkout.address')}</h2>
-                        {isLoading ? (
-                            <Skeleton width={200} height={50} />
-                        ) : (
-                            <button className={`secondary-btn-s ${isDarkMode ? 'dark' : ''}`}>{t('checkout.new_address')}</button>
-                        )}
+                    <div className="checkout-address">
+                        {isLoading ? <Skeleton width={200} height={36} style={{
+                            marginBottom: '28px'
+                        }} /> : <h2>{t('checkout.address')}</h2>}
+                        {isLoading ? <Skeleton width={200} height={32} style={{
+                            borderRadius: '48px'
+                        }} /> : <button className={`secondary-btn-s ${isDarkMode ? 'dark' : ''}`}>{t('checkout.new_address')}</button>}
                     </div>
-                    <div className='checkout-shipping'>
-                        <h2>{t('shipping.title')}</h2>
-                        <div className='shipping-method'>
+                    <div className="checkout-shipping">
+                        {isLoading ? <Skeleton width={200} height={36} style={{
+                            marginBottom: '28px'
+                        }} /> : <h2>{t('shipping.title')}</h2>}
+                        <div className="shipping-method">
                             {isLoading ? (
                                 <Skeleton count={3} width={200} />
                             ) : (
@@ -149,9 +131,11 @@ const CheckoutPage = () => {
                         </div>
                     </div>
                 </div>
-                <div className='checkout-section' id="checkout-section-right">
-                    <div className='checkout-coupon'>
-                        <h2>{t('checkout.coupon')}</h2>
+                <div className="checkout-section" id="checkout-section-right">
+                    <div className="checkout-coupon">
+                        {isLoading ? <Skeleton width={200} height={36} style={{
+                            marginBottom: '28px'
+                        }} /> : <h2>{t('checkout.coupon')}</h2>}
                         {isLoading ? (
                             <Skeleton width={200} height={40} />
                         ) : (
@@ -170,11 +154,16 @@ const CheckoutPage = () => {
                         )}
                         {failedMessage && <p className="failed-message">{failedMessage}</p>}
                     </div>
-                    <div className='checkout-payment-method'>
-                        <h2>{t('payment.title')}</h2>
-                        <div className='payment-method'>
+                    <div className="checkout-payment-method">
+                        {isLoading ? <Skeleton width={300} height={36} style={{
+                            marginBottom: '28px'
+                        }} /> : <h2>{t('payment.title')}</h2>}
+                        <div className="payment-method">
                             {isLoading ? (
-                                <Skeleton count={3} width={200} height={20} />
+                                <>
+                                    <Skeleton width={200} height={48} />
+                                    <Skeleton count={2} width={200} height={20} />
+                                </>
                             ) : (
                                 <>
                                     <h3>{t('payment.transfer')}</h3>
@@ -183,8 +172,10 @@ const CheckoutPage = () => {
                             )}
                         </div>
                     </div>
-                    <div className='checkout-order-summary'>
-                        <h2>{t('checkout.order_summary')}</h2>
+                    <div className="checkout-order-summary">
+                        {isLoading ? <Skeleton width={200} height={36} style={{
+                            marginBottom: '28px'
+                        }} /> : <h2>{t('checkout.order_summary')}</h2>}
                         {isLoading ? (
                             <>
                                 <Skeleton width={200} height={20} />
