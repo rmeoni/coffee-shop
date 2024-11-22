@@ -11,8 +11,11 @@ const GlobalStyle = createGlobalStyle`
   body.dark {
     background-color: #121212;
   }
+  .react-loading-skeleton {
+    --base-color:#ffffff !important;
+  }  
   body.dark .react-loading-skeleton {
-    --base-color:#000000;
+    --base-color:#000000 !important;
     --highlight-color: #121212;
   }
   body h1 {
