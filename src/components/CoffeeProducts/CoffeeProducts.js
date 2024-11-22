@@ -11,7 +11,7 @@ const CoffeeProducts = () => {
   const { isDarkMode } = useTheme();
   const navigate = useNavigate();
   const { t } = useTranslation();
-  const { category, setCategory, filteredProducts } = useProductContext(); // Removed allProducts and useMemo
+  const { category, setCategory, filteredProducts } = useProductContext();
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {

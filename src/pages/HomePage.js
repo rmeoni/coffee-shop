@@ -39,7 +39,7 @@ const HomePage = () => {
     <>
       <Header />
       <Hero
-        imageSrc="/images/product-image-2.png"
+        imageSrc="/images/cdl-front-grano-spoon.png"
         heading="hero.heading"
         paragraph="hero.paragraph"
         buttonLabels={['hero.button1', 'hero.button2']}
