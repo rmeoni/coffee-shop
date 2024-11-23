@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './Hero.css';
 import { useTheme } from '../../context/ThemeContext'; // Import the useTheme hook
+import { useNavigate } from 'react-router-dom';
 import Skeleton from 'react-loading-skeleton'; // Import Skeleton for loading placeholders
 import 'react-loading-skeleton/dist/skeleton.css'; // Import skeleton styles
 import { useTranslation } from 'react-i18next'; // Import the useTranslation hook
@@ -9,6 +10,7 @@ const Hero = ({ imageSrc, heading, paragraph, buttonLabels, buttonLinks, isSecon
   const [isLoading, setIsLoading] = useState(true);
   const { isDarkMode } = useTheme(); // Use context value
   const { t } = useTranslation(); // Initialize translation hook
+  const navigate = useNavigate();
 
   useEffect(() => {
     // Set a 2-second delay before checking if the image has loaded
@@ -32,6 +34,14 @@ const Hero = ({ imageSrc, heading, paragraph, buttonLabels, buttonLinks, isSecon
     };
   }, [imageSrc]);
 
+  const handleViewDetails = (link, isSecondaryButtonExternal) => {
+    if (isSecondaryButtonExternal) {
+      window.open(link, '_blank', 'noopener,noreferrer');
+    } else {
+      navigate(link);
+    }
+  };
+
   return (
     <section className={`hero ${isDarkMode ? 'dark' : ''}`}>
       {isLoading ? (
@@ -43,7 +53,7 @@ const Hero = ({ imageSrc, heading, paragraph, buttonLabels, buttonLinks, isSecon
             <Skeleton width="300px" height={64} style={{ marginTop: '12px', borderRadius: '50px' }} />
           </div>
           <div className="hero-loading-image">
-            <Skeleton style={{ width: '452px', height: '452px', borderRadius: '50%' }}/>
+            <Skeleton style={{ width: '452px', height: '452px', borderRadius: '50%' }} />
           </div>
         </div>
       ) : (
@@ -53,35 +63,32 @@ const Hero = ({ imageSrc, heading, paragraph, buttonLabels, buttonLinks, isSecon
             <p>{t(paragraph)}</p> {/* Use translation for paragraph */}
             <ul>
               <li>
-                <button className={`secondary-btn-l ${isDarkMode ? 'dark' : ''}`}>
-                  <a
-                    href={buttonLinks[0]}
-                    id="secondary-btn-hero"
-                    target={isSecondaryButtonExternal ? '_blank' : '_self'}
-                    rel={isSecondaryButtonExternal ? 'noopener noreferrer' : undefined}
-                  >
-                    {t(buttonLabels[0])} {/* Translate button label */}
-                  </a>
+                <button className={`secondary-btn-l ${isDarkMode ? 'dark' : ''}`}
+                  onClick={() => handleViewDetails(buttonLinks[0], isSecondaryButtonExternal)}
+                  id="secondary-btn-hero"
+                >
+                  {t(buttonLabels[0])} {/* Translate button label */}
                 </button>
               </li>
               <li>
-                <button className={`primary-btn-l ${isDarkMode ? 'dark' : ''}`}>
-                  <a href={buttonLinks[1]} id="hero-primary-btn">
-                    {t(buttonLabels[1])} {/* Translate button label */}
-                  </a>
-                </button>
-              </li>
-            </ul>
-          </div>
-          <div className="hero-image">
-            <img
-              src={imageSrc}
-              alt={t('hero.image_alt_text')}
-            />
-          </div>
-        </>
-      )}
-    </section>
+                <button className={`primary-btn-l ${isDarkMode ? 'dark' : ''}`}
+                onClick={() => handleViewDetails(buttonLinks[1], false)}         
+                >
+                {t(buttonLabels[1])} {/* Translate button label */}
+              </button>
+            </li>
+          </ul>
+        </div>
+      <div className="hero-image">
+        <img
+          src={imageSrc}
+          alt={t('hero.image_alt_text')}
+        />
+      </div>
+    </>
+  )
+}
+    </section >
   );
 };
 
