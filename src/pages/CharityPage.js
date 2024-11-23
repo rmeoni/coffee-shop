@@ -25,7 +25,7 @@ const CharityPage = () => {
       buttonLink: ""
     },
     {
-      imageSrc: "/images/product-image.png",
+      imageSrc: "/images/cdl-front-grano-spoon.png",
       heading: t('charity.bio_3_heading'),
       description: t('charity.bio_3_description'),
       buttonLabel: "",

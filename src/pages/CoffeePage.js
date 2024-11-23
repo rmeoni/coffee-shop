@@ -25,7 +25,7 @@ const CoffeePage = () => {
       buttonLink: ""
     },
     {
-      imageSrc: "/images/product-image-2.png",
+      imageSrc: "/images/cdl-front-grano-spoon.png",
       heading: t('coffee.bio_3_heading'),
       description: t('coffee.bio_3_description'),
       buttonLabel: "",

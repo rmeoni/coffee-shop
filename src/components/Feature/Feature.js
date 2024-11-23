@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './Feature.css';
 import { useTheme } from '../../context/ThemeContext';
+import { useNavigate } from 'react-router-dom';
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 import { useTranslation } from 'react-i18next';
@@ -9,6 +10,7 @@ const Feature = ({ features, namespace }) => {
   const { t } = useTranslation();
   const { isDarkMode } = useTheme();
   const [isLoading, setIsLoading] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const loadImagesWithDelay = async () => {
@@ -30,6 +32,10 @@ const Feature = ({ features, namespace }) => {
 
     loadImagesWithDelay();
   }, [features]);
+
+  const handleViewDetails = (link) => {
+    navigate(link);
+  };
 
   return (
     <section className="feature">
@@ -72,10 +78,10 @@ const Feature = ({ features, namespace }) => {
                 <h1>{t(`${namespace}.bio_${index + 1}_heading`)}</h1>
                 <p>{t(`${namespace}.bio_${index + 1}_description`)}</p>
                 {feature.buttonLink && (
-                  <button className={`primary-btn-l ${isDarkMode ? 'dark' : ''}`}>
-                    <a href={feature.buttonLink}>
-                      {t(`${namespace}.bio_${index + 1}_buttonLabel`)}
-                    </a>
+                  <button className={`primary-btn-l ${isDarkMode ? 'dark' : ''}`}
+                    onClick={() => handleViewDetails(feature.buttonLink)}
+                  >
+                    {t(`${namespace}.bio_${index + 1}_buttonLabel`)}
                   </button>
                 )}
               </div>
@@ -86,10 +92,10 @@ const Feature = ({ features, namespace }) => {
                 <h1>{t(`${namespace}.bio_${index + 1}_heading`)}</h1>
                 <p>{t(`${namespace}.bio_${index + 1}_description`)}</p>
                 {feature.buttonLink && (
-                  <button className={`secondary-btn-l ${isDarkMode ? 'dark' : ''}`}>
-                    <a href={feature.buttonLink} >
-                      {t(`${namespace}.bio_${index + 1}_buttonLabel`)}
-                    </a>
+                  <button className={`secondary-btn-l ${isDarkMode ? 'dark' : ''}`}
+                    onClick={() => handleViewDetails(feature.buttonLink)}
+                  >
+                    {t(`${namespace}.bio_${index + 1}_buttonLabel`)}
                   </button>
                 )}
               </div>
@@ -99,8 +105,9 @@ const Feature = ({ features, namespace }) => {
             </>
           )}
         </div>
-      ))}
-    </section>
+      ))
+      }
+    </section >
   );
 };
 
