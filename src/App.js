@@ -9,6 +9,7 @@ import BlogPage from './pages/BlogPage';
 import CharityPage from './pages/CharityPage';
 import ProductDetailPage from './pages/ProductDetailPage';
 import CheckoutPage from './pages/CheckoutPage';
+import ConfirmationPage from './pages/ConfirmationPage';
 import CartPage from './pages/CartPage';
 import { ThemeProvider, useTheme } from './context/ThemeContext';
 import { CartProvider } from './context/CartContext'; // Import the CartProvider
@@ -45,6 +46,7 @@ const AppContent = () => {
         <Route path="/product/:id" element={<ProductDetailPage />} />
         <Route path="/carrito" element={<CartPage />} />
         <Route path="/checkout" element={<CheckoutPage />} />
+        <Route path="/order-confirmation" element={<ConfirmationPage />} />
       </Routes>
     </Router>
   );
