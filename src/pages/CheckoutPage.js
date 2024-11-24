@@ -49,19 +49,14 @@ const CheckoutPage = () => {
 
 
     const handleCompleteOrder = () => {
-        // Log before setting localStorage
-        console.log('Setting isInCheckoutFlow to true');
         localStorage.setItem('isInCheckoutFlow', 'true');
-        
-        // Verify that the value is set correctly before navigating
-        const checkoutFlowStatus = localStorage.getItem('isInCheckoutFlow');
-        console.log('isInCheckoutFlow after setting:', checkoutFlowStatus);
         clearBannerMessage();
         // Add a slight delay to ensure the localStorage is set before navigating
         setTimeout(() => {
             navigate('/order-confirmation');
         }, 100); // Delay to ensure localStorage is set
     };
+    
     return (
         <>
             <Header />

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { useCart } from '../context/CartContext'; // Adjust the path if needed
+import { useCart } from '../context/CartContext';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import Header from '../components/Header/Header';
@@ -10,37 +10,35 @@ import '../assets/styles/ConfirmationPage.css';
 import '../assets/styles/globalStyles';
 
 const ConfirmationPage = () => {
-    const { cartItems, updateCart, setBanner, clearBannerMessage  } = useCart();
+    const { cartItems, updateCart, setBanner, clearBannerMessage } = useCart();
     const navigate = useNavigate();
     const { t } = useTranslation();
-    const [order, setOrder] = useState(null); // Store order data here
+    const [order, setOrder] = useState(null);
     const [isFlowChecked, setIsFlowChecked] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
+
+    useEffect(() => {
+        // Simulate loading for skeleton
+        const timer = setTimeout(() => setIsLoading(false), 2000);
+        return () => clearTimeout(timer);
+    }, []);
 
     useEffect(() => {
         const checkoutFlowStatus = localStorage.getItem('isInCheckoutFlow');
-        console.log('isInCheckoutFlow on ConfirmationPage:', checkoutFlowStatus);
-
         if (checkoutFlowStatus !== 'true') {
-            console.log('User is not in the checkout flow. Redirecting to home...');
-            navigate('/'); // Redirect if not in checkout flow
+            navigate('/');
         } else {
-            // Set the flag after checking flow status
             setIsFlowChecked(true);
         }
     }, [navigate]);
 
-    // After the confirmation page is loaded, remove the flow status
     useEffect(() => {
         if (isFlowChecked) {
-            // Remove localStorage item after the page is confirmed
             localStorage.removeItem('isInCheckoutFlow');
-            console.log('isInCheckoutFlow removed from localStorage');
             clearBannerMessage();
             setBanner({ message: t('banner.default_message'), type: 'error' });
         }
     }, [isFlowChecked, clearBannerMessage, setBanner, t]);
-
-
 
     const calculateTotal = useCallback(() => {
         return cartItems.reduce((acc, item) => acc + item.quantity * item.price, 0);
@@ -51,7 +49,6 @@ const ConfirmationPage = () => {
     }, [cartItems, updateCart]);
 
     useEffect(() => {
-        // If cart has items and order is not set, create the order and clear the cart
         if (cartItems.length > 0 && !order) {
             const orderData = {
                 orderNumber: generateOrderNumber(),
@@ -59,10 +56,10 @@ const ConfirmationPage = () => {
                 items: cartItems,
                 total: calculateTotal(),
             };
-            setOrder(orderData); // Set order details
-            clearCart(); // Clear cart after storing order data
+            setOrder(orderData);
+            clearCart();
         }
-    }, [cartItems, order, calculateTotal, clearCart]); // Added `calculateTotal` and `clearCart` to dependencies
+    }, [cartItems, order, calculateTotal, clearCart]);
 
     const generateOrderNumber = () => {
         const randomNum = Math.floor(Math.random() * 999) + 1;
@@ -72,14 +69,12 @@ const ConfirmationPage = () => {
     const calculateDeliveryDate = () => {
         const currentDate = new Date();
         let businessDaysAdded = 0;
-
         while (businessDaysAdded < 5) {
             currentDate.setDate(currentDate.getDate() + 1);
             if (currentDate.getDay() !== 0 && currentDate.getDay() !== 6) {
                 businessDaysAdded++;
             }
         }
-
         return currentDate.toLocaleDateString();
     };
 
@@ -90,41 +85,20 @@ const ConfirmationPage = () => {
                 <div className="order-confirmation-section">
                     <h2>Order #:</h2>
                     <div className="section-details">
-                        {order ? <p>{order.orderNumber}</p> : <Skeleton width={200} />}
+                        {isLoading ? <Skeleton width={200} /> : <p>{order?.orderNumber}</p>}
                     </div>
                 </div>
                 <div className="order-confirmation-section">
                     <h2>Estimated Delivery Date:</h2>
                     <div className="section-details">
-                        {order ? <p>{order.estimatedDeliveryDate}</p> : <Skeleton width={200} />}
+                        {isLoading ? <Skeleton width={200} /> : <p>{order?.estimatedDeliveryDate}</p>}
                     </div>
                 </div>
                 <div className="checkout-summary">
-                    <h2 style={{marginBottom: 28}}>Summary</h2>
+                    <h2 style={{ marginBottom: 28 }}>Summary</h2>
                     <div className="cart-wrapper" id="checkout-summary">
                         <div className="cart-items">
-                            {order?.items ? (
-                                order.items.map(item => (
-                                    <div key={item.id} className="cart-item">
-                                        <div className="cart-item-product">
-                                            <p className="cart-item-header">{t('cart.item')}</p>
-                                            <p>{item.title}</p>
-                                        </div>
-                                        <div className="cart-item-quantity-selector">
-                                            <p className="cart-item-header">{t('cart.qty')}</p>
-                                            <span>{item.quantity}</span>
-                                        </div>
-                                        <div>
-                                            <p className="cart-item-header">{t('cart.price')}</p>
-                                            <span>${item.price.toFixed(2)}</span>
-                                        </div>
-                                        <div>
-                                            <p className="cart-item-header">{t('cart.amount')}</p>
-                                            <span>${(item.quantity * item.price).toFixed(2)}</span>
-                                        </div>
-                                    </div>
-                                ))
-                            ) : (
+                            {isLoading ? (
                                 [...Array(cartItems.length)].map((_, index) => (
                                     <div key={index} className="cart-item">
                                         <div className="cart-item-product">
@@ -145,12 +119,33 @@ const ConfirmationPage = () => {
                                         </div>
                                     </div>
                                 ))
+                            ) : (
+                                order?.items.map(item => (
+                                    <div key={item.id} className="cart-item">
+                                        <div className="cart-item-product">
+                                            <p className="cart-item-header">{t('cart.item')}</p>
+                                            <p>{item.title}</p>
+                                        </div>
+                                        <div className="cart-item-quantity-selector">
+                                            <p className="cart-item-header">{t('cart.qty')}</p>
+                                            <span>{item.quantity}</span>
+                                        </div>
+                                        <div>
+                                            <p className="cart-item-header">{t('cart.price')}</p>
+                                            <span>${item.price.toFixed(2)}</span>
+                                        </div>
+                                        <div>
+                                            <p className="cart-item-header">{t('cart.amount')}</p>
+                                            <span>${(item.quantity * item.price).toFixed(2)}</span>
+                                        </div>
+                                    </div>
+                                ))
                             )}
                         </div>
                         <div className="order-confirmation-section">
                             <h2>Total:</h2>
                             <div className="section-details">
-                                {order ? <p>${order.total.toFixed(2)}</p> : <Skeleton width={200} />}
+                                {isLoading ? <Skeleton width={200} /> : <p>${order?.total.toFixed(2)}</p>}
                             </div>
                         </div>
                     </div>
