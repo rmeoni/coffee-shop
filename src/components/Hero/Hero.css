@@ -46,10 +46,6 @@
   margin-bottom: 76px;
 }
 
-#secondary-btn-hero {
-  margin-top: 90px !important;
-}
-
 /* Loading Placeholder Styles for Hero Component */
 .hero-loading {
   display: flex;

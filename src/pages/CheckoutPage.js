@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import { useTheme } from '../context/ThemeContext';
@@ -10,9 +11,10 @@ import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 
 const CheckoutPage = () => {
-    const { cartItems, updateCart } = useCart();
+    const { cartItems, updateCart, clearBannerMessage  } = useCart();
     const { isDarkMode } = useTheme();
     const { t } = useTranslation();
+    const navigate = useNavigate();
     const total = cartItems.reduce((acc, item) => acc + item.quantity * item.price, 0);
     const [formData, setFormData] = useState({ name: '', email: '' });
     const [failedMessage, setFailedMessage] = useState('');
@@ -45,8 +47,21 @@ const CheckoutPage = () => {
         setTimeout(() => setFailedMessage(''), 5000);
     };
 
-    const handleCompleteOrder = () => console.log('order completed');
 
+    const handleCompleteOrder = () => {
+        // Log before setting localStorage
+        console.log('Setting isInCheckoutFlow to true');
+        localStorage.setItem('isInCheckoutFlow', 'true');
+        
+        // Verify that the value is set correctly before navigating
+        const checkoutFlowStatus = localStorage.getItem('isInCheckoutFlow');
+        console.log('isInCheckoutFlow after setting:', checkoutFlowStatus);
+        clearBannerMessage();
+        // Add a slight delay to ensure the localStorage is set before navigating
+        setTimeout(() => {
+            navigate('/order-confirmation');
+        }, 100); // Delay to ensure localStorage is set
+    };
     return (
         <>
             <Header />

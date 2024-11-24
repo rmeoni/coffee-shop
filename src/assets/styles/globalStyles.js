@@ -106,7 +106,7 @@ const GlobalStyle = createGlobalStyle`
     cursor: pointer;
   }
 
-  .secondary-btn-s.dark {
+  body.dark .secondary-btn-s {
     background: transparent;
     border: 3px solid #fff;
     border-radius: 32px;
@@ -128,7 +128,7 @@ const GlobalStyle = createGlobalStyle`
     cursor:pointer;
   }
 
-    .primary-btn-s.dark {
+   body.dark .primary-btn-s {
     background: #fff;
     border: 3px solid #fff;
     border-radius: 32px;
@@ -167,17 +167,17 @@ const GlobalStyle = createGlobalStyle`
   }
 
 
-  .secondary-btn-l.dark {
+  body.dark .secondary-btn-l {
     color: #fff !important;
     border: 4px solid #fff;
   }
 
-  .secondary-btn-l.dark a {
+  body.dark .secondary-btn-l a {
     color: #ffffff;
     text-decoration: none !important;
   }
 
-  .secondary-btn-l.dark:hover {
+  body.dark .secondary-btn-l:hover {
     background-color: #414141;
   }
 
@@ -202,13 +202,13 @@ const GlobalStyle = createGlobalStyle`
     text-decoration: none !important;
   }
    
-  .primary-btn-l.dark {
+  body.dark .primary-btn-l {
     background: #fff;
     color: #000;
     border: 4px solid #fff;
   }
 
-  .primary-btn-l.dark a {
+  body.dark .primary-btn-l a {
     color: #000000;
     text-decoration: none !important;
   }

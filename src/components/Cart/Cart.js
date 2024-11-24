@@ -28,6 +28,7 @@ const Cart = () => {
   }, []);
 
   const handleCompleteOrder = () => {
+    localStorage.setItem('isInCheckoutFlow', 'true');
     navigate('/checkout'); // Navigate to the checkout page
   };
 
@@ -41,7 +42,7 @@ const Cart = () => {
     <div className={`cart ${isDarkMode ? 'dark' : ''}`}>
       {isLoading ? (
         <div className='cart-loading-wrapper'>
-          <div class="cart-wrapper">
+          <div className="cart-wrapper">
             <div className="cart-loading">
               <h2><Skeleton width={120} /></h2>
               <div className="cart-items">
