@@ -44,12 +44,6 @@ body.dark .shipping-method {
     background-color: #0D0D0D;
 }
 
-.coupon-form input {
-    background-color: #F9F5F2;
-    border-radius: 12px !important;
-    box-shadow: none;
-}
-
 body.dark .coupon-form input {
     background-color: #0D0D0D;
 }

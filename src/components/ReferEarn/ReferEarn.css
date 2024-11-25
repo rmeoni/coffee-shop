@@ -61,22 +61,9 @@
 
 .refer-earn-form input {
   padding: 16px;
-  border: none;
-  border-radius: 40px;
-  box-shadow: 0px 4px 12px rgba(39, 44, 47, 0.1);
   margin-bottom: 8px;
   width: 72%;
 }
-
-.refer-earn.dark .refer-earn-form input {
-  background-color: #000;
-}
-
-.refer-earn-form input:focus {
-  border-color: #01172F;
-  outline: none;
-}
-
 
 #refer-button {
   margin-top: 58px !important;

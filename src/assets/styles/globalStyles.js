@@ -79,18 +79,30 @@ const GlobalStyle = createGlobalStyle`
   input {
     font-family: "Montserrat", sans-serif;
     font-size: 20px;
-    background-color: #fff;
+    background-color: #EFE5DE;
     padding: 16px;
     margin-bottom: 20px;
-    border: none;
-    border-radius: 40px;
-    box-shadow: 0px 4px 12px rgba(39, 44, 47, 0.1);
+    border: 2.5px solid #01172F;
+    border-radius: 12px;
+    color: #01172F;
   }
 
-  
+  input:focus {
+    outline: none !important;
+  }
+
+  input::placeholder {
+    color: #344559;
+  }
 
   body.dark input {
-    background-color: #000;
+    background-color: #121212;
+    border: 2.5px solid #ffffff;
+    color: #fff;
+  }
+
+  body.dark input::placeholder {
+    color: #F9F5F2;
   }
 
   .secondary-btn-s {
