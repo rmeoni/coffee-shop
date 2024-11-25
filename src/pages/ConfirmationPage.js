@@ -23,36 +23,33 @@ const ConfirmationPage = () => {
         return () => clearTimeout(timer);
     }, []);
 
-    // Check if the user is in the checkout flow and if the cart is not empty
+    // Clear the banner message after 5 seconds
     useEffect(() => {
-        const checkoutFlowStatus = localStorage.getItem('isInCheckoutFlow');
-        const confirmedOrderStatus = localStorage.getItem('confirmedOrder');
+        const timer = setTimeout(() => {
+            clearBannerMessage();
+        }, 5000);
 
-        // Redirect to home if:
-        // 1. The cart is empty AND no order is confirmed
-        // 2. The user is not in the checkout flow
-        if ((cartItems.length === 0 && confirmedOrderStatus !== 'true') || checkoutFlowStatus !== 'true') {
+        return () => clearTimeout(timer); // Clean up timer on unmount
+    }, [clearBannerMessage]);
+
+    // Check if the user is in the checkout flow or has confirmed an order
+    useEffect(() => {
+        const checkoutFlowStatus = localStorage.getItem('isInCheckoutFlow') === 'true';
+        const confirmedOrderStatus = localStorage.getItem('confirmedOrder') === 'true';
+
+        if (!checkoutFlowStatus && !confirmedOrderStatus) {
             navigate('/');
         } else {
             setIsFlowChecked(true);
         }
-    }, [cartItems, navigate]);
+    }, [navigate]);
 
-    // Clear the checkout flow and set a default banner message
     useEffect(() => {
         if (isFlowChecked) {
             localStorage.removeItem('isInCheckoutFlow');
-            clearBannerMessage();
             setBanner({ message: t('banner.default_message'), type: 'error' });
-
-            // Clear the banner message after 5 seconds
-            const timer = setTimeout(() => {
-                clearBannerMessage();
-            }, 5000);
-
-            return () => clearTimeout(timer); // Clean up timer on unmount
         }
-    }, [isFlowChecked, clearBannerMessage, setBanner, t]);
+    }, [isFlowChecked, setBanner, t]);
 
     const calculateTotal = useCallback(() => {
         return cartItems.reduce((acc, item) => acc + item.quantity * item.price, 0);
@@ -72,7 +69,7 @@ const ConfirmationPage = () => {
             };
             setOrder(orderData);
             clearCart();
-            localStorage.setItem('confirmedOrder', 'true'); // Mark the order as confirmed
+            localStorage.setItem('confirmedOrder', 'true'); // Set confirmed order flag
         }
     }, [cartItems, order, calculateTotal, clearCart]);
 
@@ -96,7 +93,7 @@ const ConfirmationPage = () => {
     return (
         <>
             <Header />
-            <div className='order-confirmation'>
+            <div className="order-confirmation">
                 <div className="order-confirmation-section">
                     <h2>Order #:</h2>
                     <div className="section-details">
@@ -117,25 +114,39 @@ const ConfirmationPage = () => {
                                 [...Array(cartItems.length)].map((_, index) => (
                                     <div key={index} className="cart-item">
                                         <div className="cart-item-product">
-                                            <p className="cart-item-header"><Skeleton width={80} /></p>
-                                            <p><Skeleton width={300} /></p>
+                                            <p className="cart-item-header">
+                                                <Skeleton width={80} />
+                                            </p>
+                                            <p>
+                                                <Skeleton width={300} />
+                                            </p>
                                         </div>
                                         <div className="loading-cart-item-quantity-selector">
-                                            <p className="cart-item-header"><Skeleton width={80} /></p>
+                                            <p className="cart-item-header">
+                                                <Skeleton width={80} />
+                                            </p>
                                             <Skeleton width={80} height={32} style={{ marginRight: '10px' }} />
                                         </div>
                                         <div>
-                                            <p className="cart-item-header"><Skeleton width={80} /></p>
-                                            <span><Skeleton width={50} /></span>
+                                            <p className="cart-item-header">
+                                                <Skeleton width={80} />
+                                            </p>
+                                            <span>
+                                                <Skeleton width={50} />
+                                            </span>
                                         </div>
                                         <div>
-                                            <p className="cart-item-header"><Skeleton width={80} /></p>
-                                            <span><Skeleton width={50} /></span>
+                                            <p className="cart-item-header">
+                                                <Skeleton width={80} />
+                                            </p>
+                                            <span>
+                                                <Skeleton width={50} />
+                                            </span>
                                         </div>
                                     </div>
                                 ))
                             ) : (
-                                order?.items.map(item => (
+                                order?.items.map((item) => (
                                     <div key={item.id} className="cart-item">
                                         <div className="cart-item-product">
                                             <p className="cart-item-header">{t('cart.item')}</p>
@@ -165,9 +176,10 @@ const ConfirmationPage = () => {
                         </div>
                     </div>
                 </div>
-
                 <div style={{ marginTop: '20px' }}>
-                    <button className='primary-btn-l' onClick={() => navigate('/')}>Continue Shopping</button>
+                    <button className="primary-btn-l" onClick={() => navigate('/')}>
+                        Continue Shopping
+                    </button>
                 </div>
             </div>
             <Footer />
