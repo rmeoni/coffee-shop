@@ -68,12 +68,19 @@
 #refer-button {
   margin-top: 58px !important;
   max-width: 290px !important;
-  margin-bottom: 48px;
 }
 
 .success-message {
   font-size: 1.5em;
-  color: #4CAF50;
+  color: #01172F;
+  text-align: left;
+  margin-top: 0px;
+  padding-top: 12px;
+  padding-left: 4px;
+}
+
+body.dark .success-message {
+  color: #fff;
 }
 
 @media (max-width: 1200px) {

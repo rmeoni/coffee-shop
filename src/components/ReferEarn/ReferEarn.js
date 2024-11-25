@@ -12,33 +12,35 @@ const ReferEarn = () => {
     e.preventDefault();
     // Handle form submission logic here
     setFormSubmitted(true);
+    
+    // Hide the success message after a few seconds
+    setTimeout(() => {
+      setFormSubmitted(false);
+    }, 5000); // 5 seconds
   };
 
   return (
     <section className={`refer-earn ${isDarkMode ? 'dark' : ''}`}>
-      {formSubmitted ? (
-        <div className="success-message">{t('referEarn.thankYouMessage')}</div>
-      ) : (
-        <div className="refer-earn-content">
-          <div className="refer-earn-text">
-            <h1>{t('referEarn.title')}</h1>
-            <p>{t('referEarn.description')}</p>
-            <form className="refer-earn-form" onSubmit={handleSubmit}>
-              <input type="text" placeholder={t('referEarn.namePlaceholder')} required />
-              <input type="email" placeholder={t('referEarn.emailPlaceholder')} required />
-              <input type="text" placeholder={t('referEarn.referralNamePlaceholder')} required />
-              <input type="text" placeholder={t('referEarn.referralBusinessNamePlaceholder')} required />
-              <input type="email" placeholder={t('referEarn.referralEmailPlaceholder')} required />
-              <button type="submit" className={`primary-btn-l ${isDarkMode ? 'dark' : ''}`} id="refer-button">
-                {t('referEarn.submitButton')}
-              </button>
-            </form>
-          </div>
-          <div className="refer-earn-photo">
-            <img src="/images/refer-earn.svg" alt={t('referEarn.imageAlt')} />
-          </div>
+      <div className="refer-earn-content">
+        <div className="refer-earn-text">
+          <h1>{t('referEarn.title')}</h1>
+          <p>{t('referEarn.description')}</p>
+          <form className="refer-earn-form" onSubmit={handleSubmit}>
+            <input type="text" placeholder={t('referEarn.namePlaceholder')} required />
+            <input type="email" placeholder={t('referEarn.emailPlaceholder')} required />
+            <input type="text" placeholder={t('referEarn.referralNamePlaceholder')} required />
+            <input type="text" placeholder={t('referEarn.referralBusinessNamePlaceholder')} required />
+            <input type="email" placeholder={t('referEarn.referralEmailPlaceholder')} required />
+            <button type="submit" className={`primary-btn-l ${isDarkMode ? 'dark' : ''}`} id="refer-button">
+              {t('referEarn.submitButton')}
+            </button>
+          </form>
         </div>
-      )}
+        <div className="refer-earn-photo">
+          <img src="/images/refer-earn.svg" alt={t('referEarn.imageAlt')} />
+        </div>
+      </div>
+      {formSubmitted && <div className="success-message">{t('referEarn.thankYouMessage')}</div>}
     </section>
   );
 };
