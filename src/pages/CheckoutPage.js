@@ -11,7 +11,7 @@ import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 
 const CheckoutPage = () => {
-    const { cartItems, updateCart, clearBannerMessage  } = useCart();
+    const { cartItems, updateCart, clearBannerMessage } = useCart();
     const { isDarkMode } = useTheme();
     const { t } = useTranslation();
     const navigate = useNavigate();
@@ -32,6 +32,15 @@ const CheckoutPage = () => {
         return () => clearTimeout(timer);
     }, []);
 
+    // Clear the banner message after 5 seconds
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            clearBannerMessage();
+        }, 5000);
+
+        return () => clearTimeout(timer); // Clean up timer on unmount
+    }, [clearBannerMessage]);
+    
     const handleChange = (e) => {
         const { couponCode, value } = e.target;
         setFormData({
@@ -56,7 +65,7 @@ const CheckoutPage = () => {
             navigate('/order-confirmation');
         }, 100); // Delay to ensure localStorage is set
     };
-    
+
     return (
         <>
             <Header />

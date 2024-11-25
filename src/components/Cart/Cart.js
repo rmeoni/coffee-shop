@@ -9,7 +9,7 @@ import 'react-loading-skeleton/dist/skeleton.css';
 
 const Cart = () => {
   const [isLoading, setIsLoading] = useState(true);
-  const { cartItems, updateCart } = useCart();
+  const { cartItems, updateCart, clearBannerMessage } = useCart();
   const navigate = useNavigate(); // Initialize navigate function
   const { isDarkMode } = useTheme();
   const { t } = useTranslation(); // Import the t function
@@ -27,13 +27,22 @@ const Cart = () => {
     };
   }, []);
 
+  // Clear the banner message after 5 seconds
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      clearBannerMessage();
+    }, 5000);
+
+    return () => clearTimeout(timer); // Clean up timer on unmount
+  }, [clearBannerMessage]);
+
   const handleCompleteOrder = () => {
     localStorage.setItem('isInCheckoutFlow', 'true');
     navigate('/checkout'); // Navigate to the checkout page
   };
 
   const handleClose = () => {
-    navigate('/tienda');
+    navigate('/');
   };
 
   console.log('Cart Items:', cartItems);
@@ -70,7 +79,7 @@ const Cart = () => {
             </div>
           </div>
           <div className='cart-checkout'>
-            <Skeleton count={2} width={200} height={64}/>
+            <Skeleton count={2} width={200} height={64} />
           </div>
         </div>
       ) : (

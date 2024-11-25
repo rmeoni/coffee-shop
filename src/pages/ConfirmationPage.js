@@ -17,26 +17,40 @@ const ConfirmationPage = () => {
     const [isFlowChecked, setIsFlowChecked] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
 
+    // Simulate loading for skeleton
     useEffect(() => {
-        // Simulate loading for skeleton
         const timer = setTimeout(() => setIsLoading(false), 2000);
         return () => clearTimeout(timer);
     }, []);
 
+    // Check if the user is in the checkout flow and if the cart is not empty
     useEffect(() => {
         const checkoutFlowStatus = localStorage.getItem('isInCheckoutFlow');
-        if (checkoutFlowStatus !== 'true') {
+        const confirmedOrderStatus = localStorage.getItem('confirmedOrder');
+
+        // Redirect to home if:
+        // 1. The cart is empty AND no order is confirmed
+        // 2. The user is not in the checkout flow
+        if ((cartItems.length === 0 && confirmedOrderStatus !== 'true') || checkoutFlowStatus !== 'true') {
             navigate('/');
         } else {
             setIsFlowChecked(true);
         }
-    }, [navigate]);
+    }, [cartItems, navigate]);
 
+    // Clear the checkout flow and set a default banner message
     useEffect(() => {
         if (isFlowChecked) {
             localStorage.removeItem('isInCheckoutFlow');
             clearBannerMessage();
             setBanner({ message: t('banner.default_message'), type: 'error' });
+
+            // Clear the banner message after 5 seconds
+            const timer = setTimeout(() => {
+                clearBannerMessage();
+            }, 5000);
+
+            return () => clearTimeout(timer); // Clean up timer on unmount
         }
     }, [isFlowChecked, clearBannerMessage, setBanner, t]);
 
@@ -58,6 +72,7 @@ const ConfirmationPage = () => {
             };
             setOrder(orderData);
             clearCart();
+            localStorage.setItem('confirmedOrder', 'true'); // Mark the order as confirmed
         }
     }, [cartItems, order, calculateTotal, clearCart]);
 
