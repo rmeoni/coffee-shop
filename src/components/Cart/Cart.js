@@ -15,6 +15,13 @@ const Cart = () => {
   const { t } = useTranslation(); // Import the t function
   const total = cartItems.reduce((acc, item) => acc + item.quantity * item.price, 0);
 
+  // Check if the cart is empty and close it if true
+  useEffect(() => {
+    if (cartItems.length === 0) {
+      navigate('/'); // Close the cart by navigating to the home page
+    }
+  }, [cartItems, navigate]);
+
   useEffect(() => {
     // Simulate a loading effect
     const timer = setTimeout(() => {

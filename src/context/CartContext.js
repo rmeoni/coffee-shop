@@ -47,12 +47,16 @@ export const CartProvider = ({ children }) => {
     });
   };
 
+  const clearCart = () => {
+    setCartItems([]);
+  };
+
   const clearBannerMessage = () => {
     setBanner({ message: null, type: null });
   };
 
   return (
-    <CartContext.Provider value={{ cartItems, updateCart, banner, setBanner, clearBannerMessage }}>
+    <CartContext.Provider value={{ cartItems, updateCart, banner, setBanner, clearBannerMessage, clearCart }}>
       {children}
     </CartContext.Provider>
   );
