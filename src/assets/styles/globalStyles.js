@@ -252,12 +252,10 @@ const GlobalStyle = createGlobalStyle`
 
     .primary-btn-l {
       font-size: 20px;
-      padding: 8px 16px;
     }
 
     .secondary-btn-l {
       font-size: 20px;
-      padding: 8px 16px;
     }
   }
 `;
