@@ -161,7 +161,7 @@
     "order_under_development": "Sorry, our page is still under development. Your order can't be completed",
     "shipping_notice": "Shipping will be calculated at checkout",
     "cart_empty": "The cart is empty",
-    "cart_empty_error": "The cart is empty. Add products to continue to checkout."
+    "cart_empty_error": "The cart is empty. Add products to continue checkout."
   },
   "checkout": {
     "summary": "Summary",

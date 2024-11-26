@@ -11,7 +11,7 @@ import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 
 const CheckoutPage = () => {
-    const { cartItems, updateCart, clearBannerMessage } = useCart();
+    const { cartItems, updateCart, setBanner, clearBannerMessage } = useCart();
     const { isDarkMode } = useTheme();
     const { t } = useTranslation();
     const navigate = useNavigate();
@@ -19,6 +19,7 @@ const CheckoutPage = () => {
     const [formData, setFormData] = useState({ name: '', email: '', couponCode: '' });
     const [failedMessage, setFailedMessage] = useState('');
     const [isLoading, setIsLoading] = useState(true);
+    const [isCartEmpty, setIsCartEmpty] = useState(false);
 
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -38,9 +39,11 @@ const CheckoutPage = () => {
 
     useEffect(() => {
         if (cartItems.length === 0) {
-            navigate('/');
+            setIsCartEmpty(true);
+        } else {
+            setIsCartEmpty(false);
         }
-    }, [cartItems, navigate]);
+    }, [cartItems]);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -58,11 +61,17 @@ const CheckoutPage = () => {
     };
 
     const handleCompleteOrder = () => {
-        localStorage.setItem('isInCheckoutFlow', 'true');
-        clearBannerMessage();
-        setTimeout(() => {
-            navigate('/order-confirmation');
-        }, 100);
+        if (isCartEmpty) {
+            setBanner({ message: t('cart.cart_empty_error'), type: 'error' });
+            return
+        } else {
+            localStorage.setItem('isInCheckoutFlow', 'true');
+            clearBannerMessage();
+            setTimeout(() => {
+                navigate('/order-confirmation');
+            }, 100);
+        }
+
     };
 
     return (
@@ -74,7 +83,7 @@ const CheckoutPage = () => {
                         {isLoading ? (
                             <Skeleton width={200} height={36} style={{ marginBottom: '28px' }} />
                         ) : (
-                            <h2>{t('checkout.summary')}</h2>
+                            <h2>{t('cart.title')}</h2>
                         )}
                         <div className="cart-wrapper" id="checkout-summary">
                             <div className="cart-items">
@@ -114,30 +123,36 @@ const CheckoutPage = () => {
                                         </div>
                                     ))
                                 ) : (
-                                    cartItems.map((item) => (
-                                        <div key={item.id} className="cart-item">
-                                            <div className="cart-item-product">
-                                                <p className="cart-item-header">{t('cart.item')}</p>
-                                                <p>{item.title}</p>
+                                    !isCartEmpty ? (
+                                        cartItems.map((item) => (
+                                            <div key={item.id} className="cart-item">
+                                                <div className="cart-item-product">
+                                                    <p className="cart-item-header">{t('cart.item')}</p>
+                                                    <p>{item.title}</p>
+                                                </div>
+                                                <div className="cart-item-quantity-selector">
+                                                    <p className="cart-item-header">{t('cart.qty')}</p>
+                                                    <button onClick={() => updateCart(item.id, Math.max(item.quantity - 1, 0))}>
+                                                        -
+                                                    </button>
+                                                    <span>{item.quantity}</span>
+                                                    <button onClick={() => updateCart(item.id, item.quantity + 1)}>+</button>
+                                                </div>
+                                                <div>
+                                                    <p className="cart-item-header">{t('cart.price')}</p>
+                                                    <span>${item.price.toFixed(2)}</span>
+                                                </div>
+                                                <div>
+                                                    <p className="cart-item-header">{t('cart.amount')}</p>
+                                                    <span>${(item.quantity * item.price).toFixed(2)}</span>
+                                                </div>
                                             </div>
-                                            <div className="cart-item-quantity-selector">
-                                                <p className="cart-item-header">{t('cart.qty')}</p>
-                                                <button onClick={() => updateCart(item.id, Math.max(item.quantity - 1, 0))}>
-                                                    -
-                                                </button>
-                                                <span>{item.quantity}</span>
-                                                <button onClick={() => updateCart(item.id, item.quantity + 1)}>+</button>
-                                            </div>
-                                            <div>
-                                                <p className="cart-item-header">{t('cart.price')}</p>
-                                                <span>${item.price.toFixed(2)}</span>
-                                            </div>
-                                            <div>
-                                                <p className="cart-item-header">{t('cart.amount')}</p>
-                                                <span>${(item.quantity * item.price).toFixed(2)}</span>
-                                            </div>
+                                        ))
+                                    ) : (
+                                        <div>
+                                            <p>{t('cart.cart_empty')}</p>
                                         </div>
-                                    ))
+                                    )
                                 )}
                             </div>
                         </div>
