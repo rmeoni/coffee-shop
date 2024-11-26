@@ -82,6 +82,12 @@ const CheckoutPage = () => {
             return;
         }
 
+        // Check if the address fields are complete
+        if (!addressData.address || !addressData.city || !addressData.postalCode) {
+            setBanner({ message: t('checkout.address_error'), type: 'error' });
+            return;
+        }
+
         const orderDetails = {
             items: cartItems,
             total: total + 5.0,
@@ -191,35 +197,37 @@ const CheckoutPage = () => {
                         {isLoading ? (
                             <Skeleton width={200} height={32} style={{ borderRadius: '48px' }} />
                         ) : (
-                            <form className="address-form" onSubmit={handleAddressSubmit}>
-                                <input
-                                    type="text"
-                                    name="address"
-                                    placeholder={t('checkout.address_placeholder')}
-                                    value={addressData.address}
-                                    onChange={handleAddressChange}
-                                />
-                                <input
-                                    type="text"
-                                    name="city"
-                                    placeholder={t('checkout.city_placeholder')}
-                                    value={addressData.city}
-                                    onChange={handleAddressChange}
-                                />
-                                <input
-                                    type="text"
-                                    name="postalCode"
-                                    placeholder={t('checkout.postal_code_placeholder')}
-                                    value={addressData.postalCode}
-                                    onChange={handleAddressChange}
-                                />
+                            <>
+                                <form className="address-form" onSubmit={handleAddressSubmit}>
+                                    <input
+                                        type="text"
+                                        name="address"
+                                        placeholder={t('checkout.address_placeholder')}
+                                        value={addressData.address}
+                                        onChange={handleAddressChange}
+                                    />
+                                    <input
+                                        type="text"
+                                        name="city"
+                                        placeholder={t('checkout.city_placeholder')}
+                                        value={addressData.city}
+                                        onChange={handleAddressChange}
+                                    />
+                                    <input
+                                        type="text"
+                                        name="postalCode"
+                                        placeholder={t('checkout.postal_code_placeholder')}
+                                        value={addressData.postalCode}
+                                        onChange={handleAddressChange}
+                                    />
+                                </form>
                                 <button
                                     type="submit"
                                     className={`secondary-btn-s ${isDarkMode ? 'dark' : ''}`}
                                 >
                                     {t('checkout.new_address')}
                                 </button>
-                            </form>
+                            </>
                         )}
                     </div>
                     <div className="checkout-shipping">
@@ -251,14 +259,16 @@ const CheckoutPage = () => {
                         {isLoading ? (
                             <Skeleton width={200} height={40} />
                         ) : (
-                            <form className="coupon-form" onSubmit={handleCouponSubmit}>
-                                <input
-                                    type="text"
-                                    name="couponCode"
-                                    placeholder={t('coupon.coupon_code')}
-                                    value={formData.couponCode}
-                                    onChange={handleChange}
-                                />
+                            <>
+                                <form className="coupon-form" onSubmit={handleCouponSubmit}>
+                                    <input
+                                        type="text"
+                                        name="couponCode"
+                                        placeholder={t('coupon.coupon_code')}
+                                        value={formData.couponCode}
+                                        onChange={handleChange}
+                                    />
+                                </form>
                                 <button
                                     type="submit"
                                     className={`secondary-btn-s ${isDarkMode ? 'dark' : ''}`}
@@ -266,7 +276,7 @@ const CheckoutPage = () => {
                                 >
                                     {t('coupon.submitButton')}
                                 </button>
-                            </form>
+                            </>
                         )}
                         {failedMessage && <p className="failed-message">{failedMessage}</p>}
                     </div>
