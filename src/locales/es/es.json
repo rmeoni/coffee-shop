@@ -156,10 +156,12 @@
     "amount": "Monto",
     "total": "Total",
     "subtotal": "Subtotal",
-    "close_cart": "Cerrar Carrito",
+    "close_cart": "Agregar Productos",
     "complete_order": "Ir a Pagar",
     "order_under_development": "Lo siento, nuestra página aún está en desarrollo. No se puede completar su pedido.",
-    "shipping_notice": "El envío será calculado en el checkout"
+    "shipping_notice": "El envío será calculado en el checkout",
+    "cart_empty": "El carrito está vacio",
+    "cart_empty_error": "El carrito está vacio. Agrega productos para ir a pagar."
   },
   "checkout": {
     "summary": "Resumen",

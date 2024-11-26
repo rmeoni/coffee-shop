@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import { useNavigate } from 'react-router-dom';
 import { useCart } from '../../context/CartContext';
 import { useTheme } from '../../context/ThemeContext';
 import './Cart.css';
@@ -9,47 +9,51 @@ import 'react-loading-skeleton/dist/skeleton.css';
 
 const Cart = () => {
   const [isLoading, setIsLoading] = useState(true);
-  const { cartItems, updateCart, clearBannerMessage } = useCart();
-  const navigate = useNavigate(); // Initialize navigate function
+  const { cartItems, updateCart, setBanner, clearBannerMessage } = useCart();
+  const navigate = useNavigate();
   const { isDarkMode } = useTheme();
-  const { t } = useTranslation(); // Import the t function
+  const { t } = useTranslation();
   const total = cartItems.reduce((acc, item) => acc + item.quantity * item.price, 0);
-
-  // Check if the cart is empty and close it if true
-  useEffect(() => {
-    if (cartItems.length === 0) {
-      navigate('/'); // Close the cart by navigating to the home page
-    }
-  }, [cartItems, navigate]);
+  const [isCartEmpty, setIsCartEmpty] = useState(false);
 
   useEffect(() => {
-    // Simulate a loading effect
     const timer = setTimeout(() => {
-      setIsLoading(false); // Stop loading after 2 seconds
+      setIsLoading(false);
     }, 2000);
 
-    // Cleanup timeout if the component unmounts
     return () => {
       clearTimeout(timer);
     };
   }, []);
 
-  // Clear the banner message after 5 seconds
+  useEffect(() => {
+    if (cartItems.length === 0) {
+      setIsCartEmpty(true);
+    } else {
+      setIsCartEmpty(false);
+    }
+  }, [cartItems]);
+
   useEffect(() => {
     const timer = setTimeout(() => {
       clearBannerMessage();
     }, 5000);
 
-    return () => clearTimeout(timer); // Clean up timer on unmount
+    return () => clearTimeout(timer);
   }, [clearBannerMessage]);
 
   const handleCompleteOrder = () => {
-    localStorage.setItem('isInCheckoutFlow', 'true');
-    navigate('/checkout'); // Navigate to the checkout page
+    if (isCartEmpty) {
+      setBanner({ message: t('cart.cart_empty_error'), type: 'error' });
+      return
+    } else {
+      localStorage.setItem('isInCheckoutFlow', 'true');
+      navigate('/checkout');
+    }
   };
 
   const handleClose = () => {
-    navigate('/');
+    navigate('/tienda');
   };
 
   return (
@@ -99,30 +103,36 @@ const Cart = () => {
                   </div>
                 ))
               ) : (
-                cartItems.map((item) => (
-                  <div key={item.id} className="cart-item">
-                    <div className="cart-item-product">
-                      <p className="cart-item-header">{t('cart.item')}</p>
-                      <p>{item.title}</p>
+                !isCartEmpty ? (
+                  cartItems.map((item) => (
+                    <div key={item.id} className="cart-item">
+                      <div className="cart-item-product">
+                        <p className="cart-item-header">{t('cart.item')}</p>
+                        <p>{item.title}</p>
+                      </div>
+                      <div className="cart-item-quantity-selector">
+                        <p className="cart-item-header">{t('cart.qty')}</p>
+                        <button onClick={() => updateCart(item.id, Math.max(item.quantity - 1, 0))}>
+                          -
+                        </button>
+                        <span>{item.quantity}</span>
+                        <button onClick={() => updateCart(item.id, item.quantity + 1)}>+</button>
+                      </div>
+                      <div>
+                        <p className="cart-item-header">{t('cart.price')}</p>
+                        <span>${item.price.toFixed(2)}</span>
+                      </div>
+                      <div>
+                        <p className="cart-item-header">{t('cart.amount')}</p>
+                        <span>${(item.quantity * item.price).toFixed(2)}</span>
+                      </div>
                     </div>
-                    <div className="cart-item-quantity-selector">
-                      <p className="cart-item-header">{t('cart.qty')}</p>
-                      <button onClick={() => updateCart(item.id, Math.max(item.quantity - 1, 0))}>
-                        -
-                      </button>
-                      <span>{item.quantity}</span>
-                      <button onClick={() => updateCart(item.id, item.quantity + 1)}>+</button>
-                    </div>
-                    <div>
-                      <p className="cart-item-header">{t('cart.price')}</p>
-                      <span>${item.price.toFixed(2)}</span>
-                    </div>
-                    <div>
-                      <p className="cart-item-header">{t('cart.amount')}</p>
-                      <span>${(item.quantity * item.price).toFixed(2)}</span>
-                    </div>
+                  ))
+                ) : (
+                  <div>
+                    <p>{t('cart.cart_empty')}</p>
                   </div>
-                ))
+                )
               )}
             </div>
           </div>

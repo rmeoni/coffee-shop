@@ -156,10 +156,12 @@
     "amount": "Amount",
     "total": "Total",
     "subtotal": "Subtotal",
-    "close_cart": "Close Cart",
+    "close_cart": "Add Products",
     "complete_order": "Checkout",
     "order_under_development": "Sorry, our page is still under development. Your order can't be completed",
-    "shipping_notice": "Shipping will be calculated at checkout"
+    "shipping_notice": "Shipping will be calculated at checkout",
+    "cart_empty": "The cart is empty",
+    "cart_empty_error": "The cart is empty. Add products to continue to checkout."
   },
   "checkout": {
     "summary": "Summary",
