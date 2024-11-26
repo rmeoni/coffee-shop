@@ -130,11 +130,6 @@ body.dark .cart-item {
   margin: 0px;
 }
 
-.cart-loading-wrapper .cart-checkout .react-loading-skeleton {
-  border-radius: 48px !important;
-  margin-bottom: 16px;
-  width: 100vw;
-}
 
 @media (max-width: 820px) {
   .cart {
@@ -174,8 +169,5 @@ body.dark .cart-item {
     flex-direction: column;
   }
 
-  .cart-loading-wrapper .cart-checkout .react-loading-skeleton {
-    width: 90vw !important;
-  }
 
 }

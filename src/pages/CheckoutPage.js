@@ -263,6 +263,7 @@ const CheckoutPage = () => {
                                 <button
                                     onClick={handleCompleteOrder}
                                     className={`primary-btn-l ${isDarkMode ? 'dark' : ''}`}
+                                    id="cart-primary-btn"
                                 >
                                     {t('checkout.complete_order')}
                                 </button>

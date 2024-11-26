@@ -52,83 +52,122 @@ const Cart = () => {
     navigate('/');
   };
 
-  console.log('Cart Items:', cartItems);
-
   return (
-    <div className={`cart ${isDarkMode ? 'dark' : ''}`}>
-      {isLoading ? (
-        <div className='cart-loading-wrapper'>
-          <div className="cart-wrapper">
-            <div className="cart-loading">
-              <h2><Skeleton width={120} /></h2>
-              <div className="cart-items">
-                {[...Array(cartItems.length)].map((_, index) => (
+    <div className="checkout">
+      <div className="checkout-section">
+        <div className="checkout-summary">
+          {isLoading ? (
+            <Skeleton width={200} height={36} style={{ marginBottom: '28px' }} />
+          ) : (
+            <h2>{t('cart.title')}</h2>
+          )}
+          <div className="cart-wrapper" id="checkout-summary">
+            <div className="cart-items">
+              {isLoading ? (
+                [...Array(cartItems.length)].map((_, index) => (
                   <div key={index} className="cart-item">
                     <div className="cart-item-product">
-                      <p className="cart-item-header"><Skeleton width={80} /></p>
-                      <p><Skeleton width={150} /></p>
+                      <p className="cart-item-header">
+                        <Skeleton width={80} />
+                      </p>
+                      <p>
+                        <Skeleton width={300} />
+                      </p>
                     </div>
-                    <div className="cart-item-quantity-selector">
-                      <p className="cart-item-header"><Skeleton width={80} /></p>
+                    <div className="loading-cart-item-quantity-selector">
+                      <p className="cart-item-header">
+                        <Skeleton width={80} />
+                      </p>
                       <Skeleton width={80} height={32} style={{ marginRight: '10px' }} />
                     </div>
                     <div>
-                      <p className="cart-item-header"><Skeleton width={80} /></p>
-                      <span><Skeleton width={50} /></span>
+                      <p className="cart-item-header">
+                        <Skeleton width={80} />
+                      </p>
+                      <span>
+                        <Skeleton width={50} />
+                      </span>
                     </div>
                     <div>
-                      <p className="cart-item-header"><Skeleton width={80} /></p>
-                      <span><Skeleton width={50} /></span>
+                      <p className="cart-item-header">
+                        <Skeleton width={80} />
+                      </p>
+                      <span>
+                        <Skeleton width={50} />
+                      </span>
                     </div>
                   </div>
-                ))}
-              </div>
+                ))
+              ) : (
+                cartItems.map((item) => (
+                  <div key={item.id} className="cart-item">
+                    <div className="cart-item-product">
+                      <p className="cart-item-header">{t('cart.item')}</p>
+                      <p>{item.title}</p>
+                    </div>
+                    <div className="cart-item-quantity-selector">
+                      <p className="cart-item-header">{t('cart.qty')}</p>
+                      <button onClick={() => updateCart(item.id, Math.max(item.quantity - 1, 0))}>
+                        -
+                      </button>
+                      <span>{item.quantity}</span>
+                      <button onClick={() => updateCart(item.id, item.quantity + 1)}>+</button>
+                    </div>
+                    <div>
+                      <p className="cart-item-header">{t('cart.price')}</p>
+                      <span>${item.price.toFixed(2)}</span>
+                    </div>
+                    <div>
+                      <p className="cart-item-header">{t('cart.amount')}</p>
+                      <span>${(item.quantity * item.price).toFixed(2)}</span>
+                    </div>
+                  </div>
+                ))
+              )}
             </div>
-          </div>
-          <div className='cart-checkout'>
-            <Skeleton count={2} width={200} height={64} />
           </div>
         </div>
-      ) : (
-        <>
-          <div className="cart-wrapper">
-            <h2>{t('cart.title')}</h2>
-            <div className="cart-items">
-              {cartItems.map(item => (
-                <div key={item.id} className="cart-item">
-                  <div className="cart-item-product">
-                    <p className="cart-item-header">{t('cart.item')}</p>
-                    <p>{item.title}</p>
-                  </div>
-                  <div className="cart-item-quantity-selector">
-                    <p className="cart-item-header">{t('cart.qty')}</p>
-                    <button onClick={() => updateCart(item.id, Math.max(item.quantity - 1, 0))}>-</button>
-                    <span>{item.quantity}</span>
-                    <button onClick={() => updateCart(item.id, item.quantity + 1)}>+</button>
-                  </div>
-                  <div>
-                    <p className="cart-item-header">{t('cart.price')}</p>
-                    <span>${item.price.toFixed(2)}</span>
-                  </div>
-                  <div>
-                    <p className="cart-item-header">{t('cart.amount')}</p>
-                    <span>${(item.quantity * item.price).toFixed(2)}</span>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-          <div className="cart-checkout">
-            <h3>{t('cart.subtotal')}: ${total.toFixed(2)}</h3>
-            <button onClick={handleClose} className={`secondary-btn-l ${isDarkMode ? 'dark' : ''}`} style={{ marginBottom: '12px' }} id="cart-secondary-btn">
-              {t('cart.close_cart')}
-            </button>
-            <button onClick={handleCompleteOrder} className={`primary-btn-l ${isDarkMode ? 'dark' : ''}`} id="cart-primary-btn">
-              {t('cart.complete_order')}
-            </button>
-          </div>
-        </>
-      )}
+      </div>
+      <div className="checkout-section" id="checkout-section-right">
+        <div className="checkout-order-summary">
+          {isLoading ? (
+            <>
+              <Skeleton width={200} height={20} />
+              <Skeleton width={200} height={20} />
+            </>
+          ) : (
+            <>
+              <p>
+                Subtotal ({cartItems.length} {t('checkout.items')}) ${total.toFixed(2)}
+              </p>
+            </>
+          )}
+        </div>
+        <div className="checkout-submit">
+          {isLoading ? (
+            <Skeleton count={2} height={64} borderRadius={40} />
+          ) : (
+            <>
+              <button
+                className={`secondary-btn-l ${isDarkMode ? 'dark' : ''}`}
+                style={{ marginBottom: '12px' }}
+                id="cart-secondary-btn"
+                onClick={handleClose}
+              >
+                {t('cart.close_cart')}
+              </button>
+
+              <button
+                onClick={handleCompleteOrder}
+                className={`primary-btn-l ${isDarkMode ? 'dark' : ''}`}
+                id="cart-primary-btn"
+              >
+                {t('cart.complete_order')}
+              </button>
+            </>
+          )}
+        </div>
+      </div>
     </div>
   );
 };
