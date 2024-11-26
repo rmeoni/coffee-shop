@@ -266,13 +266,13 @@ const CheckoutPage = () => {
                             <Skeleton count={2} height={64} borderRadius={40} />
                         ) : (
                             <>
-                                <Link to="/carrito">
+                                <Link to="/tienda">
                                     <button
                                         className={`secondary-btn-l ${isDarkMode ? 'dark' : ''}`}
                                         style={{ marginBottom: '12px' }}
                                         id="cart-secondary-btn"
                                     >
-                                        {t('checkout.keep_shopping')}
+                                        {t('cart.close_cart')}
                                     </button>
                                 </Link>
                                 <button
