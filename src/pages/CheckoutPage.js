@@ -17,9 +17,11 @@ const CheckoutPage = () => {
     const navigate = useNavigate();
     const total = cartItems.reduce((acc, item) => acc + item.quantity * item.price, 0);
     const [formData, setFormData] = useState({ name: '', email: '', couponCode: '' });
+    const [addressData, setAddressData] = useState({ address: '', city: '', postalCode: '' });
     const [failedMessage, setFailedMessage] = useState('');
     const [isLoading, setIsLoading] = useState(true);
     const [isCartEmpty, setIsCartEmpty] = useState(false);
+
 
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -53,6 +55,20 @@ const CheckoutPage = () => {
         });
     };
 
+    const handleAddressChange = (e) => {
+        const { name, value } = e.target;
+        setAddressData((prev) => ({ ...prev, [name]: value }));
+    };
+
+    const handleAddressSubmit = (e) => {
+        e.preventDefault();
+        if (!addressData.address || !addressData.city || !addressData.postalCode) {
+            setBanner({ message: t('checkout.address_error'), type: 'error' });
+            return;
+        }
+        setBanner({ message: t('checkout.address_added'), type: 'success' });
+    };
+
     const handleCouponSubmit = (e) => {
         e.preventDefault();
         setFailedMessage(t('coupon.failed'));
@@ -63,15 +79,24 @@ const CheckoutPage = () => {
     const handleCompleteOrder = () => {
         if (isCartEmpty) {
             setBanner({ message: t('cart.cart_empty_error'), type: 'error' });
-            return
-        } else {
-            localStorage.setItem('isInCheckoutFlow', 'true');
-            clearBannerMessage();
-            setTimeout(() => {
-                navigate('/order-confirmation');
-            }, 100);
+            return;
         }
 
+        const orderDetails = {
+            items: cartItems,
+            total: total + 5.0,
+            address: addressData,
+            user: { name: formData.name, email: formData.email },
+        };
+
+        // Placeholder for API call
+        console.log('Order Submitted:', orderDetails);
+
+        localStorage.setItem('isInCheckoutFlow', 'true');
+        clearBannerMessage();
+        setTimeout(() => {
+            navigate('/order-confirmation');
+        }, 100);
     };
 
     return (
@@ -166,9 +191,35 @@ const CheckoutPage = () => {
                         {isLoading ? (
                             <Skeleton width={200} height={32} style={{ borderRadius: '48px' }} />
                         ) : (
-                            <button className={`secondary-btn-s ${isDarkMode ? 'dark' : ''}`}>
-                                {t('checkout.new_address')}
-                            </button>
+                            <form className="address-form" onSubmit={handleAddressSubmit}>
+                                <input
+                                    type="text"
+                                    name="address"
+                                    placeholder={t('checkout.address_placeholder')}
+                                    value={addressData.address}
+                                    onChange={handleAddressChange}
+                                />
+                                <input
+                                    type="text"
+                                    name="city"
+                                    placeholder={t('checkout.city_placeholder')}
+                                    value={addressData.city}
+                                    onChange={handleAddressChange}
+                                />
+                                <input
+                                    type="text"
+                                    name="postalCode"
+                                    placeholder={t('checkout.postal_code_placeholder')}
+                                    value={addressData.postalCode}
+                                    onChange={handleAddressChange}
+                                />
+                                <button
+                                    type="submit"
+                                    className={`secondary-btn-s ${isDarkMode ? 'dark' : ''}`}
+                                >
+                                    {t('checkout.new_address')}
+                                </button>
+                            </form>
                         )}
                     </div>
                     <div className="checkout-shipping">

@@ -171,7 +171,13 @@
     "new_address": "Agregar Dirección",
     "order_summary": "Resumen del pedido",
     "items": "artículos",
-    "keep_shopping": "Regresar"
+    "keep_shopping": "Regresar",
+    "address_placeholder": "Dirección",
+    "city_placeholder": "Ciudad",
+    "postal_code_placeholder": "Código Postal",
+      "address_added": "Dirección agregada exitosamente",
+    "address_error": "Revisa tu dirección e intenta nuevamente"
+
   },
   "shipping": {
     "title": "Método De Envío",

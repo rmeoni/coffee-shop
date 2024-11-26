@@ -172,7 +172,12 @@
     "new_address": "Add Address",
     "order_summary": "Order summary",
     "items": "items",
-    "keep_shopping": "Back to Cart"
+    "keep_shopping": "Back to Cart",
+    "address_placeholder": "Address",
+    "city_placeholder": "City",
+    "postal_code_placeholder": "Zip Code",
+    "address_added": "Address addedd succesfully",
+    "address_error": "Check your address and try again"
   },
   "shipping": {
     "title": "Shipping Method",
