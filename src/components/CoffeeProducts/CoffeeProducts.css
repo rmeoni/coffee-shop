@@ -91,21 +91,28 @@
   width: 452px;
   height: auto;
   border-radius: 10px;
-  margin-bottom: -20px;
+  margin-bottom: -80px;
 }
 
 .price-per-pound {
-  background-color: #E4B66D;
-  padding: 12px;
+  background-image: url('../../assets/images/price-bg-light.svg');
+  background-size:contain; /* Ensures the image covers the entire element */
+  background-repeat: no-repeat; /* Prevents the image from repeating */
+  background-position: center; /* Centers the image */
+  padding: 24px;
   border-radius: 5px;
   font-weight: bold;
   margin-bottom: 50px !important;
   display: inline-block;
-  box-shadow: 0px 4px 12px rgba(39, 44, 47, 0.1);
+  color: #001c35;
 }
 
 .price-per-pound.dark {
-  background-color: #000;
+  background-image: url('../../assets/images/price-bg-dark.svg');
+  background-size:contain; /* Ensures the image covers the entire element */
+  background-repeat: no-repeat; /* Prevents the image from repeating */
+  background-position: center; /* Centers the image */
+  color: #fff;
 }
 
 
@@ -173,6 +180,7 @@
 
   .product .product-img {
     width: 246px;
+    margin-bottom: -40px;
   }
 
   .coffee-products .shop-title-loading .react-loading-skeleton {
