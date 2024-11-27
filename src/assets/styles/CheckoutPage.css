@@ -22,7 +22,8 @@
 }
 
 #checkout-section-right {
-    margin-left: 64px;
+    width: 25%;
+    padding-left: 64px;
 }
 
 .failed-message {
@@ -35,7 +36,7 @@
 
 .shipping-method {
     background-color: #F9F5F2;
-    max-width: 80%;
+    max-width: 720px;
     padding:12px;
     border-radius: 12px;
 }
@@ -89,6 +90,8 @@ body.dark .payment-method {
         padding-left: 0px;
     }
     #checkout-section-right {
-        margin-left:0px;
+        width: 100%;
+        padding-left: 0px;
     }
+    
 }

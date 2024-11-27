@@ -114,7 +114,7 @@ const CheckoutPage = () => {
                         {isLoading ? (
                             <Skeleton width={200} height={36} style={{ marginBottom: '28px' }} />
                         ) : (
-                            <h2>{t('cart.title')}</h2>
+                            <h2>{t('checkout.summary')}</h2>
                         )}
                         <div className="cart-wrapper" id="checkout-summary">
                             <div className="cart-items">
