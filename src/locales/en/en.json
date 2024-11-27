@@ -168,7 +168,7 @@
     "coupon": "Coupon",
     "address": "Address",
     "shipping_method": "Shipping Method",
-    "complete_order": "Complete Order",
+    "complete_order": "Place Order",
     "new_address": "Add Address",
     "order_summary": "Order summary",
     "items": "items",
