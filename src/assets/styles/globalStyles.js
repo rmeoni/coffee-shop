@@ -82,7 +82,7 @@ const GlobalStyle = createGlobalStyle`
     background-color: #EFE5DE;
     padding: 16px;
     margin-bottom: 20px;
-    border: 2.5px solid #01172F;
+    border: 1.5px solid #01172F;
     border-radius: 12px;
     color: #01172F;
   }
@@ -97,7 +97,7 @@ const GlobalStyle = createGlobalStyle`
 
   body.dark input {
     background-color: #121212;
-    border: 2.5px solid #ffffff;
+    border: 1.5px solid #ffffff;
     color: #fff;
   }
 
