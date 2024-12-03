@@ -13,6 +13,9 @@ const Footer = () => {
   const { t } = useTranslation();
   const logo = isDarkMode ? coffeeLogoDark : coffeeLogoLight;
 
+  const isActiveLink = (path) => window.location.pathname === path;
+
+
   useEffect(() => {
     const loadLogoWithDelay = () => {
       // Wait for 2 seconds before starting the logo loading check
@@ -60,16 +63,16 @@ const Footer = () => {
             <div className="footer-column">
               <h3>{t('footer.company')}</h3>
               <ul>
-                <li><a href="/origenes">{t('footer.origins')}</a></li>
-                <li><a href="/nuestro-cafe">{t('footer.ourCoffee')}</a></li>
-                <li><a href="/tienda">{t('footer.store')}</a></li>
+                <li><a href="/origenes" className={isActiveLink('/origenes') ? 'active' : ''}>{t('footer.origins')}</a></li>
+                <li><a href="/nuestro-cafe" className={isActiveLink('/nuestro-cafe') ? 'active' : ''}>{t('footer.ourCoffee')}</a></li>
+                <li><a href="/tienda className={isActiveLink('/tienda') ? 'active' : ''}">{t('footer.store')}</a></li>
                 <li>{t('footer.policy')}</li>
               </ul>
             </div>
             <div className="footer-column">
               <h3>{t('footer.help')}</h3>
               <ul>
-                <li><a href="/compra1educa1">{t('footer.buyEducate')}</a></li>
+                <li><a href="/compra1educa1" className={isActiveLink('/compra1educa1') ? 'active' : ''}>{t('footer.buyEducate')}</a></li>
                 <li>{t('footer.faq')}</li>
                 <li>{t('footer.distributors')}</li>
                 <li>{t('footer.environment')}</li>

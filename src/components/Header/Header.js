@@ -33,6 +33,8 @@ const Header = () => {
     setIsLanguageDropdownOpen(false);
   };
 
+  const isActiveLink = (path) => window.location.pathname === path;
+
   const handleClickOutside = (event) => {
     if (
       mobileMenuRef.current &&
@@ -105,11 +107,11 @@ const Header = () => {
                 </>
               ) : (
                 <>
-                  <li><a href="/">{t('header.home')}</a></li>
-                  <li><a href="/origenes">{t('header.origins')}</a></li>
-                  <li><a href="/nuestro-cafe">{t('header.our_coffee')}</a></li>
-                  <li><a href="/tienda">{t('header.shop')}</a></li>
-                  <li><a href="/compra1educa1">{t('header.charity')}</a></li>
+                  <li><a href="/" className={isActiveLink('/') ? 'active' : ''}>{t('header.home')}</a></li>
+                  <li><a href="/origenes" className={isActiveLink('/origenes') ? 'active' : ''}>{t('header.origins')}</a></li>
+                  <li><a href="/nuestro-cafe" className={isActiveLink('/nuestro-cafe') ? 'active' : ''}>{t('header.our_coffee')}</a></li>
+                  <li><a href="/tienda" className={isActiveLink('/tienda') ? 'active' : ''}>{t('header.shop')}</a></li>
+                  <li><a href="/compra1educa1" className={isActiveLink('/compra1educa1') ? 'active' : ''}>{t('header.charity')}</a></li>
                   <li
                     className="language-selector"
                     onClick={() => setIsLanguageDropdownOpen(!isLanguageDropdownOpen)}
@@ -173,11 +175,11 @@ const Header = () => {
                 </>
               ) : (
                 <>
-                  <li><a href="/">{t('header.home')}</a></li>
-                  <li><a href="/origenes">{t('header.origins')}</a></li>
-                  <li><a href="/nuestro-cafe">{t('header.our_coffee')}</a></li>
-                  <li><a href="/tienda">{t('header.shop')}</a></li>
-                  <li><a href="/compra1educa1">{t('header.charity')}</a></li>
+                  <li><a href="/" className={isActiveLink('/') ? 'active' : ''}>{t('header.home')}</a></li>
+                  <li><a href="/origenes" className={isActiveLink('/origenes') ? 'active' : ''}>{t('header.origins')}</a></li>
+                  <li><a href="/nuestro-cafe" className={isActiveLink('/nuestro-cafe') ? 'active' : ''}>{t('header.our_coffee')}</a></li>
+                  <li><a href="/tienda" className={isActiveLink('/tienda') ? 'active' : ''}>{t('header.shop')}</a></li>
+                  <li><a href="/compra1educa1" className={isActiveLink('/compra1educa1') ? 'active' : ''}>{t('header.charity')}</a></li>
                   <li className="language-selector" onClick={() => setIsLanguageDropdownOpen(!isLanguageDropdownOpen)}>
                     <span>
                       {t('header.language')}

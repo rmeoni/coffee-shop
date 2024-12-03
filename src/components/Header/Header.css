@@ -36,6 +36,11 @@ header.dark nav ul li a {
   color: #ffffff;
 }
 
+a.active {
+  text-decoration: underline !important;
+  text-underline-offset: 4px;
+}
+
 nav ul li a img {
   max-width: 140px !important;
   min-width: 120px !important;
