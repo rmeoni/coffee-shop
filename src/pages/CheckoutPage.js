@@ -6,6 +6,7 @@ import { useTheme } from '../context/ThemeContext';
 import { useTranslation } from 'react-i18next';
 import '../assets/styles/CheckoutPage.css';
 import Header from '../components/Header/Header';
+import Breadcrumbs from '../components/Breadcrumbs/Breadcrumbs';
 import Footer from '../components/Footer/Footer';
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
@@ -21,6 +22,12 @@ const CheckoutPage = () => {
     const [failedMessage, setFailedMessage] = useState('');
     const [isLoading, setIsLoading] = useState(true);
     const [isCartEmpty, setIsCartEmpty] = useState(false);
+
+    const breadcrumbs = [
+        { name: 'Home', link: '/' },
+        { name: 'Cart', link: '/carrito' },
+        { name: 'Checkout', link: '' },
+    ];
 
 
     useEffect(() => {
@@ -108,6 +115,7 @@ const CheckoutPage = () => {
     return (
         <>
             <Header />
+            <Breadcrumbs items={breadcrumbs} />
             <div className="checkout">
                 <div className="checkout-section">
                     <div className="checkout-summary">
