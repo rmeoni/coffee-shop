@@ -91,7 +91,7 @@
     "help": "Help",
     "faq": "Frequently Asked Questions",
     "distributors": "Distributors",
-    "buyEducate": "Buy1Educate",
+    "buyEducate": "Charity",
     "environment": "Environment",
     "socialMedia": "Social Media",
     "instagram": "Instagram",
@@ -203,5 +203,12 @@
     "item_added": "Item added to the cart",
     "item_removed": "Item was removed from the cart",
     "item_updated": "Cart has been updated"
+  },
+  "breadcrumbs": {
+    "home": "Home",
+    "shop": "Shop",
+    "product": "Product",
+    "cart": "Cart",
+    "checkout": "Checkout"
   }
 }

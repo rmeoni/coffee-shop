@@ -24,9 +24,9 @@ const ProductDetailPage = () => {
   const product = allProducts.find((p) => p.id === id);
 
   const breadcrumbs = [
-    { name: 'Home', link: '/' },
-    { name: 'Shop', link: '/tienda' },
-    { name: 'Product', link: '' },
+    { name: t('breadcrumbs.home'), link: '/' },
+    { name: t('breadcrumbs.shop'), link: '/tienda' },
+    { name: t('breadcrumbs.product'), link: '' },
   ];
 
 

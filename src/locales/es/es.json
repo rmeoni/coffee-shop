@@ -91,7 +91,7 @@
     "help": "Ayuda",
     "faq": "Preguntas Frecuentes",
     "distributors": "Distribuidores",
-    "buyEducate": "Compra1Educa",
+    "buyEducate": "Caridad",
     "environment": "Medio Ambiente",
     "socialMedia": "Redes Sociales",
     "instagram": "Instagram",
@@ -203,5 +203,12 @@
     "item_added": "Artículo agregado al carrito",
     "item_removed": "Artículo removido del carrito",
     "item_updated": "Carrito actualizado"
+  },
+  "breadcrumbs": {
+    "home": "Inicio",
+    "shop": "Tienda",
+    "product": "Producto",
+    "cart": "Carrito",
+    "checkout": "Pago"
   }
 }
