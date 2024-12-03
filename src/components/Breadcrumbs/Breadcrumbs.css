@@ -30,6 +30,10 @@
     color: #aaa; /* Optional styling for separator */
 }
 
+.breadcrumbs .react-loading-skeleton {
+    margin-bottom: 6px !important; 
+}
+
 @media (max-width: 820px) {
     .breadcrumbs ul {
         flex-direction: column;
