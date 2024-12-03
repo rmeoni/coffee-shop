@@ -36,6 +36,7 @@ const CoffeePage = () => {
   return (
     <>
       <Header />
+      
       <Hero
         imageSrc="/images/nuestro-cafe.png"
         heading={t('coffee.heading')}

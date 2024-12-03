@@ -68,6 +68,18 @@ const GlobalStyle = createGlobalStyle`
     color: #fff;
   }
 
+  body .small {
+    font-size: 16px;
+    line-height: 20px;
+    color: #01172F;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+  }
+
+  body.dark .small {
+    color: #ffffff;
+  }
+
   body span {
     color: #01172F;
   }

@@ -1,7 +1,6 @@
 .product-details {
     display: flex;
     flex-direction: row;
-    margin-top: 79px;
     padding-left: 0px;
     max-width: 1200px;
     margin-left: auto;
@@ -41,10 +40,6 @@
         padding-left: 0px;
         flex-direction: column;
 
-    }
-
-    #product-details-title {
-        margin-top: 64px;
     }
 
     #product-details-image {

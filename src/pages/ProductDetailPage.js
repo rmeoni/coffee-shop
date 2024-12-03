@@ -7,6 +7,7 @@ import { useCart } from '../context/CartContext';
 import { useTranslation } from 'react-i18next';
 import { useProductContext } from '../context/ProductContext';
 import Header from '../components/Header/Header';
+import Breadcrumbs from '../components/Breadcrumbs/Breadcrumbs';
 import Footer from '../components/Footer/Footer';
 import '../assets/styles/ProductDetailPage.css';
 
@@ -21,6 +22,13 @@ const ProductDetailPage = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   const product = allProducts.find((p) => p.id === id);
+
+  const breadcrumbs = [
+    { name: 'Home', link: '/' },
+    { name: 'Shop', link: '/tienda' },
+    { name: `${product.title}`, link: '' },
+  ];
+
 
   useEffect(() => {
     const loadImageWithDelay = () => {
@@ -66,6 +74,7 @@ const ProductDetailPage = () => {
   return (
     <>
       <Header />
+      <Breadcrumbs items={breadcrumbs}/>
       <section className={`product-details ${isDarkMode ? 'dark' : ''}`}>
         {isLoading ? (
           <div className="hero-loading">
