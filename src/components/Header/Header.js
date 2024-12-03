@@ -175,6 +175,7 @@ const Header = () => {
                 </>
               ) : (
                 <>
+                  <li><img src={closeIcon} onClick={closeMobileMenu} alt="Close Mobile Menu" id="close-icon-menu" /></li>
                   <li><a href="/" className={isActiveLink('/') ? 'active' : ''}>{t('header.home')}</a></li>
                   <li><a href="/origenes" className={isActiveLink('/origenes') ? 'active' : ''}>{t('header.origins')}</a></li>
                   <li><a href="/nuestro-cafe" className={isActiveLink('/nuestro-cafe') ? 'active' : ''}>{t('header.our_coffee')}</a></li>
