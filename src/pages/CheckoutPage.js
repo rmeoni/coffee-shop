@@ -280,7 +280,7 @@ const CheckoutPage = () => {
                         )}
                         {failedMessage && <p className="failed-message">{failedMessage}</p>}
                     </div>
-                    <div className="checkout-payment-method">
+                    <div className="checkout-payment-method checkout-section">
                         {isLoading ? (
                             <Skeleton width={300} height={36} style={{ marginBottom: '28px' }} />
                         ) : (
@@ -299,6 +299,25 @@ const CheckoutPage = () => {
                                 </>
                             )}
                         </div>
+                    </div>
+                    <div className="checkout-section">
+                        {isLoading ? (
+                            <Skeleton width={300} height={36} style={{ marginBottom: '28px' }} />
+                        ) : (
+                            <>
+                                <h2>{t('checkout.notes_title')}</h2>
+                                <form className="form" onSubmit={handleCouponSubmit}>
+                                    <input
+                                        type="text"
+                                        name="orderNote"
+                                        placeholder={t('checkout.notes_placeholder')}
+                                        value={formData.notes}
+                                        onChange={handleChange}
+                                    />
+                                </form>
+                            </>
+                        )}
+
                     </div>
                     <div className="checkout-order-summary">
                         {isLoading ? (
@@ -347,7 +366,7 @@ const CheckoutPage = () => {
                         )}
                     </div>
                 </div>
-            </div>
+            </div >
             <Footer />
         </>
     );

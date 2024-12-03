@@ -177,7 +177,9 @@
     "city_placeholder": "City",
     "postal_code_placeholder": "Zip Code",
     "address_added": "Address addedd succesfully",
-    "address_error": "Check your address and try again"
+    "address_error": "Check your address and try again",
+    "notes_title": "Notes",
+    "notes_placeholder": "Notes about your order?"
   },
   "shipping": {
     "title": "Shipping Method",

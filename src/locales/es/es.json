@@ -176,7 +176,9 @@
     "city_placeholder": "Ciudad",
     "postal_code_placeholder": "Código Postal",
       "address_added": "Dirección agregada exitosamente",
-    "address_error": "Revisa tu dirección e intenta nuevamente"
+    "address_error": "Revisa tu dirección e intenta nuevamente",
+    "notes_title": "Notas",
+    "notes_placeholder": "Notas para tu pedido?"
 
   },
   "shipping": {
