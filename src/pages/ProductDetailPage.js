@@ -26,7 +26,7 @@ const ProductDetailPage = () => {
   const breadcrumbs = [
     { name: 'Home', link: '/' },
     { name: 'Shop', link: '/tienda' },
-    { name: `${product.title}`, link: '' },
+    { name: 'Product', link: '' },
   ];
 
 
