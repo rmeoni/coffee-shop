@@ -24,9 +24,9 @@ const CheckoutPage = () => {
     const [isCartEmpty, setIsCartEmpty] = useState(false);
 
     const breadcrumbs = [
-        { name: 'Home', link: '/' },
-        { name: 'Cart', link: '/carrito' },
-        { name: 'Checkout', link: '' },
+        { name: t('breadcrumbs.home'), link: '/' },
+        { name: t('breadcrumbs.cart'), link: '/carrito' },
+        { name: t('breadcrumbs.checkout'), link: '' },
     ];
 
 
