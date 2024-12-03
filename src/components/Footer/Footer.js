@@ -65,7 +65,7 @@ const Footer = () => {
               <ul>
                 <li><a href="/origenes" className={isActiveLink('/origenes') ? 'active' : ''}>{t('footer.origins')}</a></li>
                 <li><a href="/nuestro-cafe" className={isActiveLink('/nuestro-cafe') ? 'active' : ''}>{t('footer.ourCoffee')}</a></li>
-                <li><a href="/tienda className={isActiveLink('/tienda') ? 'active' : ''}">{t('footer.store')}</a></li>
+                <li><a href="/tienda" className={isActiveLink('/tienda') ? 'active' : ''}>{t('footer.store')}</a></li>
                 <li>{t('footer.policy')}</li>
               </ul>
             </div>
