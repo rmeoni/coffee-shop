@@ -158,49 +158,53 @@ const Header = () => {
           )}
         </a>
         {isMobileMenuOpen && (
-          <ul className={`mobile-menu ${isDarkMode ? 'dark' : ''}`} ref={mobileMenuRef}>
-            {isLoading ? (
-              <>
-                <li><Skeleton width={80} /></li>
-                <li><Skeleton width={80} /></li>
-                <li><Skeleton width={80} /></li>
-                <li><Skeleton width={80} /></li>
-                <li><Skeleton width={80} /></li>
-                <li><Skeleton circle={true} height={20} width={20} /></li>
-              </>
-            ) : (
-              <>
-                <li><a href="/">{t('header.home')}</a></li>
-                <li><a href="/origenes">{t('header.origins')}</a></li>
-                <li><a href="/nuestro-cafe">{t('header.our_coffee')}</a></li>
-                <li><a href="/tienda">{t('header.shop')}</a></li>
-                <li><a href="/compra1educa1">{t('header.charity')}</a></li>
-                <li className="language-selector" onClick={() => setIsLanguageDropdownOpen(!isLanguageDropdownOpen)}>
-                  <span>
-                    {t('header.language')}
-                    <img src={languageIcon} style={{ width: '30px', height: '30px' }} id="language-icon" alt="Language Icon" />
-                  </span>
-                  {isLanguageDropdownOpen && (
-                    <ul className="language-options">
-                      <li onClick={() => handleLanguageChange('es')}>{t('header.spanish')}</li>
-                      <li onClick={() => handleLanguageChange('en')}>{t('header.english')}</li>
-                    </ul>
-                  )}
-                </li>
-                <li>
-                  <img
-                    src={toggleIcon}
-                    alt={t('header.toggle_dark_mode')}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      toggleDarkMode();
-                    }}
-                    style={{ cursor: 'pointer', height: '36px' }}
-                  />
-                </li>
-              </>
-            )}
-          </ul>
+          <>
+            {/* Background overlay */}
+            <div className="mobile-menu-overlay" onClick={closeMobileMenu}></div>
+            <ul className={`mobile-menu ${isDarkMode ? 'dark' : ''}`} ref={mobileMenuRef}>
+              {isLoading ? (
+                <>
+                  <li><Skeleton width={80} /></li>
+                  <li><Skeleton width={80} /></li>
+                  <li><Skeleton width={80} /></li>
+                  <li><Skeleton width={80} /></li>
+                  <li><Skeleton width={80} /></li>
+                  <li><Skeleton circle={true} height={20} width={20} /></li>
+                </>
+              ) : (
+                <>
+                  <li><a href="/">{t('header.home')}</a></li>
+                  <li><a href="/origenes">{t('header.origins')}</a></li>
+                  <li><a href="/nuestro-cafe">{t('header.our_coffee')}</a></li>
+                  <li><a href="/tienda">{t('header.shop')}</a></li>
+                  <li><a href="/compra1educa1">{t('header.charity')}</a></li>
+                  <li className="language-selector" onClick={() => setIsLanguageDropdownOpen(!isLanguageDropdownOpen)}>
+                    <span>
+                      {t('header.language')}
+                      <img src={languageIcon} style={{ width: '30px', height: '30px' }} id="language-icon" alt="Language Icon" />
+                    </span>
+                    {isLanguageDropdownOpen && (
+                      <ul className="language-options">
+                        <li onClick={() => handleLanguageChange('es')}>{t('header.spanish')}</li>
+                        <li onClick={() => handleLanguageChange('en')}>{t('header.english')}</li>
+                      </ul>
+                    )}
+                  </li>
+                  <li>
+                    <img
+                      src={toggleIcon}
+                      alt={t('header.toggle_dark_mode')}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        toggleDarkMode();
+                      }}
+                      style={{ cursor: 'pointer', height: '36px' }}
+                    />
+                  </li>
+                </>
+              )}
+            </ul>
+          </>
         )}
       </nav>
     </header>
