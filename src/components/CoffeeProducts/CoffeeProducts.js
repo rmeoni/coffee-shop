@@ -94,9 +94,9 @@ const CoffeeProducts = () => {
         ) : (
           filteredProducts.map((product, index) => (
             <div key={index} className="product">
-              <img src={product.imgSrc} alt={t(`coffeeProducts.product${index + 1}_title`)} className="product-img" />
+              <img src={product.imgSrc} alt={t(`coffeeProducts.product${product.id}_title`)} className="product-img" />
               <p className={`price-per-pound ${isDarkMode ? 'dark' : ''}`}>{t('coffeeProducts.save')}</p>
-              <h2>{t(`coffeeProducts.product${index + 1}_title`)}</h2>
+              <h2>{t(`coffeeProducts.product${product.id}_title`)}</h2>
               <p className="price">${product.price.toFixed(2)}</p>
               <button className={`primary-btn-l ${isDarkMode ? 'dark' : ''}`} onClick={() => handleViewDetails(product.id)} style={{ cursor: 'pointer'}}>
                 {t('coffeeProducts.view_details')}
@@ -116,5 +116,6 @@ const CoffeeProducts = () => {
     </section>
   );
 };
+
 
 export default CoffeeProducts;
