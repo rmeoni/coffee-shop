@@ -109,7 +109,7 @@ const GlobalStyle = createGlobalStyle`
 
   body.dark input {
     background-color: #121212;
-    border: 1.2px solid #ffffff;
+    border: 1.2px solid rgba(255, 255, 255, 0.3);
     color: #fff;
   }
 
