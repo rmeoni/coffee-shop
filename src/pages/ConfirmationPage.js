@@ -106,10 +106,10 @@ const ConfirmationPage = () => {
                         {isLoading ? <Skeleton width={200} /> : <p>{order?.estimatedDeliveryDate}</p>}
                     </div>
                 </div>
-                <div className="checkout-summary">
+                <div className="checkout-summary order-confirmation-section">
                     <h2 style={{ marginBottom: 28 }}>{t('confirmation.summary')}</h2>
                     <div className="cart-wrapper" id="checkout-summary">
-                        <div className="cart-items">
+                        <div className="cart-items" id="checkout-items">
                             {isLoading ? (
                                 [...Array(cartItems.length)].map((_, index) => (
                                     <div key={index} className="cart-item">
@@ -176,7 +176,7 @@ const ConfirmationPage = () => {
                         </div>
                     </div>
                 </div>
-                <div style={{ marginTop: '20px' }}>
+                <div style={{ marginTop: '63px' }}>
                     <button className="primary-btn-l" onClick={() => navigate('/')}>
                     {t('confirmation.continue')}
                     </button>
