@@ -11,7 +11,6 @@ const Banner = () => {
   useEffect(() => {
     if (banner.message) {
       setIsVisible(true);
-      console.log("Banner visible with message:", banner.message);
     }
   }, [banner]);
 
