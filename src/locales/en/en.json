@@ -210,5 +210,12 @@
     "product": "Product",
     "cart": "Cart",
     "checkout": "Checkout"
+  },
+  "confirmation": {
+    "order_number": "Order #",
+    "delivery_date": "Estimated Delivery Date",
+    "summary": "Summary",
+    "Total": "Total",
+    "continue": "Continue Shopping"
   }
 }

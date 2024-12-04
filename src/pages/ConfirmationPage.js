@@ -95,19 +95,19 @@ const ConfirmationPage = () => {
             <Header />
             <div className="order-confirmation">
                 <div className="order-confirmation-section">
-                    <h2>Order #:</h2>
+                    <h2>{t('confirmation.order_number')}</h2>
                     <div className="section-details">
                         {isLoading ? <Skeleton width={200} /> : <p>{order?.orderNumber}</p>}
                     </div>
                 </div>
                 <div className="order-confirmation-section">
-                    <h2>Estimated Delivery Date:</h2>
+                    <h2>{t('confirmation.delivery_date')}</h2>
                     <div className="section-details">
                         {isLoading ? <Skeleton width={200} /> : <p>{order?.estimatedDeliveryDate}</p>}
                     </div>
                 </div>
                 <div className="checkout-summary">
-                    <h2 style={{ marginBottom: 28 }}>Summary</h2>
+                    <h2 style={{ marginBottom: 28 }}>{t('confirmation.summary')}</h2>
                     <div className="cart-wrapper" id="checkout-summary">
                         <div className="cart-items">
                             {isLoading ? (
@@ -169,7 +169,7 @@ const ConfirmationPage = () => {
                             )}
                         </div>
                         <div className="order-confirmation-section">
-                            <h2>Total:</h2>
+                            <h2>{t('confirmation.total')}</h2>
                             <div className="section-details">
                                 {isLoading ? <Skeleton width={200} /> : <p>${order?.total.toFixed(2)}</p>}
                             </div>
@@ -178,7 +178,7 @@ const ConfirmationPage = () => {
                 </div>
                 <div style={{ marginTop: '20px' }}>
                     <button className="primary-btn-l" onClick={() => navigate('/')}>
-                        Continue Shopping
+                    {t('confirmation.continue')}
                     </button>
                 </div>
             </div>

@@ -210,5 +210,12 @@
     "product": "Producto",
     "cart": "Carrito",
     "checkout": "Pago"
+  },
+  "confirmation": {
+    "order_number": "Orden #",
+    "delivery_date": "Entrega Estimada",
+    "summary": "Resumen",
+    "total": "Total",
+    "continue": "Continuar Comprando"
   }
 }
