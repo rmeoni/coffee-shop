@@ -8,8 +8,8 @@ export const ProductProvider = ({ children }) => {
   const [category, setCategory] = useState('Molido');
 
   const allProducts = useMemo(() => [
-    { id: '1', imgSrc: '/images/cdl-front-molido.png', pricePerPound: '$9.99', title: 'Pound of Gourmet Ground Coffee', category: 'Molido', price: 9.99 },
-    { id: '2', imgSrc: '/images/cdl-front-grano.png', pricePerPound: '$9.99', title: 'Pound of Gourmet Whole Bean Coffee', category: 'Grano', price: 9.99 },
+    { id: '1', imgSrc: '/images/cdl-front-molido.png', pricePerPound: '$9.99', title: 'Pound of Gourmet Ground Coffee (16 oz)', category: 'Molido', price: 9.99 },
+    { id: '2', imgSrc: '/images/cdl-front-grano.png', pricePerPound: '$9.99', title: 'Pound of Gourmet Whole Bean Coffee (16 oz)', category: 'Grano', price: 9.99 },
     { id: '3', imgSrc: '/images/cdl-front-molido.png', pricePerPound: '$9.96', title: 'Box of 30 Pounds of Gourmet Ground Coffee', category: 'Molido', price: 299 },
     { id: '4', imgSrc: '/images/cdl-front-molido.png', pricePerPound: '$9.95', title: 'Box of 20 Pounds of Gourmet Ground Coffee', category: 'Molido', price: 199 },
     { id: '5', imgSrc: '/images/cdl-front-molido.png', pricePerPound: '$9.99', title: 'Box of 10 Pounds of Gourmet Ground Coffee', category: 'Molido', price: 99 },
