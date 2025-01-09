@@ -66,16 +66,16 @@ const Footer = () => {
                 <li><a href="/origenes" className={isActiveLink('/origenes') ? 'active' : ''}>{t('footer.origins')}</a></li>
                 <li><a href="/nuestro-cafe" className={isActiveLink('/nuestro-cafe') ? 'active' : ''}>{t('footer.ourCoffee')}</a></li>
                 <li><a href="/tienda" className={isActiveLink('/tienda') ? 'active' : ''}>{t('footer.store')}</a></li>
-                <li>{t('footer.policy')}</li>
+                { /* <li>{t('footer.policy')}</li> */}
               </ul>
             </div>
             <div className="footer-column">
               <h3>{t('footer.help')}</h3>
               <ul>
                 <li><a href="/compra1educa1" className={isActiveLink('/compra1educa1') ? 'active' : ''}>{t('footer.buyEducate')}</a></li>
-                <li>{t('footer.faq')}</li>
-                <li>{t('footer.distributors')}</li>
-                <li>{t('footer.environment')}</li>
+                { /* <li>{t('footer.faq')}</li> */}
+                {/* <li>{t('footer.distributors')}</li> */}
+                {/* <li>{t('footer.environment')}</li> */}
               </ul>
             </div>
             <div className="footer-column">
